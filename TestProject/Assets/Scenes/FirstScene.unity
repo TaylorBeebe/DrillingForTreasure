@@ -202,7 +202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bd159acea3cf2d4baf91a0c7e8e4a11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 500
+  movementSpeed: 370
   sUp: {fileID: 21300004, guid: 1768550265e506d419b8772e516f69cc, type: 3}
   sDown: {fileID: 21300000, guid: 1768550265e506d419b8772e516f69cc, type: 3}
   sLeft: {fileID: 21300002, guid: 1768550265e506d419b8772e516f69cc, type: 3}
