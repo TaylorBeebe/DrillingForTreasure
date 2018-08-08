@@ -53,6 +53,9 @@ public class PlayerController : MonoBehaviour {
             dirFacing = dirToFace.Down;
             sr.sprite = sDown;
             rb2d.velocity = new Vector2(0, movementSpeed * vertAxis * Time.deltaTime);
+        } else
+        {
+            rb2d.velocity = Vector2.zero;
         }
 	}
 
