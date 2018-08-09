@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraFollow2D : MonoBehaviour {
+    //Written by Cedric.
 
-	// Use this for initialization
 	void Start () {
 		
 	}

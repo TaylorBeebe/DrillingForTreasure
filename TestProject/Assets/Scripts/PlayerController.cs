@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [DisallowMultipleComponent]
 [RequireComponent(typeof(Rigidbody2D))]
@@ -14,7 +15,7 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] Sprite sLeft;
     [SerializeField] Sprite sRight;
 
-    private bool canMove;
+    private bool canMove = true;
 
     private int horzAxis;
     private int vertAxis;
@@ -36,29 +37,41 @@ public class PlayerController : MonoBehaviour {
         horzAxis = (int)Input.GetAxisRaw("Horizontal");
         vertAxis = (int)Input.GetAxisRaw("Vertical");
 
-        if (horzAxis == 1)
+        if (canMove)
         {
-            dirFacing = dirToFace.Right;
-            sr.sprite = sRight;
-            rb2d.velocity = new Vector2(movementSpeed * horzAxis * Time.deltaTime, 0);
-        } else if (horzAxis == -1)
+            if (horzAxis == 1)
+            {
+                dirFacing = dirToFace.Right;
+                sr.sprite = sRight;
+                rb2d.velocity = new Vector2(movementSpeed * horzAxis * Time.deltaTime, 0);
+            }
+            else if (horzAxis == -1)
+            {
+                dirFacing = dirToFace.Left;
+                sr.sprite = sLeft;
+                rb2d.velocity = new Vector2(movementSpeed * horzAxis * Time.deltaTime, 0);
+            }
+            else if (vertAxis == 1)
+            {
+                dirFacing = dirToFace.Up;
+                sr.sprite = sUp;
+                rb2d.velocity = new Vector2(0, movementSpeed * vertAxis * Time.deltaTime);
+            }
+            else if (vertAxis == -1)
+            {
+                dirFacing = dirToFace.Down;
+                sr.sprite = sDown;
+                rb2d.velocity = new Vector2(0, movementSpeed * vertAxis * Time.deltaTime);
+            }
+            else
+            {
+                rb2d.velocity = Vector2.zero;
+            }
+        }
+
+        if(Input.GetButtonDown("Restart"))
         {
-            dirFacing = dirToFace.Left;
-            sr.sprite = sLeft;
-            rb2d.velocity = new Vector2(movementSpeed * horzAxis * Time.deltaTime, 0);
-        } else if (vertAxis == 1)
-        {
-            dirFacing = dirToFace.Up;
-            sr.sprite = sUp;
-            rb2d.velocity = new Vector2(0, movementSpeed * vertAxis * Time.deltaTime);
-        } else if (vertAxis == -1)
-        {
-            dirFacing = dirToFace.Down;
-            sr.sprite = sDown;
-            rb2d.velocity = new Vector2(0, movementSpeed * vertAxis * Time.deltaTime);
-        } else
-        {
-            rb2d.velocity = Vector2.zero;
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
 	}
 
@@ -69,9 +82,17 @@ public class PlayerController : MonoBehaviour {
         {
             if(Input.GetButtonDown("Interactable"))
             {
-                
+                InteractionManager im;
+                im = col.GetComponent<InteractionManager>();
+                im.OnInteract.Invoke();
+                canMove = false;
             }
         }
+    }
+
+    public void CanMove()
+    {
+        canMove = true;
     }
 
     
