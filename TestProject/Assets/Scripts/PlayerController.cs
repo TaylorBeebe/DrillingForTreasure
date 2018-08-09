@@ -29,13 +29,11 @@ public class PlayerController : MonoBehaviour {
 
     private GameObject lever;
 
-	// Use this for initialization
 	void Start () {
         sr = GetComponent<SpriteRenderer>();
         rb2d = GetComponent<Rigidbody2D>();
 	}
-	
-	// Update is called once per frame
+
 	void Update ()
     {
         horzAxis = (int)Input.GetAxisRaw("Horizontal");
@@ -73,13 +71,13 @@ public class PlayerController : MonoBehaviour {
             }
         }
 
-        
+        //Defaulted to I
         if(Input.GetButtonDown("Restart"))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
-        
 
+        //Defaulted to E
         if(Input.GetButtonDown("Interactable") && nearLever)
         {
             canMove = false;
@@ -94,7 +92,7 @@ public class PlayerController : MonoBehaviour {
         string tag = col.gameObject.transform.tag;
 
         if(tag == "Interactable")
-        {
+        {     
             nearLever = true;
             lever = col.gameObject;
         }
