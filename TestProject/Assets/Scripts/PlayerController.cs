@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour {
         Vector2 dir = new Vector2(horzAxis, vertAxis);
         if (canMove)
         {
-            rb2d.velocity = dir.normalized * movementSpeed;
+            rb2d.velocity = dir.normalized * movementSpeed * Time.deltaTime;
 
             if (horzAxis == 1)
             {
