@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour {
     //Written by Cedric.
 
-    [SerializeField] [Range(100,600)] float movementSpeed;
+    [SerializeField] [Range(1 ,100)] float movementSpeed;
     [SerializeField] Sprite sUp;
     [SerializeField] Sprite sDown;
     [SerializeField] Sprite sLeft;
@@ -38,36 +38,30 @@ public class PlayerController : MonoBehaviour {
     {
         horzAxis = (int)Input.GetAxisRaw("Horizontal");
         vertAxis = (int)Input.GetAxisRaw("Vertical");
-
+        Vector2 dir = new Vector2(horzAxis, vertAxis);
         if (canMove)
         {
+            rb2d.velocity = dir.normalized * movementSpeed;
+
             if (horzAxis == 1)
             {
                 dirFacing = dirToFace.Right;
                 sr.sprite = sRight;
-                rb2d.velocity = new Vector2(movementSpeed * horzAxis * Time.deltaTime, 0);
             }
             else if (horzAxis == -1)
             {
                 dirFacing = dirToFace.Left;
                 sr.sprite = sLeft;
-                rb2d.velocity = new Vector2(movementSpeed * horzAxis * Time.deltaTime, 0);
             }
             else if (vertAxis == 1)
             {
                 dirFacing = dirToFace.Up;
                 sr.sprite = sUp;
-                rb2d.velocity = new Vector2(0, movementSpeed * vertAxis * Time.deltaTime);
             }
             else if (vertAxis == -1)
             {
                 dirFacing = dirToFace.Down;
                 sr.sprite = sDown;
-                rb2d.velocity = new Vector2(0, movementSpeed * vertAxis * Time.deltaTime);
-            }
-            else
-            {
-                rb2d.velocity = Vector2.zero;
             }
         }
 
