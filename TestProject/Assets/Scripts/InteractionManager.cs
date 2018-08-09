@@ -9,12 +9,12 @@ public class InteractionManager : MonoBehaviour {
 
     public UnityEvent OnInteract;
 
-    private SpriteRenderer sr;
-    private bool isFlipped = false;
+    public SpriteRenderer sr;
+    public bool isFlipped = false;
 
     void Start()
     {
-        sr.GetComponent<SpriteRenderer>();
+        sr = GetComponent<SpriteRenderer>();
     }
 
     public void LoadRoom(int room)
@@ -24,11 +24,12 @@ public class InteractionManager : MonoBehaviour {
     
     public void FlipLever(GameObject lever)
     {
-        isFlipped = !isFlipped;
         if (isFlipped)
             sr.sprite = leverFlipped;
         else
             sr.sprite = leverUnFlipped;
+
+        isFlipped = !isFlipped;
 
         GameObject.Find("Player").SendMessage("CanMove");
     }

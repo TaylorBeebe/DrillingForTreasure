@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] Sprite sRight;
 
     private bool canMove = true;
+    private bool nearLever = false;
 
     private int horzAxis;
     private int vertAxis;
@@ -26,6 +27,8 @@ public class PlayerController : MonoBehaviour {
     private enum dirToFace {Up, Down, Left, Right};
     private dirToFace dirFacing;
 
+    private GameObject lever;
+
 	// Use this for initialization
 	void Start () {
         sr = GetComponent<SpriteRenderer>();
@@ -33,7 +36,8 @@ public class PlayerController : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
         horzAxis = (int)Input.GetAxisRaw("Horizontal");
         vertAxis = (int)Input.GetAxisRaw("Vertical");
 
@@ -69,24 +73,41 @@ public class PlayerController : MonoBehaviour {
             }
         }
 
+        
         if(Input.GetButtonDown("Restart"))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
-	}
+        
 
-    private void OnCollisionEnter2D(Collider col)
+        if(Input.GetButtonDown("Interactable") && nearLever)
+        {
+            canMove = false;
+            InteractionManager im;
+            im = lever.GetComponent<InteractionManager>();
+            im.OnInteract.Invoke();   
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D col)
     {
         string tag = col.gameObject.transform.tag;
+
         if(tag == "Interactable")
         {
-            if(Input.GetButtonDown("Interactable"))
-            {
-                InteractionManager im;
-                im = col.GetComponent<InteractionManager>();
-                im.OnInteract.Invoke();
-                canMove = false;
-            }
+            nearLever = true;
+            lever = col.gameObject;
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D col)
+    {
+        string tag = col.gameObject.transform.tag;
+
+        if (tag == "Interactable")
+        {
+            nearLever = false;
+            lever = null;
         }
     }
 
@@ -94,6 +115,4 @@ public class PlayerController : MonoBehaviour {
     {
         canMove = true;
     }
-
-    
 }
