@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114935905996377044}
   - component: {fileID: 61232095163564534}
   - component: {fileID: 58013784810470536}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Lever
   m_TagString: Interactable
   m_Icon: {fileID: 0}
