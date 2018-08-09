@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour {
         }
 	}
 
-    private void OnCollisionEnter2D(Collider col)
+    private void OnCollisionStay2D(Collider col)
     {
         string tag = col.gameObject.transform.tag;
         if(tag == "Interactable")
