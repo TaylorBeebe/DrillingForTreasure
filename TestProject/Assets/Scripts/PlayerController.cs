@@ -9,7 +9,7 @@ using UnityEngine.SceneManagement;
 public class PlayerController : MonoBehaviour {
     //Written by Cedric.
 
-    [SerializeField] [Range(1 ,100)] float movementSpeed;
+    [SerializeField] [Range(100 ,600)] float movementSpeed;
     [SerializeField] Sprite sUp;
     [SerializeField] Sprite sDown;
     [SerializeField] Sprite sLeft;
