@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[DisallowMultipleComponent]
+[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(SpriteRenderer))]
 public class PlayerController : MonoBehaviour {
     //Written by Cedric.
 
@@ -58,6 +61,18 @@ public class PlayerController : MonoBehaviour {
             rb2d.velocity = Vector2.zero;
         }
 	}
+
+    private void OnCollisionEnter2D(Collider col)
+    {
+        string tag = col.gameObject.transform.tag;
+        if(tag == "Interactable")
+        {
+            if(Input.GetButtonDown("Interactable"))
+            {
+                
+            }
+        }
+    }
 
     
 }
