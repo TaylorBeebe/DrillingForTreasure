@@ -14,19 +14,16 @@ public class CloseButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        //Change sprite to hilighted
         GetComponent<Image>().sprite = closeButtons[1];
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        //Change sprite to normal
         GetComponent<Image>().sprite = closeButtons[0];
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        //Change sprite to pressed
         GetComponent<Image>().sprite = closeButtons[2];
     }
 }
