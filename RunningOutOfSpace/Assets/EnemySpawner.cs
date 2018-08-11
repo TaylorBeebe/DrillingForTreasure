@@ -132,19 +132,24 @@ public class EnemySpawner : MonoBehaviour {
 
         //increment through elements in wave
         for (int i = 0; i < wave.count; i++) {
-            SpawnEnemy(wave.location);
+            Vector2 spawnLocation = GetRandomSpawnLocation();
+            SpawnEnemy(spawnLocation);
             yield return new WaitForSeconds(1f / wave.rate);
         }
         Debug.Log("wave length: " + waves.Length);
+        //check if we are done spawning waves
         if (nextWave == waves.Length)
         {
             state = SpawnState.WAITING;
             Debug.Log("SpawnState = Waiting");
         }
+        //if not, set state to counting
         else {
             state = SpawnState.COUNTING;
             Debug.Log("SpawnState = Counting");
         }
+
+        //reset wave countdown
         waveCountdown = timeBetweenWaves;
 
         yield break;
@@ -154,10 +159,9 @@ public class EnemySpawner : MonoBehaviour {
      * @ Pre: None
      * @ Post: Enemy spawned at location
      */
-    void SpawnEnemy(Transform spawnLocation) {
-        Debug.Log("Spawning Enemies at " + spawnLocation.position);
-        Vector2 spawn = GetRandomSpawnLocation(cameraWidth, cameraHeight);
-        Instantiate(Enemy1, spawn, Quaternion.identity);
+    void SpawnEnemy(Vector2 spawnLocation) {
+        Debug.Log("Spawning Enemies at " + spawnLocation);
+        Instantiate(Enemy1, spawnLocation, Quaternion.identity);
     }
 
     /* @ Param: None
@@ -175,11 +179,11 @@ public class EnemySpawner : MonoBehaviour {
         return true;
     }
 
-    /* @ Param: Width and height of camera
+    /* @ Param: None
      * @ Pre: Enemies are spawning
      * @ Post: Returns vector2 location where enemy(s) will spawn
      */
-    Vector2 GetRandomSpawnLocation(float cameraWidth, float cameraHeight) {
+    Vector2 GetRandomSpawnLocation() {
         return new Vector2(mainCamera.transform.position.x + cameraWidth, mainCamera.transform.position.y + cameraHeight);
     }
 
