@@ -28,7 +28,7 @@ public class EnemySpawner : MonoBehaviour {
     public class Wave {
         public string name;
         public int count;
-        public float rate;
+        public float rate = 2f;
         public Transform location;   
     }
 
@@ -189,13 +189,17 @@ public class EnemySpawner : MonoBehaviour {
 
         if (whichNumberToMax == 0)
         {
-            return new Vector2(mainCamera.transform.position.x + cameraWidth, mainCamera.transform.position.y + Random.Range(0.0f, cameraHeight));
+            Debug.Log("returning value");
+            return new Vector2(mainCamera.transform.position.x + cameraWidth, mainCamera.transform.position.y + Random.Range(cameraHeight * -1, cameraHeight));
         }
         else
         {
-            return new Vector2(mainCamera.transform.position.x + Random.Range(0.0f, cameraWidth), mainCamera.transform.position.y + cameraHeight);
+            Debug.Log("returning value");
+            return new Vector2(mainCamera.transform.position.x + Random.Range(cameraWidth * -1, cameraWidth), mainCamera.transform.position.y + cameraHeight);
 
         }
+
+        //For Testing
         //return new Vector2(mainCamera.transform.position.x + cameraWidth, mainCamera.transform.position.y + cameraHeight);
     }
 
