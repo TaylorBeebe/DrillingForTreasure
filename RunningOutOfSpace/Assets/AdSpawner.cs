@@ -6,9 +6,17 @@ public class AdSpawner : MonoBehaviour {
 
     public GameObject[] ads;
 
+    [Header("Spawn settings")]
+    public float adSpawnDeley;
+    public float adSpawnWindow;
+
+    public Sprite[] boxAds;
+    public Sprite[] horizontalAds;
+    public Sprite[] verticalAds;
+
     void Start()
     {
-        InvokeRepeating("SpawnAd", 0, 1f);
+        Invoke("SpawnAd", adSpawnDeley);
     }
 
     void SpawnAd()
@@ -21,5 +29,9 @@ public class AdSpawner : MonoBehaviour {
         Vector3 spawnPoint = new Vector3(xPos, yPos, 0);
 
         Instantiate(ads[randomAd], spawnPoint, Quaternion.identity, transform);
+
+
+        float randomSpawnNum = Random.Range(0, adSpawnWindow);
+        Invoke("SpawnAd", randomSpawnNum);
     }
 }
