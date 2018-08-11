@@ -11,6 +11,7 @@ public class AdSpawner : MonoBehaviour {
     public float adSpawnDeley;
     public float adSpawnWindowMin;
     public float adSpawnWindowMax;
+    public bool stopSpawning;
 
     [Header("Ad sprites")]
     public Sprite[] boxAds;
@@ -20,22 +21,39 @@ public class AdSpawner : MonoBehaviour {
 
     void Start()
     {
-        Invoke("SpawnAd", adSpawnDeley);
+        //StopSpawn(5f);
+        Invoke("SpawnAd", adSpawnDeley);       
     }
 
     void SpawnAd()
     {
+        //Choose a random ad
         int randomAd = Random.Range(0, ads.Length);
 
+        //Get a random position on the screen
         float xPos = Random.Range(0, Screen.width);
         float yPos = Random.Range(0, Screen.height);
-
         Vector3 spawnPoint = new Vector3(xPos, yPos, 0);
 
+        //Spawn random ad to a random position
         Instantiate(ads[randomAd], spawnPoint, Quaternion.identity, transform);
 
-
+        //Spawn the next ad if stopSpawning is false
         float randomSpawnNum = Random.Range(adSpawnWindowMin, adSpawnWindowMax);
-        Invoke("SpawnAd", randomSpawnNum);
+
+        if(!stopSpawning)
+            Invoke("SpawnAd", randomSpawnNum);
+    }
+
+    public void StopSpawn(float time)
+    {
+        stopSpawning = true;
+        Invoke("StartSpawn", time);
+    }
+
+    public void StartSpawn()
+    {
+        stopSpawning = false;
+        Invoke("SpawnAd", 0);
     }
 }
