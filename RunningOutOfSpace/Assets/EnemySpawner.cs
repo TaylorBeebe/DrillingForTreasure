@@ -51,7 +51,20 @@ public class EnemySpawner : MonoBehaviour {
     //bool holds state of level
     public bool levelOver;
 
+    //get main camera
+    public Camera mainCamera;
+
+    //initialize state to SPAWNING
     public SpawnState state = SpawnState.COUNTING;
+
+    //holds aspect ration
+    private float screenAspect;
+
+    //gets camera height/2
+    private float cameraHeight;
+
+    //gets camera width/2
+    private float cameraWidth;
 
     /* @ Param: None
      * @ Pre: None
@@ -65,6 +78,12 @@ public class EnemySpawner : MonoBehaviour {
         Enemyarray = new GameObject[] {
             Enemy1, Enemy2, Enemy3
         };
+        
+        Debug.Log(mainCamera.orthographicSize);
+        screenAspect = (float)Screen.width / (float)Screen.height;
+        cameraHeight = mainCamera.orthographicSize;
+        cameraWidth = screenAspect * cameraHeight;
+    Debug.Log(cameraWidth + ", " + cameraHeight);
     }
 
     /* @ Param: None
@@ -100,27 +119,7 @@ public class EnemySpawner : MonoBehaviour {
                 StartCoroutine(SpawnWave(waves[nextWave]));
                 nextWave += 1;
             }
-            else {
-                //decrement wave countdown
-                waveCountdown -= Time.deltaTime;
-            }
-
         }
-
-        
-    }
-
-    /* @ Param: None
-     * @ Pre: None
-     * @ Post: Returns bool true if an enemy is alive
-     */
-    bool AreEnemiesAlive() {
-        if (GameObject.FindGameObjectWithTag("Enemy") == null) {
-            //enemy with tag found
-            return false;
-        }
-        //return true if no enemy with tag is found
-        return true;
     }
 
     /* @ Param: Wave of type game object
@@ -160,5 +159,31 @@ public class EnemySpawner : MonoBehaviour {
      */
     void SpawnEnemy(Transform spawnLocation) {
         Debug.Log("Spawning Enemies at " + spawnLocation.position);
+        Vector2 spawn = GetRandomSpawnLocation(cameraWidth, cameraHeight);
+        Instantiate(Enemy1, spawn, Quaternion.identity);
     }
+
+    /* @ Param: None
+     * @ Pre: None
+     * @ Post: Returns bool true if an enemy is alive
+     */
+    bool AreEnemiesAlive()
+    {
+        if (GameObject.FindGameObjectWithTag("Enemy") == null)
+        {
+            //enemy with tag found
+            return false;
+        }
+        //return true if no enemy with tag is found
+        return true;
+    }
+
+    /* @ Param:
+     * @ Pre: 
+     * @ Post: 
+     */
+    Vector2 GetRandomSpawnLocation(float cameraWidth, float cameraHeight) {
+        return new Vector2(mainCamera.transform.position.x + cameraWidth, mainCamera.transform.position.y + cameraHeight);
+    }
+
 }
