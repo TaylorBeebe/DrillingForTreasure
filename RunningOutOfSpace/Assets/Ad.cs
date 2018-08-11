@@ -12,7 +12,7 @@ public class Ad : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDownHand
     {
         Closable,
         Timer,
-        Test2,
+        StickyKeys,
         Test3
     }
 
@@ -21,27 +21,28 @@ public class Ad : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDownHand
         Box,
         Horizontal,
         Vertical,
-        VerticalSmall
+        VerticalSmall,
+        StickyKeys
     }
 
     Sprite[] boxAds;
     Sprite[] horizontalAds;
     Sprite[] verticalAds;
     Sprite[] verticalSmallAds;
+    Sprite[] stickyKeysAds;
 
     public AdType adType;
     public AdSize adSize;
 
     Vector3 tempPos;
 
-    //Button settings
-    public Button closeButton;
+    //[Header("Ad sprites")]
+    Button closeButton;
 
-    //Timer ad settings
     float adTimer;
     float adTimerStart;
-    public Image timer;
-    public Text timerText;
+    Image timer;
+    Text timerText;
 
     void Start()
     {
@@ -59,16 +60,24 @@ public class Ad : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDownHand
         horizontalAds = transform.parent.GetComponent<AdSpawner>().horizontalAds;
         verticalAds = transform.parent.GetComponent<AdSpawner>().verticalAds;
         verticalSmallAds = transform.parent.GetComponent<AdSpawner>().verticalSmallAds;
+        stickyKeysAds = transform.parent.GetComponent<AdSpawner>().stickyKeysAds;
 
-        //Check what ad size the prefab is
-        if (adSize == AdSize.Box)
-            GetComponent<Image>().sprite = boxAds[Random.Range(0, boxAds.Length)];
-        if (adSize == AdSize.Horizontal)
-            GetComponent<Image>().sprite = horizontalAds[Random.Range(0, horizontalAds.Length)];
-        if (adSize == AdSize.Vertical)
-            GetComponent<Image>().sprite = verticalAds[Random.Range(0, verticalAds.Length)];
-        if (adSize == AdSize.VerticalSmall)
-            GetComponent<Image>().sprite = verticalSmallAds[Random.Range(0, verticalSmallAds.Length)];
+        //Check if the ad needs a special sprite
+        if (adType == AdType.StickyKeys)
+            GetComponent<Image>().sprite = stickyKeysAds[Random.Range(0, stickyKeysAds.Length)];
+
+        if (adType == AdType.Timer || adType == AdType.Closable)
+        {
+            //Check what ad size the prefab is
+            if (adSize == AdSize.Box)
+                GetComponent<Image>().sprite = boxAds[Random.Range(0, boxAds.Length)];
+            if (adSize == AdSize.Horizontal)
+                GetComponent<Image>().sprite = horizontalAds[Random.Range(0, horizontalAds.Length)];
+            if (adSize == AdSize.Vertical)
+                GetComponent<Image>().sprite = verticalAds[Random.Range(0, verticalAds.Length)];
+            if (adSize == AdSize.VerticalSmall)
+                GetComponent<Image>().sprite = verticalSmallAds[Random.Range(0, verticalSmallAds.Length)];
+        }
 
         //Check the ad type
         if (adType == AdType.Timer)
@@ -84,6 +93,7 @@ public class Ad : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDownHand
     }
     void Update()
     {
+        //Timer ad gameplay
         if(adType == AdType.Timer)
         {
             adTimer -= Time.deltaTime;
@@ -96,6 +106,7 @@ public class Ad : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDownHand
             }
         }
     }
+
     public void OnPointerDown(PointerEventData eventData)
     {
         //Move the Ad to the front and get a temp pos of the mouse
@@ -117,5 +128,11 @@ public class Ad : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDownHand
         //Destroy the Ad and play the closing animation
         Destroy(gameObject, 0.15f);
         GetComponent<Animator>().SetTrigger("AdClosed");
+    }
+
+    public void spawnAds(int ads)
+    {
+        transform.parent.GetComponent<AdSpawner>().SpawnAdCustom(5);
+        Destroy(gameObject);
     }
 }

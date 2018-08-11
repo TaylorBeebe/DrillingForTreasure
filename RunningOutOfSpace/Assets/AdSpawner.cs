@@ -6,6 +6,7 @@ public class AdSpawner : MonoBehaviour {
 
     [Header("Ad prefabs")]
     public GameObject[] ads;
+    public GameObject[] stickyKeys;
 
     [Header("Spawn settings")]
     public float adSpawnDeley;
@@ -17,19 +18,46 @@ public class AdSpawner : MonoBehaviour {
     public float timerAdMin;
     public float timerAdMax;
 
+    [Header("Sticky Keys settings")]
+    public int shiftsToActivate;
+    public float shiftResetTime;
+    int stickyPress;
+
     [Header("Ad sprites")]
     public Sprite[] boxAds;
     public Sprite[] horizontalAds;
     public Sprite[] verticalAds;
     public Sprite[] verticalSmallAds;
+    public Sprite[] stickyKeysAds;
 
     void Start()
     {
         //StopSpawn(5f);
-        Invoke("SpawnAd", adSpawnDeley);       
+        if(!stopSpawning)
+            Invoke("SpawnAds", adSpawnDeley);       
     }
 
-    void SpawnAd()
+    void Update()
+    {
+        Invoke("resetSticky", shiftResetTime);
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            stickyPress++;
+            CancelInvoke("resetSticky");
+        }
+        if (stickyPress >= shiftsToActivate)
+        {
+            stickyPress = 0;
+            Instantiate(stickyKeys[0], new Vector3(Screen.width/2,Screen.height/2,0), Quaternion.identity, transform);
+        }
+    }
+
+    void resetSticky()
+    {
+        stickyPress = 0;
+    }
+
+    public void SpawnAds()
     {
         //Choose a random ad
         int randomAd = Random.Range(0, ads.Length);
@@ -46,7 +74,24 @@ public class AdSpawner : MonoBehaviour {
         float randomSpawnNum = Random.Range(adSpawnWindowMin, adSpawnWindowMax);
 
         if(!stopSpawning)
-            Invoke("SpawnAd", randomSpawnNum);
+            Invoke("SpawnAds", randomSpawnNum);
+    }
+
+    public void SpawnAdCustom(int n)
+    {
+        for (int i = 0; i < n; i++)
+        {
+            //Choose a random ad
+            int randomAd = Random.Range(0, ads.Length);
+
+            //Get a random position on the screen
+            float xPos = Random.Range(0, Screen.width);
+            float yPos = Random.Range(0, Screen.height);
+            Vector3 spawnPoint = new Vector3(xPos, yPos, 0);
+
+            //Spawn random ad to a random position
+            Instantiate(ads[randomAd], spawnPoint, Quaternion.identity, transform);
+        }
     }
 
     public void StopSpawn(float time)
