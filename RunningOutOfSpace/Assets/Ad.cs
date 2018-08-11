@@ -132,7 +132,7 @@ public class Ad : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDownHand
 
     public void spawnAds(int ads)
     {
-        transform.parent.GetComponent<AdSpawner>().SpawnAdCustom(5);
+        transform.parent.GetComponent<AdSpawner>().SpawnAdCustom(ads);
         Destroy(gameObject);
     }
 }
