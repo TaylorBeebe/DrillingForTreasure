@@ -67,7 +67,7 @@ public class CharacterController2D : MonoBehaviour {
         if (EditorApplication.isPlaying && _camera == null)
         {
             EditorApplication.isPlaying = false;
-            EditorUtility.DisplayDialog("Error", "Camera is not referenced in CharacterController2D on " + gameObject.name + ".", "Ok");
+            EditorUtility.DisplayDialog("Error", "Camera is not referenced in CharacterController2D on '" + gameObject.name + "'.", "Ok");
         }
     }
 
@@ -105,7 +105,7 @@ public class CharacterController2D : MonoBehaviour {
             if (EditorApplication.isPlaying && deathOverlay == null)
             {
                 EditorApplication.isPlaying = false;
-                EditorUtility.DisplayDialog("Error", "Death Overlay is not referenced in CharacterController2D on " + gameObject.name + ".", "Ok");
+                EditorUtility.DisplayDialog("Error", "Death Overlay is not referenced in CharacterController2D on '" + gameObject.name + "'.", "Ok");
             }
             Time.timeScale = 0;
             deathOverlay.SetActive(true);
