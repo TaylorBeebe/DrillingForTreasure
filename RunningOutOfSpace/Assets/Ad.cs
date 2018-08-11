@@ -17,22 +17,23 @@ public class Ad : MonoBehaviour, IDragHandler, IEndDragHandler {
 
     public AdType adType;
 
-    Vector3 tempMousePos;
+    Vector3 tempPos;
+
     void Start()
     {
         //if (adType == AdType.Closable)
     }
-    void Update()
+    void LateUpdate()
     {
         if(Input.GetKeyDown(KeyCode.Mouse0))
         {
-            tempMousePos = Input.mousePosition;
+            Vector3 tempPos = Input.mousePosition - transform.position;
         }
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        transform.position = Input.mousePosition;
+        this.transform.position = Input.mousePosition - tempPos;
     }
     public void OnEndDrag(PointerEventData eventData)
     {
