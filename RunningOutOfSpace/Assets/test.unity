@@ -144,14 +144,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ads:
-  - {fileID: 1214871983293294, guid: a0cc1f6f57251614db54eff26532fe3e, type: 2}
   - {fileID: 1481177334670274, guid: c4e0d8922d5668b4e9f0f8e28dc0bc0c, type: 2}
+  - {fileID: 1214871983293294, guid: a0cc1f6f57251614db54eff26532fe3e, type: 2}
   - {fileID: 1083377479447382, guid: f567f09eb1b459a46ab1072e268259cd, type: 2}
-  - {fileID: 1083377479447382, guid: f567f09eb1b459a46ab1072e268259cd, type: 2}
+  - {fileID: 1083377479447382, guid: bebbc3df7cc743743aebd02b921f8e6a, type: 2}
+  - {fileID: 1108845673943126, guid: db5d9f8b0427b064c98d5b61670c297f, type: 2}
+  - {fileID: 1214871983293294, guid: d4ec988298463074285d67ba8c22367a, type: 2}
+  - {fileID: 1083377479447382, guid: 4ab86022fc5c93e4c8291f73f508aae3, type: 2}
+  - {fileID: 1083377479447382, guid: 8c9860663b64f634aa1e34acfd30920e, type: 2}
   adSpawnDeley: 0
   adSpawnWindowMin: 0
   adSpawnWindowMax: 5
   stopSpawning: 0
+  timerAdMin: 5
+  timerAdMax: 9
   boxAds:
   - {fileID: 21300000, guid: e7a34f34489731c46b013a98c37a7632, type: 3}
   - {fileID: 21300000, guid: dfe182aca0342934184613dc5b3a14e1, type: 3}
@@ -278,7 +284,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: -25, y: -25}
-  m_SizeDelta: {x: 500, y: 500}
+  m_SizeDelta: {x: 220, y: 60}
   m_Pivot: {x: 1, y: 1}
 --- !u!114 &1549680282
 MonoBehaviour:
@@ -324,7 +330,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 00:00:00
+  m_Text: 00:00:000
 --- !u!222 &1549680284
 CanvasRenderer:
   m_ObjectHideFlags: 0

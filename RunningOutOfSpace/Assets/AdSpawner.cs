@@ -13,6 +13,10 @@ public class AdSpawner : MonoBehaviour {
     public float adSpawnWindowMax;
     public bool stopSpawning;
 
+    [Header("Timer ad settings")]
+    public float timerAdMin;
+    public float timerAdMax;
+
     [Header("Ad sprites")]
     public Sprite[] boxAds;
     public Sprite[] horizontalAds;

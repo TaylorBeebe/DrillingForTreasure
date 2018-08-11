@@ -11,7 +11,7 @@ public class Ad : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDownHand
     public enum AdType
     {
         Closable,
-        Test,
+        Timer,
         Test2,
         Test3
     }
@@ -34,8 +34,26 @@ public class Ad : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDownHand
 
     Vector3 tempPos;
 
+    //Button settings
+    public Button closeButton;
+
+    //Timer ad settings
+    float adTimer;
+    float adTimerStart;
+    public Image timer;
+    public Text timerText;
+
     void Start()
     {
+        //Set references
+        closeButton = transform.FindChild("ExitButton").GetComponent<Button>();
+
+        if (adType == AdType.Timer)
+        {
+            timer = transform.FindChild("Timer").GetComponent<Image>();
+            timerText = timer.transform.FindChild("TimeText").GetComponent<Text>();               
+        }
+
         //Grab the sprites from the Canvas
         boxAds = transform.parent.GetComponent<AdSpawner>().boxAds;
         horizontalAds = transform.parent.GetComponent<AdSpawner>().horizontalAds;
@@ -50,9 +68,34 @@ public class Ad : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDownHand
         if (adSize == AdSize.Vertical)
             GetComponent<Image>().sprite = verticalAds[Random.Range(0, verticalAds.Length)];
         if (adSize == AdSize.VerticalSmall)
-            GetComponent<Image>().sprite = verticalAds[Random.Range(0, verticalSmallAds.Length)];
-    }
+            GetComponent<Image>().sprite = verticalSmallAds[Random.Range(0, verticalSmallAds.Length)];
 
+        //Check the ad type
+        if (adType == AdType.Timer)
+        {
+            closeButton.gameObject.SetActive(false);
+
+            float minTime = transform.parent.GetComponent<AdSpawner>().timerAdMin;
+            float maxTime = transform.parent.GetComponent<AdSpawner>().timerAdMax;
+
+            adTimer = Random.Range(minTime, maxTime);
+            adTimerStart = adTimer;          
+        }
+    }
+    void Update()
+    {
+        if(adType == AdType.Timer)
+        {
+            adTimer -= Time.deltaTime;
+            timer.fillAmount = adTimer / adTimerStart;
+            timerText.text = Mathf.Floor(adTimer).ToString();
+            if (adTimer <= 0)
+            {
+                timer.gameObject.SetActive(false);
+                closeButton.gameObject.SetActive(true);
+            }
+        }
+    }
     public void OnPointerDown(PointerEventData eventData)
     {
         //Move the Ad to the front and get a temp pos of the mouse
