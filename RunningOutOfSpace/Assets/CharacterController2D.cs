@@ -59,10 +59,11 @@ public class CharacterController2D : MonoBehaviour {
 
     void ValueCheck()
     {
-        if (moveSpeed == 0) Debug.LogError("Move Speed not set in Character Controller 2D on " + gameObject.name + ".");
-        if (jumpForce == 0) Debug.LogError("Jump Force not set in Character Controller 2D on " + gameObject.name + ".");
-        if (_camera == null) Debug.LogError("The Camera is not referenced in CharacterController2D on " + gameObject.name + ".");
-        if (deathOverlay == null) Debug.LogError("The Death Overlay is not referenced in CharacterController2D on " + gameObject.name + ".");
+        if (cameraClampL == cameraClampR) Debug.LogError("The Camera Clamp Values are the same on in Character Controller 2D on '" + gameObject.name + "'.");
+        if (moveSpeed == 0) Debug.LogError("Move Speed not set in Character Controller 2D on '" + gameObject.name + "'.");
+        if (jumpForce == 0) Debug.LogError("Jump Force not set in Character Controller 2D on '" + gameObject.name + "'.");
+        if (_camera == null) Debug.LogError("The Camera is not referenced in CharacterController2D on '" + gameObject.name + "'.");
+        if (deathOverlay == null) Debug.LogError("The Death Overlay is not referenced in CharacterController2D on '" + gameObject.name + "'.");
         if (EditorApplication.isPlaying && _camera == null)
         {
             EditorApplication.isPlaying = false;
