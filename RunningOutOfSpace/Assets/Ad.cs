@@ -4,7 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
-public class Ad : MonoBehaviour, IDragHandler, IEndDragHandler {
+public class Ad : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDownHandler
+{
 
     [System.Serializable]
     public enum AdType
@@ -15,25 +16,50 @@ public class Ad : MonoBehaviour, IDragHandler, IEndDragHandler {
         Test3
     }
 
+    public enum AdSize
+    {
+        Box,
+        Horizontal,
+        Vertical
+    }
+
+    Sprite[] boxAds;
+    Sprite[] horizontalAds;
+    Sprite[] verticalAds;
+
     public AdType adType;
+    public AdSize adSize;
 
     Vector3 tempPos;
 
     void Start()
     {
-        //if (adType == AdType.Closable)
+        boxAds = transform.parent.GetComponent<AdSpawner>().boxAds;
+        horizontalAds = transform.parent.GetComponent<AdSpawner>().horizontalAds;
+        verticalAds = transform.parent.GetComponent<AdSpawner>().verticalAds;
+
+        if (adSize == AdSize.Box)
+            GetComponent<Image>().sprite = boxAds[Random.Range(0, boxAds.Length)];
+        if (adSize == AdSize.Horizontal)
+            GetComponent<Image>().sprite = horizontalAds[Random.Range(0, horizontalAds.Length)];
+        if (adSize == AdSize.Vertical)
+            GetComponent<Image>().sprite = verticalAds[Random.Range(0, verticalAds.Length)];
     }
     void LateUpdate()
     {
         if(Input.GetKeyDown(KeyCode.Mouse0))
         {
-            Vector3 tempPos = Input.mousePosition - transform.position;
+            tempPos = Input.mousePosition - transform.position;     
         }
     }
 
+    public void OnPointerDown(PointerEventData eventData)
+    {
+        transform.SetAsLastSibling();
+    }
     public void OnDrag(PointerEventData eventData)
     {
-        this.transform.position = Input.mousePosition - tempPos;
+        transform.position = Input.mousePosition - tempPos;
     }
     public void OnEndDrag(PointerEventData eventData)
     {
@@ -42,6 +68,7 @@ public class Ad : MonoBehaviour, IDragHandler, IEndDragHandler {
 
     public void CloseAd()
     {
-        Destroy(gameObject);
+        Destroy(gameObject, 0.15f);
+        GetComponent<Animator>().SetTrigger("AdClosed");
     }
 }
