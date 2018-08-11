@@ -46,12 +46,12 @@ public class Ad : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDownHand
     void Start()
     {
         //Set references
-        closeButton = transform.FindChild("ExitButton").GetComponent<Button>();
+        closeButton = transform.Find("ExitButton").GetComponent<Button>();
 
         if (adType == AdType.Timer)
         {
-            timer = transform.FindChild("Timer").GetComponent<Image>();
-            timerText = timer.transform.FindChild("TimeText").GetComponent<Text>();               
+            timer = transform.Find("Timer").GetComponent<Image>();
+            timerText = timer.transform.Find("TimeText").GetComponent<Text>();               
         }
 
         //Grab the sprites from the Canvas
