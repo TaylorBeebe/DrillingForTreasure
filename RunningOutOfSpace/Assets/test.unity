@@ -147,18 +147,24 @@ MonoBehaviour:
   - {fileID: 1214871983293294, guid: a0cc1f6f57251614db54eff26532fe3e, type: 2}
   - {fileID: 1481177334670274, guid: c4e0d8922d5668b4e9f0f8e28dc0bc0c, type: 2}
   - {fileID: 1083377479447382, guid: f567f09eb1b459a46ab1072e268259cd, type: 2}
+  - {fileID: 1083377479447382, guid: f567f09eb1b459a46ab1072e268259cd, type: 2}
   adSpawnDeley: 0
-  adSpawnWindow: 2.5
+  adSpawnWindowMin: 0
+  adSpawnWindowMax: 0
   boxAds:
-  - {fileID: 21300000, guid: 721fb731835406543a73b8ba850a0cfe, type: 3}
-  horizontalAds:
   - {fileID: 21300000, guid: e7a34f34489731c46b013a98c37a7632, type: 3}
   - {fileID: 21300000, guid: dfe182aca0342934184613dc5b3a14e1, type: 3}
+  - {fileID: 21300000, guid: ea8a8c1b69c5dd8498b85d63fa28ee9d, type: 3}
+  - {fileID: 21300000, guid: d4c6846ded5dbfc42bceb1d8fc80b5a0, type: 3}
+  - {fileID: 21300000, guid: 356ea9346084e794292d2503052fc047, type: 3}
+  - {fileID: 21300000, guid: 9452130055f175749b209906c6bd6bfc, type: 3}
+  - {fileID: 21300000, guid: 5c738a1cf7323704e901b9cedecc6083, type: 3}
+  horizontalAds:
+  - {fileID: 21300000, guid: 9760072a9c6ef9b4bb5417d058c3ae84, type: 3}
   verticalAds:
-  - {fileID: 21300000, guid: 8c8ada18c5eace042b355545d6ea1c3b, type: 3}
-  - {fileID: 21300000, guid: 47fc0c80a107eb446bf8be6c63fc8fbf, type: 3}
-  - {fileID: 21300000, guid: 9bfa0911068d9ef47bb311818eb94a27, type: 3}
-  - {fileID: 21300000, guid: 200ee73f7cbd1c34a9fd4545a0f4a17c, type: 3}
+  - {fileID: 21300000, guid: 2775f009a0cee91418f589be41963918, type: 3}
+  verticalSmallAds:
+  - {fileID: 21300000, guid: c113ec90e6ed9af4481ede159f591a32, type: 3}
 --- !u!114 &1083231864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,7 +211,7 @@ Canvas:
   m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 0
-  m_Camera: {fileID: 0}
+  m_Camera: {fileID: 1755154460}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
   m_ReceivesEvents: 1

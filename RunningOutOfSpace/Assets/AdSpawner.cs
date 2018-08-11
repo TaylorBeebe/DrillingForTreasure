@@ -4,15 +4,19 @@ using UnityEngine;
 
 public class AdSpawner : MonoBehaviour {
 
+    [Header("Ad prefabs")]
     public GameObject[] ads;
 
     [Header("Spawn settings")]
     public float adSpawnDeley;
-    public float adSpawnWindow;
+    public float adSpawnWindowMin;
+    public float adSpawnWindowMax;
 
+    [Header("Ad sprites")]
     public Sprite[] boxAds;
     public Sprite[] horizontalAds;
     public Sprite[] verticalAds;
+    public Sprite[] verticalSmallAds;
 
     void Start()
     {
@@ -31,7 +35,7 @@ public class AdSpawner : MonoBehaviour {
         Instantiate(ads[randomAd], spawnPoint, Quaternion.identity, transform);
 
 
-        float randomSpawnNum = Random.Range(0, adSpawnWindow);
+        float randomSpawnNum = Random.Range(adSpawnWindowMin, adSpawnWindowMax);
         Invoke("SpawnAd", randomSpawnNum);
     }
 }

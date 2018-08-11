@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 114251111569600104}
   - component: {fileID: 95186793163885220}
   m_Layer: 5
-  m_Name: VerticalAd
+  m_Name: VerticalSmallAd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,7 +79,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   adType: 0
-  adSize: 2
+  adSize: 3
 --- !u!114 &114622443358685440
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -193,7 +193,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: ebdf4319fb9e9084aa5442223c4fae85, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cde8f8de16c0c4e4a9ef6dcf32867802, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -230,7 +230,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 110.5, y: 251.5}
+  m_AnchoredPosition: {x: 80.5, y: 116.5}
   m_SizeDelta: {x: 30, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224297152588989006
@@ -250,5 +250,5 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 300, y: 0}
-  m_SizeDelta: {x: 262, y: 536}
+  m_SizeDelta: {x: 202, y: 266}
   m_Pivot: {x: 0.5, y: 0.5}

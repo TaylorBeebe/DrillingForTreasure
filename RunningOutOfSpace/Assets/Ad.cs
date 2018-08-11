@@ -20,12 +20,14 @@ public class Ad : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDownHand
     {
         Box,
         Horizontal,
-        Vertical
+        Vertical,
+        VerticalSmall
     }
 
     Sprite[] boxAds;
     Sprite[] horizontalAds;
     Sprite[] verticalAds;
+    Sprite[] verticalSmallAds;
 
     public AdType adType;
     public AdSize adSize;
@@ -37,6 +39,7 @@ public class Ad : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDownHand
         boxAds = transform.parent.GetComponent<AdSpawner>().boxAds;
         horizontalAds = transform.parent.GetComponent<AdSpawner>().horizontalAds;
         verticalAds = transform.parent.GetComponent<AdSpawner>().verticalAds;
+        verticalSmallAds = transform.parent.GetComponent<AdSpawner>().verticalSmallAds;
 
         if (adSize == AdSize.Box)
             GetComponent<Image>().sprite = boxAds[Random.Range(0, boxAds.Length)];
@@ -44,6 +47,8 @@ public class Ad : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDownHand
             GetComponent<Image>().sprite = horizontalAds[Random.Range(0, horizontalAds.Length)];
         if (adSize == AdSize.Vertical)
             GetComponent<Image>().sprite = verticalAds[Random.Range(0, verticalAds.Length)];
+        if (adSize == AdSize.VerticalSmall)
+            GetComponent<Image>().sprite = verticalAds[Random.Range(0, verticalSmallAds.Length)];
     }
     void LateUpdate()
     {
