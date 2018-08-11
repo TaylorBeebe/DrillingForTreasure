@@ -184,7 +184,19 @@ public class EnemySpawner : MonoBehaviour {
      * @ Post: Returns vector2 location where enemy(s) will spawn
      */
     Vector2 GetRandomSpawnLocation() {
-        return new Vector2(mainCamera.transform.position.x + cameraWidth, mainCamera.transform.position.y + cameraHeight);
+
+        int whichNumberToMax = Random.Range(0, 2);
+
+        if (whichNumberToMax == 0)
+        {
+            return new Vector2(mainCamera.transform.position.x + cameraWidth, mainCamera.transform.position.y + Random.Range(0.0f, cameraHeight));
+        }
+        else
+        {
+            return new Vector2(mainCamera.transform.position.x + Random.Range(0.0f, cameraWidth), mainCamera.transform.position.y + cameraHeight);
+
+        }
+        //return new Vector2(mainCamera.transform.position.x + cameraWidth, mainCamera.transform.position.y + cameraHeight);
     }
 
 }
