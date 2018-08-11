@@ -7,24 +7,23 @@ public class EnemySpawner : MonoBehaviour {
     //Array holding the different enemy types
     [SerializeField] GameObject Enemy1, Enemy2, Enemy3;
 
-    //get and create set for array so it can be initialized at start
+    //Get and create set for array so it can be initialized at start
     public GameObject[] Enemyarray {
         get;
         private set;
     }
 
-    //Holds current state of spawning
+    //Current state of spawning
     public enum SpawnState {
         SPAWNING,
         WAITING,
         COUNTING
     };
-
     
-
-    //Wave class currently elementary
-    //Wave class will eventually be used to calculate random waves based
-    //on level number
+    /*Wave class currently elementary
+    Wave class will eventually be used to calculate random waves based
+    on level number
+    */
     [System.Serializable]
     public class Wave {
         public string name;
@@ -45,7 +44,7 @@ public class EnemySpawner : MonoBehaviour {
     //predetermined time between waves. Will eventually be a function of level
     public float timeBetweenWaves = 5f;
 
-    //time til next wave spawn
+    //time until next wave spawn
     public float waveCountdown;
 
     //bool holds state of level
@@ -79,11 +78,9 @@ public class EnemySpawner : MonoBehaviour {
             Enemy1, Enemy2, Enemy3
         };
         
-        Debug.Log(mainCamera.orthographicSize);
         screenAspect = (float)Screen.width / (float)Screen.height;
         cameraHeight = mainCamera.orthographicSize;
         cameraWidth = screenAspect * cameraHeight;
-    Debug.Log(cameraWidth + ", " + cameraHeight);
     }
 
     /* @ Param: None
@@ -178,9 +175,9 @@ public class EnemySpawner : MonoBehaviour {
         return true;
     }
 
-    /* @ Param:
-     * @ Pre: 
-     * @ Post: 
+    /* @ Param: Width and height of camera
+     * @ Pre: Enemies are spawning
+     * @ Post: Returns vector2 location where enemy(s) will spawn
      */
     Vector2 GetRandomSpawnLocation(float cameraWidth, float cameraHeight) {
         return new Vector2(mainCamera.transform.position.x + cameraWidth, mainCamera.transform.position.y + cameraHeight);
