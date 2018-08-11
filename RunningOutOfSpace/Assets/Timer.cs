@@ -27,6 +27,7 @@ public class Timer : MonoBehaviour {
 
         if (milliseconds < 1)
             milliseconds = 100;
+
         timerText.text = minutes.ToString("00") + ":" + seconds.ToString("00") + ":" + milliseconds.ToString("00");
     }
 }
