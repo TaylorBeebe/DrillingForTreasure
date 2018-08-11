@@ -37,10 +37,9 @@ public class GameController : MonoBehaviour {
         DontDestroyOnLoad(this.gameObject);
     }
 
-    /*<summary>
-        description
-    </summary>
-    */
+    ///<summary>
+    ///   completes the current objective when called and calls the appropirate functions
+    ///</summary>
     public void CompleteObjective()
     {
         if (objectives.Count != 0)

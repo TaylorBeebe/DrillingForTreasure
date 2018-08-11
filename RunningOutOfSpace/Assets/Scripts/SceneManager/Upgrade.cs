@@ -3,15 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [CreateAssetMenu()]
-public class Upgrade : ScriptableObject {
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+[System.Serializable]
+public abstract class Upgrade : ScriptableObject {
+    [SerializeField]
+    public int cost;
+    public abstract void Execute();
 }
