@@ -43,6 +43,7 @@ public class CharacterController2D : MonoBehaviour {
         ValueCheck();
         mag = magazineSize;
         rb2d = GetComponent<Rigidbody2D>();
+        rb2d.gravityScale = 0;
         sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         armPivot = GameObject.Find("Arm Pivot");
