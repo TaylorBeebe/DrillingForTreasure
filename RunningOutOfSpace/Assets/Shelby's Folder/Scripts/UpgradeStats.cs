@@ -11,7 +11,6 @@ public class UpgradeStats : MonoBehaviour, IPointerDownHandler
     {
         Gameplay,
         Premium
-
     }
     public UpgradeType upgradeType;
     public string upgradeName;
