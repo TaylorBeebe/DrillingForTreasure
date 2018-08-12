@@ -30,7 +30,7 @@ public class MiteEnemy : Enemy {
     public void MiteMove()
     {
         canMove = !canMove;
-        Debug.Log("Changed");
+        //Debug.Log("Changed");
       //StartCoroutine(WaitAndGo());
     }
     public override void OnAttack()

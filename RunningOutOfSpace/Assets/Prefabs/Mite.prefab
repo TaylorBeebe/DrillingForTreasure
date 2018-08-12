@@ -24,7 +24,9 @@ GameObject:
   - component: {fileID: 114750364220414746}
   - component: {fileID: 114355737758830678}
   - component: {fileID: 114766049231595340}
-  m_Layer: 0
+  - component: {fileID: 58987947165111596}
+  - component: {fileID: 210421805185377966}
+  m_Layer: 1
   m_Name: Mite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,6 +77,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &58987947165111596
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1130405574055168}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.06
 --- !u!95 &95739572006293400
 Animator:
   serializedVersion: 3
@@ -108,7 +125,7 @@ MonoBehaviour:
   AIDestination: {fileID: 0}
   target: {fileID: 0}
   health: 100
-  distanceThresholdForAttack: 0
+  distanceThresholdForAttack: 2
   canMove: 0
   DamagePerSecond: 0
   canAttack: 0
@@ -130,7 +147,7 @@ MonoBehaviour:
   repathRate: 0.5
   canSearch: 1
   canMove: 1
-  maxSpeed: 1
+  maxSpeed: 3
   gravity: {x: 0, y: 0, z: 0}
   groundMask:
     serializedVersion: 2
@@ -202,6 +219,16 @@ MonoBehaviour:
   anim: {fileID: 0}
   ai: {fileID: 0}
   baseScale: {x: 0, y: 0, z: 0}
+--- !u!210 &210421805185377966
+SortingGroup:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1130405574055168}
+  m_Enabled: 1
+  m_SortingLayerID: -2067773297
+  m_SortingLayer: 1
+  m_SortingOrder: 0
 --- !u!212 &212399662297837934
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -236,7 +263,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 802a30dce928b7143b4511cf545d075c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
