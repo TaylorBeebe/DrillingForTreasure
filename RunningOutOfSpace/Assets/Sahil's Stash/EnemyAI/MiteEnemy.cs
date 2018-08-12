@@ -25,12 +25,12 @@ public class MiteEnemy : Enemy {
     {
         base.OnFollow();
         //StartCoroutine(WaitAndGo());
-      
     }
     public void MiteMove()
     {
         canMove = !canMove;
-      //  StartCoroutine(WaitAndGo());
+        Debug.Log("Changed");
+      //StartCoroutine(WaitAndGo());
     }
     public override void OnAttack()
     {
@@ -41,10 +41,4 @@ public class MiteEnemy : Enemy {
     {
         base.OnDeath(WaitBeforeDestroying);
     }
-  /*  IEnumerator WaitAndGo()
-    {
-        canMove = true;
-        yield return new WaitForSeconds(breakTime);
-        canMove = false;
-    }*/
 }
