@@ -9,69 +9,59 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1543845899123446}
+  m_RootGameObject: {fileID: 1593327847223116}
   m_IsPrefabAsset: 1
---- !u!1 &1543845899123446
+--- !u!1 &1593327847223116
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4771590836839230}
-  - component: {fileID: 212879193306261684}
-  - component: {fileID: 61808197762708714}
+  - component: {fileID: 4472529823411092}
+  - component: {fileID: 212757712068866684}
+  - component: {fileID: 58284658161778184}
   m_Layer: 0
-  m_Name: Stalagmites_4
+  m_Name: Stalagmites_4 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4771590836839230
+--- !u!4 &4472529823411092
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1543845899123446}
+  m_GameObject: {fileID: 1593327847223116}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.559576, y: -2.5052428, z: 0}
+  m_LocalPosition: {x: 10.24124, y: 1.9529141, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &61808197762708714
-BoxCollider2D:
+--- !u!58 &58284658161778184
+CircleCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1543845899123446}
+  m_GameObject: {fileID: 1593327847223116}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.47}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.23, y: 1.62}
-    newSize: {x: 1.23, y: 1.62}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
+  m_Offset: {x: 0, y: -0.46}
   serializedVersion: 2
-  m_Size: {x: 1.23, y: 0.74}
-  m_EdgeRadius: 0
---- !u!212 &212879193306261684
+  m_Radius: 0.62
+--- !u!212 &212757712068866684
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1543845899123446}
+  m_GameObject: {fileID: 1593327847223116}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
