@@ -11,6 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d5751a2c961df945a34295ccf5e576d, type: 3}
   m_Name: a
   m_EditorClassIdentifier: 
-  m_Prefabs: []
+  m_Prefabs:
+  - {fileID: 1595192221515978, guid: 6451e2d7082aa524da07c153724505cd, type: 2}
   m_PerlinScale: 0.5
   m_Z: 0
