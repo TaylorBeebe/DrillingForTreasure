@@ -99,23 +99,6 @@ public class EnemySpawner : MonoBehaviour
     //holds camera width/2
     private float cameraWidth;
 
-    //didn't account for first few levels because all enemies will be easy
-    private int roundStartCalculatingEasyPercentage = 3; 
-
-    //Round when the first medium enemy spawns
-    private int roundMediumEnemiesStartSpawning = 3;
-
-    //Round when the first hard enemy spawns
-    private int roundHardEnemiesStartSpawning = 7;
-
-    //Round after which easy enemies head infinitely toward their final percentage (10%)
-    private int roundEasyEnemiesGoToInfinity = 9;
-
-    //Round after which medium enemies head infinitely toward their final percentage (40%)
-    private int roundMediumEnemiesGoToInfinity = 9;
-
-    //Round after which hard enemies head infinitely toward their final percentage (50%)
-    private int roundHardEnemisGoToInfinity = 9;
 
     /* @ Param: None
      * @ Pre: None
@@ -126,7 +109,7 @@ public class EnemySpawner : MonoBehaviour
         //initialize the wave countdown max
         waveCountdown = timeBetweenWaves;
 
-        //initialize array of enemies
+        //initialize array
         Enemyarray = new GameObject[] {
             Enemy1, Enemy2, Enemy3
         };
@@ -134,15 +117,6 @@ public class EnemySpawner : MonoBehaviour
         screenAspect = (float)Screen.width / (float)Screen.height;
         cameraHeight = mainCamera.orthographicSize;
         cameraWidth = screenAspect * cameraHeight;
-
-        for (int x = 1; x < 9; x++) {
-            Debug.Log("X = " + x + ": " + System.Math.Round((PercentageEasyEnemiesBeforeInfinity(x) + PercentageHardEnemiesBeforeInfinity(x) + PercentageMediumEnemiesBeforeInfinity(x)),2));
-
-        }
-
-        for (int x = 9; x < 21; x++) {
-            Debug.Log("X = " + x + ": " + System.Math.Round(((PercentageEasyEnemiesAtInfinity(x) + PercentageHardEnemiesAtInfinity(x) + PercentageMediumEnemiesAtInfinity(x))), 2));
-        }
     }
 
     /* @ Param: None
@@ -162,7 +136,7 @@ public class EnemySpawner : MonoBehaviour
             if (state != SpawnState.SPAWNING)
             {
                 Wave newWave = new Wave();
-                
+                Debug.Log("State != Spawning");
                 //Coroutine spawns waves so they don't need to be spawned all at one time
                 StartCoroutine(SpawnWave(newWave));
             }
@@ -180,7 +154,7 @@ public class EnemySpawner : MonoBehaviour
         //this will be replaced with wave spawning counter, allowing waves to spawn concurrently
         //as a function of level
         state = SpawnState.SPAWNING;
-        Debug.Log("State = Spawning");
+
         //increment through elements in wave
         for (int i = 0; i < wave.GetCount(); i++)
         {
@@ -267,80 +241,10 @@ public class EnemySpawner : MonoBehaviour
     Stack<string> GenerateWaveMakeup(int count)
     {
 
-
-
-
         Stack<string> wave = new Stack<string>();
 
 
 
-
         return wave;
-    }
-
-    float PercentageEasyEnemiesBeforeInfinity(int level) {
-        float easyEnemiesBeforeInfinity;
-
-        if (level < roundStartCalculatingEasyPercentage) {
-            return 1;
-        }
-
-        easyEnemiesBeforeInfinity = ((-0.01458f) * (Mathf.Pow(level,3))) + (0.2687f * (Mathf.Pow(level, 2))) + ((-1.635f) * level) + 3.781f;
-
-        Debug.Log("Easy Enemies Before Infinity: " + System.Math.Round(easyEnemiesBeforeInfinity,2));
-
-        return easyEnemiesBeforeInfinity;
-    }
-    float PercentageEasyEnemiesAtInfinity(int level)
-    {
-        float easyEnemiesInfinity = 0.2485f * Mathf.Pow(level, -0.09884f);
-        
-        Debug.Log("Easy Enemies At Infinity: " + System.Math.Round(easyEnemiesInfinity, 2));
-
-        return easyEnemiesInfinity;
-    }
-    float PercentageMediumEnemiesBeforeInfinity(int level)
-    {
-        if (level < roundMediumEnemiesStartSpawning)
-        {
-            return 0;
-        }
-
-        float mediumEnemiesBeforeInfinity = (0.1923f * Mathf.Pow(level,2) + -0.3077f * level + 0.1154f) / (Mathf.Pow(level, 2) + -9.231f * level + 27.92f);
-
-        Debug.Log("Medium Enemies Before Infinity: " + System.Math.Round(mediumEnemiesBeforeInfinity, 2));
-
-        return mediumEnemiesBeforeInfinity;
-
-    }
-    float PercentageMediumEnemiesAtInfinity(int level)
-    {
-        float mediumEnemiesInfinity = 0.5362f * Mathf.Pow(level,-0.03182f);
-
-        Debug.Log("Medium Enemies At Infinity: " + System.Math.Round(mediumEnemiesInfinity, 2));
-
-        return mediumEnemiesInfinity;
-    }
-    float PercentageHardEnemiesBeforeInfinity(int level)
-    {
-
-        if (level < roundHardEnemiesStartSpawning)
-        {
-            return 0;
-        }
-
-        float hardEnemiesBeforeInfinity = 0.00002022f * Mathf.Pow(level, 4.371f);
-
-        Debug.Log("Hard Enemies Before Infinity: " + System.Math.Round(hardEnemiesBeforeInfinity, 2));
-
-        return hardEnemiesBeforeInfinity;
-    }
-    float PercentageHardEnemiesAtInfinity(int level)
-    {
-        float hardEnemiesInfinity = 0.2556f * Mathf.Pow(level, 0.07284f);
-
-        Debug.Log("Hard Enemies At Infinity: " + System.Math.Round(hardEnemiesInfinity, 2));
-
-        return hardEnemiesInfinity;
     }
 }
