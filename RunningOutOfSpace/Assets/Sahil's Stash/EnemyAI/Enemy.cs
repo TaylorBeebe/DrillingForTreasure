@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour {
     public float distanceThresholdForAttack = 0;
     public bool canMove;
     public float DamagePerSecond;
+    public bool canAttack = false;
 
     EnemyManager enemyManager;
 
@@ -25,8 +26,10 @@ public class Enemy : MonoBehaviour {
         aiAgent = GetComponent<AIPath>();
         AIDestination = GetComponent<AIDestinationSetter>();
         enemyManager = FindObjectOfType<EnemyManager>();
-        enemyManager.enemies.Add(this); 
-
+        int i = Random.Range(0, 2);
+        if (i == 0) target = enemyManager.Player;
+        else target = enemyManager.Drill;
+    
     }
     public virtual void Update()
     {
@@ -53,7 +56,11 @@ public class Enemy : MonoBehaviour {
                 OnDeath(2f);
                 break;
             case EnemyStates.attack:
-                OnAttack();
+                if (canAttack)
+                {
+                    OnAttack();
+                    Debug.Log("Attack");
+                }
                 break;
         }
         //aiAgent.destination = target.position;
@@ -66,4 +73,8 @@ public class Enemy : MonoBehaviour {
     }
     public virtual void OnAttack() { }
     public virtual void OnFollow() { }
+    public void DoDamage(float damage)
+    {
+        health -= damage;
+    }
 }
