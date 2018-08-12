@@ -1062,6 +1062,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 53104ddf62321df4ca5892fa922fae7e, type: 3}
   - {fileID: 21300000, guid: 8fb40c497c419fd44b84cf0075920931, type: 3}
   - {fileID: 21300000, guid: 9904aeb9f6c72444f811de5b0b4f8782, type: 3}
+  readyButton: {fileID: 602372756}
 --- !u!95 &996594784
 Animator:
   serializedVersion: 3

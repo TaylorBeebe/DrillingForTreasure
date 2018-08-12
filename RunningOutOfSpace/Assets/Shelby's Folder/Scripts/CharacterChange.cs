@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class CharacterChange : MonoBehaviour {
 
     public Sprite[] characterSprites;
-
+    public GameObject readyButton;
     string playerName;
     int characterSpriteID = 0;
 
@@ -20,6 +20,12 @@ public class CharacterChange : MonoBehaviour {
     void Update()
     {
         playerName = GameObject.Find("NameEnter").GetComponent<InputField>().text;
+
+        if (playerName == "")
+            readyButton.SetActive(false);
+        else
+            readyButton.SetActive(true);
+
     }
 
     public string returnName()
