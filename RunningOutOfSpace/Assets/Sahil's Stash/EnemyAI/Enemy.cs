@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour {
     public float distanceThresholdForAttack = 0;
     public bool canMove;
     public float DamagePerSecond;
+    public bool canAttack = false;
 
     EnemyManager enemyManager;
 
@@ -53,7 +54,11 @@ public class Enemy : MonoBehaviour {
                 OnDeath(2f);
                 break;
             case EnemyStates.attack:
-                OnAttack();
+                if (canAttack)
+                {
+                    OnAttack();
+                    Debug.Log("Attack");
+                }
                 break;
         }
         //aiAgent.destination = target.position;
