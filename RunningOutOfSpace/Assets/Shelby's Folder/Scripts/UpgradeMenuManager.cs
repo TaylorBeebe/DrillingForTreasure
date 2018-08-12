@@ -23,7 +23,16 @@ public class UpgradeMenuManager : MonoBehaviour
     {
         inUpgradedShop = !inUpgradedShop;
 
-        if(inUpgradedShop)
+        GameObject.Find("UpgradeName").GetComponent<Text>().text = "-";
+        GameObject.Find("UpgradeDescription").GetComponent<Text>().text = "-";
+
+
+        if (!inUpgradedShop)
+            GameObject.Find("UpgradeCost").GetComponent<Text>().text = "LEVEL -" + " AVAILABLE FOR      -";
+        else
+            GameObject.Find("UpgradeCost").GetComponent<Text>().text = "AVAILABLE FOR      -";
+
+        if (inUpgradedShop)
         {
             GameplayUpgradeScreen.SetActive(false);
             PremiumUpgradeScreen.SetActive(true);
