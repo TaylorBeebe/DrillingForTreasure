@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
-public class MiteEnemy : AIBehaviour {   
+public class MiteEnemy : Enemy {
+  
    
     public float breakTime;
 
