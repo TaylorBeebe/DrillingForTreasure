@@ -99,6 +99,43 @@ public class EnemySpawner : MonoBehaviour
         {
             hardEnemiesIntroduced.Add(newEasyEnemy);
         }
+        public string GetEnemy(string enemyType)
+        {
+            string enemyGenerated;
+
+            if (enemyType == "medium")
+            {
+                enemyGenerated = GetRandomMediumEnemy();
+            }
+            else if (enemyType == "hard")
+            {
+                enemyGenerated = GetRandomHardEnemy();
+            }
+            else
+            {
+                enemyGenerated = GetRandomEasyEnemy();
+            }
+
+            return enemyGenerated;
+        }
+        public string GetRandomEasyEnemy()
+        {
+            int random = Random.Range(0, easyEnemiesIntroduced.Count + 1);
+
+            return easyEnemiesIntroduced[random];
+        }
+        public string GetRandomMediumEnemy()
+        {
+            int random = Random.Range(0, mediumEnemiesIntroduced.Count + 1);
+
+            return mediumEnemiesIntroduced[random];
+        }
+        public string GetRandomHardEnemy()
+        {
+            int random = Random.Range(0, hardEnemiesIntroduced.Count + 1);
+
+            return hardEnemiesIntroduced[random];
+        }
     }
 
     //Level we are currently on (will be gotten from GameMode Script)
@@ -184,6 +221,8 @@ public class EnemySpawner : MonoBehaviour
         }
         */
 
+        //Code for testing time between waves as a function of level
+        /*
         for (int x = 1; x < 21; x++) {
             Debug.Log("X = " + x + ", Enemies Per Wave: " + CalculateEnemiesPerWave(x));
         }
@@ -191,6 +230,7 @@ public class EnemySpawner : MonoBehaviour
         {
             Debug.Log("X = " + x + ", TimeBetweenWaves: " + CalculateTimeBetweenWaves(x));
         }
+        */
     }
 
     /* @ Param: None
@@ -312,21 +352,30 @@ public class EnemySpawner : MonoBehaviour
      * @ Pre: Wave is being generated
      * @ Post: Returns a stack of names of the enemies to be spawned
      */
-    Stack<string> GenerateWaveMakeup(int count)
+    Stack<string> GenerateWaveMakeup()
     {
-        
         Stack<string> wave = new Stack<string>();
 
+        float easyEnemies = PercentageEasyEnemies();
+        float mediumEnemies = PercentageMediumEnemies();
+        float hardEnemies = PercentageHardEnemies();
+        
 
         
         return wave;
     }
 
-    float PercentageEasyEnemiesBeforeInfinity(int level) {
+    float PercentageEasyEnemies() {
         float easyEnemiesBeforeInfinity;
 
-        if (level < roundStartCalculatingEasyPercentage) {
+        int level = levelNumber;
+
+        if (level < roundStartCalculatingEasyPercentage)
+        {
             return 1;
+        }
+        else if (level >= roundEasyEnemiesGoToInfinity) {
+            return PercentageEasyEnemiesAtInfinity();
         }
 
         easyEnemiesBeforeInfinity = ((-0.01458f) * (Mathf.Pow(level,3))) + (0.2687f * (Mathf.Pow(level, 2))) + ((-1.635f) * level) + 3.781f;
@@ -335,19 +384,28 @@ public class EnemySpawner : MonoBehaviour
 
         return easyEnemiesBeforeInfinity;
     }
-    float PercentageEasyEnemiesAtInfinity(int level)
+    float PercentageEasyEnemiesAtInfinity()
     {
+        int level = levelNumber;
+
         float easyEnemiesInfinity = 0.2485f * Mathf.Pow(level, -0.09884f);
         
         Debug.Log("Easy Enemies At Infinity: " + System.Math.Round(easyEnemiesInfinity, 2));
 
         return easyEnemiesInfinity;
     }
-    float PercentageMediumEnemiesBeforeInfinity(int level)
+    float PercentageMediumEnemies()
     {
+
+        int level = levelNumber;
+
         if (level < roundMediumEnemiesStartSpawning)
         {
             return 0;
+        }
+        else if (level >= roundMediumEnemiesGoToInfinity)
+        {
+            return PercentageMediumEnemiesAtInfinity();
         }
 
         float mediumEnemiesBeforeInfinity = (0.1923f * Mathf.Pow(level,2) + -0.3077f * level + 0.1154f) / (Mathf.Pow(level, 2) + -9.231f * level + 27.92f);
@@ -357,20 +415,29 @@ public class EnemySpawner : MonoBehaviour
         return mediumEnemiesBeforeInfinity;
 
     }
-    float PercentageMediumEnemiesAtInfinity(int level)
+    float PercentageMediumEnemiesAtInfinity()
     {
+
+        int level = levelNumber;
+
         float mediumEnemiesInfinity = 0.5362f * Mathf.Pow(level,-0.03182f);
 
         Debug.Log("Medium Enemies At Infinity: " + System.Math.Round(mediumEnemiesInfinity, 2));
 
         return mediumEnemiesInfinity;
     }
-    float PercentageHardEnemiesBeforeInfinity(int level)
+    float PercentageHardEnemies()
     {
+
+        int level = levelNumber;
 
         if (level < roundHardEnemiesStartSpawning)
         {
             return 0;
+        }
+        else if (level >= roundHardEnemisGoToInfinity)
+        {
+            return PercentageHardEnemiesAtInfinity();
         }
 
         float hardEnemiesBeforeInfinity = 0.00002022f * Mathf.Pow(level, 4.371f);
@@ -379,8 +446,10 @@ public class EnemySpawner : MonoBehaviour
 
         return hardEnemiesBeforeInfinity;
     }
-    float PercentageHardEnemiesAtInfinity(int level)
-    {
+    float PercentageHardEnemiesAtInfinity(){
+
+        int level = levelNumber;
+
         float hardEnemiesInfinity = 0.2556f * Mathf.Pow(level, 0.07284f);
 
         Debug.Log("Hard Enemies At Infinity: " + System.Math.Round(hardEnemiesInfinity, 2));
@@ -388,7 +457,7 @@ public class EnemySpawner : MonoBehaviour
         return hardEnemiesInfinity;
     }
 
-    int CalculateTimeBetweenWaves(int levelNumber) {
+    int CalculateTimeBetweenWaves() {
 
         float time = ((1/(Mathf.Pow(levelNumber, 1.01f) + 3 + Mathf.Cos(levelNumber * (Mathf.PI * 0.5f))) * 35) + 4);
 
@@ -397,7 +466,7 @@ public class EnemySpawner : MonoBehaviour
         return Mathf.FloorToInt(time);
     }
 
-    int CalculateEnemiesPerWave(int levelNumber) {
+    int CalculateEnemiesPerWave() {
 
         float waveCount = Mathf.Log(levelNumber + 1) * 5;
 
