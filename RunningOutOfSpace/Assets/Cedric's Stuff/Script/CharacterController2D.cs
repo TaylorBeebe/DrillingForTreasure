@@ -47,6 +47,7 @@ public class CharacterController2D : MonoBehaviour {
         maxCharge = charge;
         rb2d = GetComponent<Rigidbody2D>();
         rb2d.gravityScale = 0;
+        
         sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         armPivot = GameObject.Find("Arm Pivot");
