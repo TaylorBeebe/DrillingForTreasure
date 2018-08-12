@@ -116,6 +116,9 @@ public class EnemySpawner : MonoBehaviour
 
     //Round after which hard enemies head infinitely toward their final percentage (50%)
     private int roundHardEnemisGoToInfinity = 9;
+    
+    //Level we are currently on (will be gotten from GameMode Script)
+    private int levelNumber;
 
     /* @ Param: None
      * @ Pre: None
@@ -134,15 +137,17 @@ public class EnemySpawner : MonoBehaviour
         screenAspect = (float)Screen.width / (float)Screen.height;
         cameraHeight = mainCamera.orthographicSize;
         cameraWidth = screenAspect * cameraHeight;
-
+        
+        //Code for testing totals of the formulas added together
+        /*
         for (int x = 1; x < 9; x++) {
             Debug.Log("X = " + x + ": " + System.Math.Round((PercentageEasyEnemiesBeforeInfinity(x) + PercentageHardEnemiesBeforeInfinity(x) + PercentageMediumEnemiesBeforeInfinity(x)),2));
 
         }
-
         for (int x = 9; x < 21; x++) {
             Debug.Log("X = " + x + ": " + System.Math.Round(((PercentageEasyEnemiesAtInfinity(x) + PercentageHardEnemiesAtInfinity(x) + PercentageMediumEnemiesAtInfinity(x))), 2));
         }
+        */
     }
 
     /* @ Param: None
