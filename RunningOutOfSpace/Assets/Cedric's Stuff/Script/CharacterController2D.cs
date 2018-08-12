@@ -39,7 +39,7 @@ public class CharacterController2D : MonoBehaviour {
     private Vector3 _vel = Vector3.zero;
     private float maxCharge;
     private int mag;
-    private bool m_FacingRight = true;
+    [HideInInspector] public bool m_FacingRight = true;
     private bool _isDead = false;
     private bool _canShoot;
 
@@ -207,12 +207,10 @@ public class CharacterController2D : MonoBehaviour {
 
         if (m_FacingRight) armPivot.transform.rotation = Quaternion.Euler(new Vector3(armPivot.transform.rotation.x, 0, Mathf.Clamp(angle, -90, 90)));
         if (!m_FacingRight) armPivot.transform.rotation = Quaternion.Euler(new Vector3(armPivot.transform.rotation.x, 180, Mathf.Clamp(angle, -90, 90)));
-
-        print(angle);
         
     }
 
-
+    
 
     float AngleBetweenTwoPoints(Vector3 a, Vector3 b)
     {
