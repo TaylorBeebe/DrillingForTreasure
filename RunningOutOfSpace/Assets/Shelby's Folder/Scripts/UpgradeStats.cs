@@ -38,7 +38,7 @@ public class UpgradeStats : MonoBehaviour, IPointerDownHandler
         if(upgradeType == UpgradeType.Gameplay)
             upgradePriceText.text = "LEVEL " + upgradeLevel + " AVAILABLE FOR      " + upgradePrice;
         else
-            upgradePriceText.text = "AVAILABLE FOR      " + upgradePrice;
+            upgradePriceText.text = "AVAILABLE FOR     " + upgradePrice;
 
     }
 }
