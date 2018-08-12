@@ -5,12 +5,12 @@ using Pathfinding;
 
 public class EnemyManager : MonoBehaviour {
     public static EnemyManager enemyManager;
-    public List<Enemy> enemies = new List<Enemy>();
+    public List<AIBehaviour> enemies = new List<AIBehaviour>();
     public Transform target;
 	// Use this for initialization
 	void Start () {
         enemyManager = this;
-        foreach(Enemy enemy in enemies)
+        foreach(AIBehaviour enemy in enemies)
         {
         }
 	}
@@ -18,7 +18,7 @@ public class EnemyManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        foreach (Enemy enemy in enemies)
+        foreach (AIBehaviour enemy in enemies)
         {
             enemy.AIDestination.target = target;
         }
