@@ -47,7 +47,7 @@ public class CharacterController2D : MonoBehaviour {
         maxCharge = charge;
         rb2d = GetComponent<Rigidbody2D>();
         rb2d.gravityScale = 0;
-        
+        rb2d.constraints = RigidbodyConstraints2D.FreezeRotation;
         sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         armPivot = GameObject.Find("Arm Pivot");
@@ -83,7 +83,7 @@ public class CharacterController2D : MonoBehaviour {
 
     void PlayerShoot()
     {
-        print(charge);
+        //print(charge);
         if(Input.GetMouseButton(0) && charge > 0 && _canShoot)
         {
             if (charge > 0 && _canShoot)
