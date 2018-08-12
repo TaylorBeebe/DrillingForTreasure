@@ -3,52 +3,52 @@ using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
-public class MiteEnemy : Enemy {
+public class ExploderEnemy : Enemy
+{
 
-    public float attackAnimationTime = 0.75f;
-    public float timeBetweenWriggles = 1f;
+    public int minMites = 3;
+    public int maxMites = 5;
+
+    public float attackAnimationTime = 0.5f;
+    public GameObject mite;
 
     public override void Start()
     {
         base.Start();
-        InvokeRepeating("MiteMove", timeBetweenWriggles, timeBetweenWriggles);
     }
     public override void Update()
     {
         base.Update();
-        
         aiAgent.canMove = canMove;
-       // AIDestination.target = target;
-        
     }
+
     public override void OnFollow()
     {
         base.OnFollow();
-        //StartCoroutine(WaitAndGo());
     }
-    public void MiteMove()
-    {
-        canMove = !canMove;
-        //Debug.Log("Changed");
-      //StartCoroutine(WaitAndGo());
-    }
+
     public override void OnAttack()
     {
         canMove = false;
         canAttack = false;
 
-        //HealthAndVariables.DoDamage(5, target); //TODO  replace with damage var 
         target.GetComponent<HealthAndVariables>().TakeDamage(damage);
-
         Invoke("UpdateCanAttack", attackAnimationTime);
     }
-
-    /*
-    public override void OnDeath(float WaitBeforeDestroying)
+    
+    public override void OnDeath()
     {
-        base.OnDeath(WaitBeforeDestroying);
+        base.OnDeath();
+
+        int miteCount = Random.Range(minMites, maxMites + 1);
+        Debug.Log("Exploder died! Spawning " + miteCount + " mites!");
+
+        for (int i = 0; i < miteCount; i++)
+        {
+            GameObject miteGO = Instantiate(mite);
+            miteGO.transform.position = transform.position;
+        }
     }
-    */
 
     void UpdateCanAttack()
     {
