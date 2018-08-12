@@ -581,6 +581,11 @@ public class EnemySpawner : MonoBehaviour
         return Mathf.FloorToInt(waveCount);
 
     }
+
+    /* @ Param: string array that needs to be randomly shuffled
+    * @ Pre: None
+    * @ Post: Returns a randomly sorted array
+    */
     void shuffle(string[] texts)
     {
         for (int t = 0; t < texts.Length; t++)
@@ -593,6 +598,10 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
+    /* @ Param: string array holds array to search, string itemLookingFor holds item to be found
+     * @ Pre: None
+     * @ Post: Returns true if item is in array
+     */ 
     bool IsPresent(string[] array, string itemLookingFor) {
 
         for (int x = 0; x < array.Length; x++) {

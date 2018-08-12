@@ -280,7 +280,8 @@ MonoBehaviour:
   Enemy1: {fileID: 1223338289684178, guid: 60c9f3afe3f3f8f499dee198b537bfca, type: 2}
   Enemy2: {fileID: 1847936540897734, guid: 7242e55b349b89244a89173b0c2c261a, type: 2}
   Enemy3: {fileID: 1801518581731864, guid: b2472cd2995b06649b7757093f4ebecf, type: 2}
+  levelNumber: 0
   delaySearchEnemies: 2
   waveCountdown: 0
-  mainCamera: {fileID: 0}
+  mainCamera: {fileID: 153925004}
   state: 2
