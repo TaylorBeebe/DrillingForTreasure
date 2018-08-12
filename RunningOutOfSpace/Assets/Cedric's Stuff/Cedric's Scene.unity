@@ -2198,7 +2198,7 @@ MonoBehaviour:
   cameraClampL: 0
   cameraClampR: 0
   cameraClampUp: 0
-  cameraClampBot: -100
+  cameraClampBot: 0
   _camera: {fileID: 1121660191}
   deathOverlay: {fileID: 0}
 --- !u!50 &1937159686

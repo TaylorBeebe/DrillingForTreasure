@@ -89,8 +89,9 @@ public class CharacterController2D : MonoBehaviour {
     void SetAnimation()
     {
 
-        int horzAxis = (int)Input.GetAxisRaw("Horizontal") ;
-        if(m_FacingRight)
+        int horzAxis = (int)Input.GetAxisRaw("Horizontal");
+        int vertAxis = (int)Input.GetAxisRaw("Vertical");
+        if (m_FacingRight)
         {
             transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z);
         } else if(!m_FacingRight)
@@ -98,7 +99,7 @@ public class CharacterController2D : MonoBehaviour {
             transform.eulerAngles = new Vector3(0, 180, transform.eulerAngles.z);
         }
         
-        if(horzAxis != 0)
+        if(horzAxis != 0 || vertAxis != 0)
         {
             anim.SetInteger("State", 1);
         } else
