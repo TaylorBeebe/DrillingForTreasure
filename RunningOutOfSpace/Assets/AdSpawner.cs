@@ -23,6 +23,9 @@ public class AdSpawner : MonoBehaviour {
     public float shiftResetTime;
     int stickyPress;
 
+    [Header("Captcha Settings")]
+    public string captchaTypeText;
+
     [Header("Ad sprites")]
     public Sprite[] boxAds;
     public Sprite[] horizontalAds;

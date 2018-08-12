@@ -13,7 +13,8 @@ public class Ad : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDownHand
         Closable,
         Timer,
         StickyKeys,
-        Test3
+        CaptchaClose,
+        CaptchaType
     }
 
     public enum AdSize
@@ -44,17 +45,11 @@ public class Ad : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDownHand
     Image timer;
     Text timerText;
 
+    string captchaText;
+    Text captchaInput;
+
     void Start()
     {
-        //Set references
-        closeButton = transform.Find("ExitButton").GetComponent<Button>();
-
-        if (adType == AdType.Timer)
-        {
-            timer = transform.Find("Timer").GetComponent<Image>();
-            timerText = timer.transform.Find("TimeText").GetComponent<Text>();               
-        }
-
         //Grab the sprites from the Canvas
         boxAds = transform.parent.GetComponent<AdSpawner>().boxAds;
         horizontalAds = transform.parent.GetComponent<AdSpawner>().horizontalAds;
@@ -68,6 +63,8 @@ public class Ad : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDownHand
 
         if (adType == AdType.Timer || adType == AdType.Closable)
         {
+            closeButton = transform.Find("ExitButton").GetComponent<Button>();
+
             //Check what ad size the prefab is
             if (adSize == AdSize.Box)
                 GetComponent<Image>().sprite = boxAds[Random.Range(0, boxAds.Length)];
@@ -82,6 +79,9 @@ public class Ad : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDownHand
         //Check the ad type
         if (adType == AdType.Timer)
         {
+            timer = transform.Find("Timer").GetComponent<Image>();
+            timerText = timer.transform.Find("TimeText").GetComponent<Text>();
+
             closeButton.gameObject.SetActive(false);
 
             float minTime = transform.parent.GetComponent<AdSpawner>().timerAdMin;
@@ -89,6 +89,12 @@ public class Ad : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDownHand
 
             adTimer = Random.Range(minTime, maxTime);
             adTimerStart = adTimer;          
+        }
+
+        if(adType == AdType.CaptchaType)
+        {
+            captchaText = transform.parent.GetComponent<AdSpawner>().captchaTypeText;
+            captchaInput = transform.Find("CaptchaText").transform.Find("CaptcaTextInput").GetComponent<Text>();
         }
     }
     void Update()
@@ -103,6 +109,16 @@ public class Ad : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDownHand
             {
                 timer.gameObject.SetActive(false);
                 closeButton.gameObject.SetActive(true);
+            }
+        }
+
+        if (adType == AdType.CaptchaType)
+        {
+            if(transform.Find("CaptchaText").GetComponent<InputField>().text == captchaText)
+            {
+                CloseAd();
+                captchaInput.transform.parent.gameObject.SetActive(false);
+                GetComponent<Ad>().enabled = false;
             }
         }
     }
@@ -126,8 +142,8 @@ public class Ad : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDownHand
     public void CloseAd()
     {
         //Destroy the Ad and play the closing animation
-        Destroy(gameObject, 0.15f);
         GetComponent<Animator>().SetTrigger("AdClosed");
+        Destroy(gameObject, 0.15f);       
     }
 
     public void spawnAds(int ads)
