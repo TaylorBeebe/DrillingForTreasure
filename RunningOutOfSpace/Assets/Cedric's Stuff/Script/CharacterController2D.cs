@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEditor;
 
 [DisallowMultipleComponent]
@@ -74,7 +75,7 @@ public class CharacterController2D : MonoBehaviour {
         }
 
         rb2d.velocity = new Vector2(movementSpeed * horzAxis * Time.deltaTime, movementSpeed * vertAxis * Time.deltaTime);
-        GetDirectionFacing(horzAxis);
+        
     }
 
     void PlayerShoot()
@@ -173,7 +174,7 @@ public class CharacterController2D : MonoBehaviour {
         //Get the Screen position of the mouse
         Vector2 mouseOnScreen = (Vector2)_camera.ScreenToViewportPoint(Input.mousePosition);
 
-        //Get the angle between the points
+        /*//Get the angle between the points
         if(m_FacingRight)
             angle = AngleBetweenTwoPoints(positionOnScreen, mouseOnScreen);
         else
@@ -184,7 +185,27 @@ public class CharacterController2D : MonoBehaviour {
         //Ta Daaa
         if(m_FacingRight)armPivot.transform.rotation = Quaternion.Euler(new Vector3(armPivot.transform.rotation.x, 0, Mathf.Clamp(angle, -25,25)));
         if (!m_FacingRight) armPivot.transform.rotation = Quaternion.Euler(new Vector3(armPivot.transform.rotation.x, 180, Mathf.Clamp(angle, -25, 25)));
+        */
 
+        angle = AngleBetweenTwoPoints(positionOnScreen, mouseOnScreen);
+        if(angle > -90 && angle < 90)
+        {
+            m_FacingRight = true;
+        } else
+        {
+            m_FacingRight = false;
+        }
+
+        if (m_FacingRight)
+            angle = AngleBetweenTwoPoints(positionOnScreen, mouseOnScreen);
+        else
+            angle = -AngleBetweenTwoPoints(mouseOnScreen, positionOnScreen);
+
+        if (m_FacingRight) armPivot.transform.rotation = Quaternion.Euler(new Vector3(armPivot.transform.rotation.x, 0, Mathf.Clamp(angle, -25, 25)));
+        if (!m_FacingRight) armPivot.transform.rotation = Quaternion.Euler(new Vector3(armPivot.transform.rotation.x, 180, Mathf.Clamp(angle, -25, 25)));
+
+        print(angle);
+        
     }
 
     float AngleBetweenTwoPoints(Vector3 a, Vector3 b)
