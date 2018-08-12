@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour {
     public AIPath aiAgent;
     public AIDestinationSetter AIDestination;
     public Transform target;
-    public float health = 100f;
+    [HideInInspector] public float health = 100f;
     public float distanceThresholdForAttack = 10f;
     [HideInInspector] public bool canMove;
     //public float DamagePerSecond;

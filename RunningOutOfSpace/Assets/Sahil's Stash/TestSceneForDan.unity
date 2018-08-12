@@ -302,3 +302,90 @@ Prefab:
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d745ee44ac863c544a7a6e81dc66539e, type: 2}
   m_IsPrefabAsset: 0
+--- !u!1001 &1546120430
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4087268827771426, guid: d745ee44ac863c544a7a6e81dc66539e, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 2.966
+      objectReference: {fileID: 0}
+    - target: {fileID: 4087268827771426, guid: d745ee44ac863c544a7a6e81dc66539e, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -0.868
+      objectReference: {fileID: 0}
+    - target: {fileID: 4087268827771426, guid: d745ee44ac863c544a7a6e81dc66539e, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0.020900287
+      objectReference: {fileID: 0}
+    - target: {fileID: 4087268827771426, guid: d745ee44ac863c544a7a6e81dc66539e, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4087268827771426, guid: d745ee44ac863c544a7a6e81dc66539e, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4087268827771426, guid: d745ee44ac863c544a7a6e81dc66539e, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4087268827771426, guid: d745ee44ac863c544a7a6e81dc66539e, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4087268827771426, guid: d745ee44ac863c544a7a6e81dc66539e, type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1038745074890770, guid: d745ee44ac863c544a7a6e81dc66539e, type: 2}
+      propertyPath: m_Name
+      value: Nest
+      objectReference: {fileID: 0}
+    - target: {fileID: 212417107179230198, guid: d745ee44ac863c544a7a6e81dc66539e,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 5f3c0b4e8ab098d4c82f55b52bd79a5c,
+        type: 3}
+    - target: {fileID: 114793017625078514, guid: d745ee44ac863c544a7a6e81dc66539e,
+        type: 2}
+      propertyPath: health
+      value: 300
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114261946930486370, guid: d745ee44ac863c544a7a6e81dc66539e, type: 2}
+  m_SourcePrefab: {fileID: 100100000, guid: d745ee44ac863c544a7a6e81dc66539e, type: 2}
+  m_IsPrefabAsset: 0
+--- !u!1 &1546120431 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1038745074890770, guid: d745ee44ac863c544a7a6e81dc66539e,
+    type: 2}
+  m_PrefabInternal: {fileID: 1546120430}
+--- !u!114 &1546120432
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1546120431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9d6bb25c7553cf4d8fcba474255a6c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aiAgent: {fileID: 0}
+  AIDestination: {fileID: 0}
+  target: {fileID: 0}
+  health: 100
+  distanceThresholdForAttack: 0
+  canMove: 0
+  canAttack: 0
+  damage: 0
+  enemyStates: 0
+  minSpawnDelay: 5
+  maxSpawnDelay: 8
+  creatureToSpawn: {fileID: 0}
+  attackAnimationTime: 0.5
