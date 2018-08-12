@@ -7,6 +7,13 @@ using UnityEngine.EventSystems;
 public class UpgradeStats : MonoBehaviour, IPointerDownHandler
 {
 
+    public enum UpgradeType
+    {
+        Gameplay,
+        Premium
+
+    }
+    public UpgradeType upgradeType;
     public string upgradeName;
     public string upgradeDescription;
     public int upgradePrice;
@@ -28,6 +35,10 @@ public class UpgradeStats : MonoBehaviour, IPointerDownHandler
     {
         upgradeNameText.text = upgradeName;
         upgradeDescriptionText.text = upgradeDescription;
-        upgradePriceText.text = "LEVEL " + upgradeLevel + " AVAILABLE FOR      " + upgradePrice;
+        if(upgradeType == UpgradeType.Gameplay)
+            upgradePriceText.text = "LEVEL " + upgradeLevel + " AVAILABLE FOR      " + upgradePrice;
+        else
+            upgradePriceText.text = "AVAILABLE FOR      " + upgradePrice;
+
     }
 }
