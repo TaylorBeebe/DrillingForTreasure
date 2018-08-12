@@ -100,7 +100,7 @@ public class Ad : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDownHand
     void Update()
     {
         //Timer ad gameplay
-        if(adType == AdType.Timer)
+        if (adType == AdType.Timer)
         {
             adTimer -= Time.deltaTime;
             timer.fillAmount = adTimer / adTimerStart;
@@ -132,7 +132,13 @@ public class Ad : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDownHand
     public void OnDrag(PointerEventData eventData)
     {
         //Set the ad position to the mouse position and subtract the offset
-        transform.position = Input.mousePosition - tempPos;
+        Vector3 pos = Input.mousePosition - tempPos;
+        
+        //Clamp the ads position within the screen barriers
+        pos.x = Mathf.Clamp(pos.x, 0, Screen.width);
+        pos.y = Mathf.Clamp(pos.y, 0, Screen.height);
+
+        transform.position = pos;
     }
     public void OnEndDrag(PointerEventData eventData)
     {
