@@ -203,7 +203,11 @@ SpriteRenderer:
   m_Size: {x: 1.53, y: 2.25}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+<<<<<<< HEAD
   m_WasSpriteAssigned: 0
+=======
+  m_WasSpriteAssigned: 1
+>>>>>>> origin/Animation&Enemies
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &291621395
@@ -235,16 +239,23 @@ MonoBehaviour:
   cameraDampTime: 0
   health: 100
   rawAxis: 0
+<<<<<<< HEAD
   magazineSize: 0
   fireRate: 0
   reloadTime: 0
   singleFire: 0
+=======
+  magazine: 0
+  fireRate: 0
+  reloadTime: 0
+>>>>>>> origin/Animation&Enemies
   cameraClampL: 0
   cameraClampR: 400
   cameraClampUp: 100
   cameraClampBot: 100
   _camera: {fileID: 2081358024}
   deathOverlay: {fileID: 0}
+<<<<<<< HEAD
   rb2d: {fileID: 0}
   sr: {fileID: 0}
   anim: {fileID: 0}
@@ -254,6 +265,8 @@ MonoBehaviour:
   m_FacingRight: 1
   _isDead: 0
   _canShoot: 0
+=======
+>>>>>>> origin/Animation&Enemies
 --- !u!50 &291621397
 Rigidbody2D:
   serializedVersion: 4
@@ -364,7 +377,11 @@ SpriteRenderer:
   m_Size: {x: 1.85, y: 0.96}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
+<<<<<<< HEAD
   m_WasSpriteAssigned: 0
+=======
+  m_WasSpriteAssigned: 1
+>>>>>>> origin/Animation&Enemies
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1774407815
