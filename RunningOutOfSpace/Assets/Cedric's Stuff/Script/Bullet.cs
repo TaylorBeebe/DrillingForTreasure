@@ -12,23 +12,32 @@ public class Bullet : MonoBehaviour {
     bool aloudToMove = false;
     Rigidbody2D rb2d;
     Vector2 bulletPos;
+    SpriteRenderer sr;
 
 	// Use this for initialization
 	void Start () {
+        sr = gameObject.GetComponent<SpriteRenderer>();
         _camera = GameObject.Find("Main Camera").GetComponent<Camera>();
         rb2d = gameObject.GetComponent<Rigidbody2D>();
         cc2d = GameObject.Find("Player").GetComponent<CharacterController2D>();
         transform.position = GameObject.Find("Gun Tip").transform.position;
         if(cc2d.m_FacingRight)transform.eulerAngles = GameObject.Find("Gun Tip").transform.eulerAngles;
         if (!cc2d.m_FacingRight)transform.eulerAngles = -GameObject.Find("Gun Tip").transform.eulerAngles;
-        if (!cc2d.m_FacingRight) transform.eulerAngles = new Vector3(transform.eulerAngles.x, transform.eulerAngles.y, transform.eulerAngles.z);
+        if (!cc2d.m_FacingRight)
+        {
+            transform.eulerAngles = new Vector3(transform.eulerAngles.x, 0, transform.eulerAngles.z);
+            sr.flipX = true;
+        }
         aloudToMove = true;
 	}
 	
 	// Update is called once per frame
 	void Update () {
         bulletPos = (Vector2)_camera.WorldToViewportPoint(transform.position);
-         rb2d.AddRelativeForce(Vector2.right * bulletSpeed);
+        if(cc2d.m_FacingRight)
+            rb2d.AddRelativeForce(Vector2.right * bulletSpeed);
+        else
+            rb2d.AddRelativeForce(Vector2.left * bulletSpeed);
         if (bulletPos.x < 0 || bulletPos.x > 1 || bulletPos.y < 0 || bulletPos.y > 1)
         {
             Destroy(gameObject);

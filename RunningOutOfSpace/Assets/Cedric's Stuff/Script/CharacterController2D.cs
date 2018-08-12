@@ -19,7 +19,6 @@ public class CharacterController2D : MonoBehaviour {
     [SerializeField] float charge;
     [SerializeField] [Range(0.0f, 1.0f)] float chargeLoseRate;
     [SerializeField] [Range(0.0f, 1.0f)] float rechargeRate;
-    [SerializeField] [Tooltip("If not set true you don't have to press between each shot")] bool singleFire;
 
     [Header("Camera")]
     [SerializeField] float cameraClampL;
@@ -41,7 +40,7 @@ public class CharacterController2D : MonoBehaviour {
     private int mag;
     [HideInInspector] public bool m_FacingRight = true;
     private bool _isDead = false;
-    private bool _canShoot;
+    private bool _canShoot = true;
 
 	void Start () {
         ValueCheck();
@@ -83,10 +82,23 @@ public class CharacterController2D : MonoBehaviour {
 
     void PlayerShoot()
     {
-        if(Input.GetMouseButton(0))
+        print(charge);
+        if(Input.GetMouseButton(0) && charge > 0 && _canShoot)
         {
-            Instantiate(bulletPrefab);
+            if (charge > 0 && _canShoot)
+            {
+                charge = charge - (maxCharge * chargeLoseRate);
+                StartCoroutine(ShootFix());
+                Instantiate(bulletPrefab);
+            }
+        } else if(charge <= Mathf.Epsilon)
+        {
+            if (charge < 0) charge = 0;   
         }
+        if (!Input.GetMouseButton(0) && charge < maxCharge)
+            charge = charge + (maxCharge * rechargeRate);
+        else if (charge > maxCharge)
+            charge = maxCharge;
     }
 
     void SetAnimation()
@@ -210,17 +222,21 @@ public class CharacterController2D : MonoBehaviour {
         
     }
 
-    
+    IEnumerator ShootFix()
+    {
+        _canShoot = false;
+        yield return new WaitForSeconds(fireRate);
+        _canShoot = true;
+    }
 
     float AngleBetweenTwoPoints(Vector3 a, Vector3 b)
     {
         return Mathf.Atan2(b.y - a.y, b.x - a.x) * Mathf.Rad2Deg;
     }
-
     
-
     public void TakeDamage(float aod) //aod = AmountOfDamage
     {
         health -= aod;
+        print("Player took " + aod + " damage");
     }
 }
