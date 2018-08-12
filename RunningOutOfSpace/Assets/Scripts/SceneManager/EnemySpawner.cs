@@ -154,6 +154,7 @@ public class EnemySpawner : MonoBehaviour
     //time until next wave spawn
     public float waveCountdown;
 
+    //number of enemies that will appear this wave
     private float enemiesPerWave;
 
     //get main camera
@@ -445,30 +446,42 @@ public class EnemySpawner : MonoBehaviour
 
         Stack<string> waveMakeup = new Stack<string>();
         
+        //Get Percent of Each Enemy Class Per Wave
         float easyEnemiesPercent = PercentageEasyEnemies();
         float mediumEnemiesPercent = PercentageMediumEnemies();
         float hardEnemiesPercent = PercentageHardEnemies();
 
+        //Get Number of Enemies based on Percent
         int numEasyEnemies = Mathf.FloorToInt(easyEnemiesPercent * enemiesPerWave);
         int numMediumEnemies = Mathf.FloorToInt(mediumEnemiesPercent * enemiesPerWave);
         int numHardEnemies = Mathf.FloorToInt(hardEnemiesPercent * enemiesPerWave);
 
+        string[] enemyArray = new string[numEasyEnemies + numHardEnemies + numMediumEnemies];
+
+        int index = 0;
+        
         for (int x = 0; x < numEasyEnemies; x++) {
             string enemy = wave.GetEnemy("easy");
-            waveMakeup.Push(enemy);
+            enemyArray[index] = enemy;
+            index++;
         }
         for (int x = 0; x < numMediumEnemies; x++)
         {
             string enemy = wave.GetEnemy("medium");
-            waveMakeup.Push(enemy);
+            enemyArray[index] = enemy;
+            index++;
         }
         for (int x = 0; x < numHardEnemies; x++)
         {
             string enemy = wave.GetEnemy("hard");
-            waveMakeup.Push(enemy);
+            enemyArray[index] = enemy;
+            index++;
         }
 
-
+        shuffle(enemyArray);
+        for (int x = 0; x < enemyArray.Length; x++) {
+            waveMakeup.Push(enemyArray[x]);
+        }
         return waveMakeup;
     }
 
