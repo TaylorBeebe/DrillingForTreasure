@@ -425,14 +425,14 @@ public class EnemySpawner : MonoBehaviour
         //If it's zero, max out the camera width
         if (whichNumberToMax == 0)
         {
-            Debug.Log("returning returning maxed width");
+            //Debug.Log("returning returning maxed width");
             returnValue = new Vector2(((mainCamera.transform.position.x + cameraWidth) * randomizedValue)  + (Random.Range(10, 31) * randomizedValue), mainCamera.transform.position.y + Random.Range(cameraHeight * (-1), cameraHeight));
 
         }
         //otherwise, max out camera height value
         else
         {
-            Debug.Log("returning maxed height");
+            //Debug.Log("returning maxed height");
             returnValue = new Vector2(mainCamera.transform.position.x + Random.Range(cameraWidth * (-1), cameraWidth), (((mainCamera.transform.position.y + cameraHeight) * randomizedValue)) + (Random.Range(10, 31) * randomizedValue));
 
         }
