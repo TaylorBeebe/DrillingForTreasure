@@ -442,6 +442,7 @@ public class EnemySpawner : MonoBehaviour
      */
     Stack<string> GenerateWaveMakeup(Wave wave)
     {
+
         Stack<string> waveMakeup = new Stack<string>();
         
         float easyEnemiesPercent = PercentageEasyEnemies();
