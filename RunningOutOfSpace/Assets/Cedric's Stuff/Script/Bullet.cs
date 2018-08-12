@@ -9,6 +9,7 @@ public class Bullet : MonoBehaviour {
     Camera _camera;
     CharacterController2D cc2d;
 
+    bool facingRight;
     bool aloudToMove = false;
     Rigidbody2D rb2d;
     Vector2 bulletPos;
@@ -20,6 +21,7 @@ public class Bullet : MonoBehaviour {
         _camera = GameObject.Find("Main Camera").GetComponent<Camera>();
         rb2d = gameObject.GetComponent<Rigidbody2D>();
         cc2d = GameObject.Find("Player").GetComponent<CharacterController2D>();
+        facingRight = cc2d.m_FacingRight;
         transform.position = GameObject.Find("Gun Tip").transform.position;
         if(cc2d.m_FacingRight)transform.eulerAngles = GameObject.Find("Gun Tip").transform.eulerAngles;
         if (!cc2d.m_FacingRight)transform.eulerAngles = -GameObject.Find("Gun Tip").transform.eulerAngles;
@@ -33,14 +35,17 @@ public class Bullet : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        bulletPos = (Vector2)_camera.WorldToViewportPoint(transform.position);
-        if(cc2d.m_FacingRight)
-            rb2d.AddRelativeForce(Vector2.right * bulletSpeed);
-        else
-            rb2d.AddRelativeForce(Vector2.left * bulletSpeed);
-        if (bulletPos.x < 0 || bulletPos.x > 1 || bulletPos.y < 0 || bulletPos.y > 1)
+        if (aloudToMove)
         {
-            Destroy(gameObject);
+            bulletPos = (Vector2)_camera.WorldToViewportPoint(transform.position);
+            if (facingRight)
+                rb2d.AddRelativeForce(Vector2.right * bulletSpeed);
+            else
+                rb2d.AddRelativeForce(Vector2.left * bulletSpeed);
+            if (bulletPos.x < 0 || bulletPos.x > 1 || bulletPos.y < 0 || bulletPos.y > 1)
+            {
+                Destroy(gameObject);
+            }
         }
 	}
 }

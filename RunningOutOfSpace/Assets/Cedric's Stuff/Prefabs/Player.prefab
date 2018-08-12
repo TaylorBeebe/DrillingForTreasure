@@ -99,7 +99,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1733815321748164}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.3068297, y: 0.8224638, z: -9.2578125}
+  m_LocalPosition: {x: -4.45, y: 0.8224638, z: -9.2578125}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4192221695084944}
@@ -151,7 +151,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &61074948660203166
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -210,10 +210,10 @@ MonoBehaviour:
   cameraDampTime: 0.15
   health: 100
   rawAxis: 0
-  fireRate: 0.5
-  charge: 200
+  fireRate: 0.1
+  charge: 500
   chargeLoseRate: 0.05
-  rechargeRate: 0.25
+  rechargeRate: 0.15
   cameraClampL: 0
   cameraClampR: 0
   cameraClampUp: 0
@@ -257,7 +257,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 8eaf3b989fcc5da4381ac6f5cedc96b5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -303,7 +303,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 21
   m_Sprite: {fileID: 21300010, guid: 8eaf3b989fcc5da4381ac6f5cedc96b5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
