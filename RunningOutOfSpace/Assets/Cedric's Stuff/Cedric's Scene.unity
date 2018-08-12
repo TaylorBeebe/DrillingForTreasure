@@ -2220,11 +2220,10 @@ MonoBehaviour:
   cameraDampTime: 0.15
   health: 100
   rawAxis: 0
-  fireRate: 0
-  charge: 0
-  chargeLoseRate: 0
-  rechargeRate: 0
-  singleFire: 0
+  fireRate: 0.5
+  charge: 200
+  chargeLoseRate: 0.05
+  rechargeRate: 0.25
   cameraClampL: 0
   cameraClampR: 0
   cameraClampUp: 0
@@ -2233,6 +2232,7 @@ MonoBehaviour:
   deathOverlay: {fileID: 0}
   bulletPrefab: {fileID: 1486049813128980, guid: 77061671a17e7834b8a903d0dcb7f91c,
     type: 2}
+  m_FacingRight: 1
 --- !u!50 &1937159686
 Rigidbody2D:
   serializedVersion: 4
