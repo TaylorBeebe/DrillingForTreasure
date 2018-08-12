@@ -15,9 +15,10 @@ public class CharacterController2D : MonoBehaviour {
     [SerializeField] [Tooltip("Might Give More Accurate Movement When True")] bool rawAxis;
 
     [Header("Firing")]
-    [SerializeField] [Range(1,100)] int magazineSize;
     [SerializeField] [Range(0.0f, 1.0f)] [Tooltip("Time between each shot fired")] float fireRate;
-    [SerializeField] [Range(0.0f, 2.0f)] float reloadTime;
+    [SerializeField] float charge;
+    [SerializeField] [Range(0.0f, 1.0f)] float chargeLoseRate;
+    [SerializeField] [Range(0.0f, 1.0f)] float rechargeRate;
     [SerializeField] [Tooltip("If not set true you don't have to press between each shot")] bool singleFire;
 
     [Header("Camera")]
@@ -29,12 +30,14 @@ public class CharacterController2D : MonoBehaviour {
     [Header("Reference")]
     [SerializeField] Camera _camera;
     [SerializeField] GameObject deathOverlay;
+    [SerializeField] GameObject bulletPrefab;
 
     private Rigidbody2D rb2d;
     private SpriteRenderer sr;
     private Animator anim;
     private GameObject armPivot;
     private Vector3 _vel = Vector3.zero;
+    private float maxCharge;
     private int mag;
     private bool m_FacingRight = true;
     private bool _isDead = false;
@@ -42,7 +45,7 @@ public class CharacterController2D : MonoBehaviour {
 
 	void Start () {
         ValueCheck();
-        mag = magazineSize;
+        maxCharge = charge;
         rb2d = GetComponent<Rigidbody2D>();
         rb2d.gravityScale = 0;
         sr = GetComponent<SpriteRenderer>();
@@ -80,9 +83,9 @@ public class CharacterController2D : MonoBehaviour {
 
     void PlayerShoot()
     {
-        if(_canShoot && mag> 0)
+        if(Input.GetMouseButton(0))
         {
-            
+            Instantiate(bulletPrefab);
         }
     }
 
@@ -208,6 +211,8 @@ public class CharacterController2D : MonoBehaviour {
         print(angle);
         
     }
+
+
 
     float AngleBetweenTwoPoints(Vector3 a, Vector3 b)
     {
