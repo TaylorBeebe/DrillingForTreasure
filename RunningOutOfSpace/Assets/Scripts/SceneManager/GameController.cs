@@ -61,6 +61,10 @@ public class GameController : MonoBehaviour {
         {
             objectives.Add(objective);
         }
+        else
+        {
+
+        }
     }
 
 }
