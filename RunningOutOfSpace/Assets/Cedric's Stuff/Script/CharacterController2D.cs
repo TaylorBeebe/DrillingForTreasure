@@ -118,7 +118,7 @@ public class CharacterController2D : MonoBehaviour {
         _camera.transform.position = Vector3.SmoothDamp(_camera.transform.position, destination, ref _vel, cameraDampTime);
 
         _camera.transform.position = new Vector3(Mathf.Clamp(_camera.transform.position.x, cameraClampL, cameraClampR), 
-            Mathf.Clamp(_camera.transform.position.y, 0, 400), _camera.transform.position.z);
+            Mathf.Clamp(_camera.transform.position.y, cameraClampBot, cameraClampUp), _camera.transform.position.z);
     }
 
     void ValueCheck()
@@ -201,8 +201,8 @@ public class CharacterController2D : MonoBehaviour {
         else
             angle = -AngleBetweenTwoPoints(mouseOnScreen, positionOnScreen);
 
-        if (m_FacingRight) armPivot.transform.rotation = Quaternion.Euler(new Vector3(armPivot.transform.rotation.x, 0, Mathf.Clamp(angle, -25, 25)));
-        if (!m_FacingRight) armPivot.transform.rotation = Quaternion.Euler(new Vector3(armPivot.transform.rotation.x, 180, Mathf.Clamp(angle, -25, 25)));
+        if (m_FacingRight) armPivot.transform.rotation = Quaternion.Euler(new Vector3(armPivot.transform.rotation.x, 0, Mathf.Clamp(angle, -90, 90)));
+        if (!m_FacingRight) armPivot.transform.rotation = Quaternion.Euler(new Vector3(armPivot.transform.rotation.x, 180, Mathf.Clamp(angle, -90, 90)));
 
         print(angle);
         
