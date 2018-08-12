@@ -33,8 +33,12 @@ public class EnemySpawner : MonoBehaviour
         private Stack<string> waveMakeup;
         private int count;
         private Vector2 spawnLocation;
-        private int rate = 2;
+        public int rate = 2;
         private bool doesGathererSpawn;
+        
+        private List<string> easyEnemiesIntroduced = new List<string>();
+        private List<string> mediumEnemiesIntroduced = new List<string>();
+        private List<string> hardEnemiesIntroduced = new List<string>();
 
         public Stack<string> GetWave()
         {
@@ -73,13 +77,38 @@ public class EnemySpawner : MonoBehaviour
             //roll dice here. super small chance
             return doesGathererSpawn;
         }
+        public List<string> GetEasyEnemiesAvailableForWaves() {
+            return easyEnemiesIntroduced;
+        }
+        public void AddEasyEnemiesAvailableForWaves(string newEasyEnemy) {
+            easyEnemiesIntroduced.Add(newEasyEnemy);
+        }
+        public List<string> GetMediumEnemiesAvailableForWaves()
+        {
+            return mediumEnemiesIntroduced;
+        }
+        public void AddMediumEnemiesAvailableForWaves(string newEasyEnemy)
+        {
+            mediumEnemiesIntroduced.Add(newEasyEnemy);
+        }
+        public List<string> GetHardEnemiesAvailableForWaves()
+        {
+            return hardEnemiesIntroduced;
+        }
+        public void AddHardEnemiesAvailableForWaves(string newEasyEnemy)
+        {
+            hardEnemiesIntroduced.Add(newEasyEnemy);
+        }
     }
+
+    //Level we are currently on (will be gotten from GameMode Script)
+    public int levelNumber;
 
     //wait time for checking if any enemies are alive
     public float delaySearchEnemies = 2f;
 
     //predetermined time between waves. Will eventually be a function of level
-    private float timeBetweenWaves = 5f;
+    private float timeBetweenWaves;
 
     //time until next wave spawn
     public float waveCountdown;
@@ -99,6 +128,32 @@ public class EnemySpawner : MonoBehaviour
     //holds camera width/2
     private float cameraWidth;
 
+    //didn't account for first few levels because all enemies will be easy
+    private int roundStartCalculatingEasyPercentage = 3; 
+
+    //Round when the first medium enemy spawns
+    private int roundMediumEnemiesStartSpawning = 3;
+
+    //Round when the first hard enemy spawns
+    private int roundHardEnemiesStartSpawning = 7;
+
+    //Round after which easy enemies head infinitely toward their final percentage (10%)
+    private int roundEasyEnemiesGoToInfinity = 9;
+
+    //Round after which medium enemies head infinitely toward their final percentage (40%)
+    private int roundMediumEnemiesGoToInfinity = 9;
+
+    //Round after which hard enemies head infinitely toward their final percentage (50%)
+    private int roundHardEnemisGoToInfinity = 9;
+
+    //Easy enemies in game
+    private string[] easyEnemies = {"mites"};
+
+    //Medium enemies in game
+    private string[] mediumEnemies = {"exploders", "spitters"};
+
+    //Hard enemies in game
+    private string[] hardEnemies = { "clammies", "demolishers" };
 
     /* @ Param: None
      * @ Pre: None
@@ -109,7 +164,7 @@ public class EnemySpawner : MonoBehaviour
         //initialize the wave countdown max
         waveCountdown = timeBetweenWaves;
 
-        //initialize array
+        //initialize array of enemies
         Enemyarray = new GameObject[] {
             Enemy1, Enemy2, Enemy3
         };
@@ -117,6 +172,25 @@ public class EnemySpawner : MonoBehaviour
         screenAspect = (float)Screen.width / (float)Screen.height;
         cameraHeight = mainCamera.orthographicSize;
         cameraWidth = screenAspect * cameraHeight;
+
+        //Code for testing totals of the formulas added together
+        /*
+        for (int x = 1; x < 9; x++) {
+            Debug.Log("X = " + x + ": " + System.Math.Round((PercentageEasyEnemiesBeforeInfinity(x) + PercentageHardEnemiesBeforeInfinity(x) + PercentageMediumEnemiesBeforeInfinity(x)),2));
+
+        }
+        for (int x = 9; x < 21; x++) {
+            Debug.Log("X = " + x + ": " + System.Math.Round(((PercentageEasyEnemiesAtInfinity(x) + PercentageHardEnemiesAtInfinity(x) + PercentageMediumEnemiesAtInfinity(x))), 2));
+        }
+        */
+
+        for (int x = 1; x < 21; x++) {
+            Debug.Log("X = " + x + ", Enemies Per Wave: " + CalculateEnemiesPerWave(x));
+        }
+        for (int x = 1; x < 21; x++)
+        {
+            Debug.Log("X = " + x + ", TimeBetweenWaves: " + CalculateTimeBetweenWaves(x));
+        }
     }
 
     /* @ Param: None
@@ -136,7 +210,7 @@ public class EnemySpawner : MonoBehaviour
             if (state != SpawnState.SPAWNING)
             {
                 Wave newWave = new Wave();
-                Debug.Log("State != Spawning");
+                
                 //Coroutine spawns waves so they don't need to be spawned all at one time
                 StartCoroutine(SpawnWave(newWave));
             }
@@ -154,7 +228,7 @@ public class EnemySpawner : MonoBehaviour
         //this will be replaced with wave spawning counter, allowing waves to spawn concurrently
         //as a function of level
         state = SpawnState.SPAWNING;
-
+        //Debug.Log("State = Spawning");
         //increment through elements in wave
         for (int i = 0; i < wave.GetCount(); i++)
         {
@@ -165,7 +239,7 @@ public class EnemySpawner : MonoBehaviour
 
         state = SpawnState.COUNTING;
 
-        Debug.Log("SpawnState = Counting");
+        //Debug.Log("SpawnState = Counting");
 
         //reset wave countdown
         waveCountdown = timeBetweenWaves;
@@ -240,11 +314,96 @@ public class EnemySpawner : MonoBehaviour
      */
     Stack<string> GenerateWaveMakeup(int count)
     {
-
+        
         Stack<string> wave = new Stack<string>();
 
 
-
+        
         return wave;
+    }
+
+    float PercentageEasyEnemiesBeforeInfinity(int level) {
+        float easyEnemiesBeforeInfinity;
+
+        if (level < roundStartCalculatingEasyPercentage) {
+            return 1;
+        }
+
+        easyEnemiesBeforeInfinity = ((-0.01458f) * (Mathf.Pow(level,3))) + (0.2687f * (Mathf.Pow(level, 2))) + ((-1.635f) * level) + 3.781f;
+
+        Debug.Log("Easy Enemies Before Infinity: " + System.Math.Round(easyEnemiesBeforeInfinity,2));
+
+        return easyEnemiesBeforeInfinity;
+    }
+    float PercentageEasyEnemiesAtInfinity(int level)
+    {
+        float easyEnemiesInfinity = 0.2485f * Mathf.Pow(level, -0.09884f);
+        
+        Debug.Log("Easy Enemies At Infinity: " + System.Math.Round(easyEnemiesInfinity, 2));
+
+        return easyEnemiesInfinity;
+    }
+    float PercentageMediumEnemiesBeforeInfinity(int level)
+    {
+        if (level < roundMediumEnemiesStartSpawning)
+        {
+            return 0;
+        }
+
+        float mediumEnemiesBeforeInfinity = (0.1923f * Mathf.Pow(level,2) + -0.3077f * level + 0.1154f) / (Mathf.Pow(level, 2) + -9.231f * level + 27.92f);
+
+        Debug.Log("Medium Enemies Before Infinity: " + System.Math.Round(mediumEnemiesBeforeInfinity, 2));
+
+        return mediumEnemiesBeforeInfinity;
+
+    }
+    float PercentageMediumEnemiesAtInfinity(int level)
+    {
+        float mediumEnemiesInfinity = 0.5362f * Mathf.Pow(level,-0.03182f);
+
+        Debug.Log("Medium Enemies At Infinity: " + System.Math.Round(mediumEnemiesInfinity, 2));
+
+        return mediumEnemiesInfinity;
+    }
+    float PercentageHardEnemiesBeforeInfinity(int level)
+    {
+
+        if (level < roundHardEnemiesStartSpawning)
+        {
+            return 0;
+        }
+
+        float hardEnemiesBeforeInfinity = 0.00002022f * Mathf.Pow(level, 4.371f);
+
+        Debug.Log("Hard Enemies Before Infinity: " + System.Math.Round(hardEnemiesBeforeInfinity, 2));
+
+        return hardEnemiesBeforeInfinity;
+    }
+    float PercentageHardEnemiesAtInfinity(int level)
+    {
+        float hardEnemiesInfinity = 0.2556f * Mathf.Pow(level, 0.07284f);
+
+        Debug.Log("Hard Enemies At Infinity: " + System.Math.Round(hardEnemiesInfinity, 2));
+
+        return hardEnemiesInfinity;
+    }
+
+    int CalculateTimeBetweenWaves(int levelNumber) {
+
+        float time = ((1/(Mathf.Pow(levelNumber, 1.01f) + 3 + Mathf.Cos(levelNumber * (Mathf.PI * 0.5f))) * 35) + 4);
+
+        //Debug.Log("Time Between Waves = " + Mathf.FloorToInt(timeBetweenWaves));
+
+        return Mathf.FloorToInt(time);
+    }
+
+    int CalculateEnemiesPerWave(int levelNumber) {
+
+        float waveCount = Mathf.Log(levelNumber + 1) * 5;
+
+        //Debug.Log("Enemies per wave = " + Mathf.FloorToInt(waveCount));
+
+        return Mathf.FloorToInt(waveCount);
+
     }
 }
