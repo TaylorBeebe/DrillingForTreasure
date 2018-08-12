@@ -71,6 +71,7 @@ public class Leaderboard : MonoBehaviour {
         {
             Debug.Log("Form upload complete!");
             AssetBundle bundle = DownloadHandlerAssetBundle.GetContent(www);
+            //string data = bundle.LoadAsset<string>("data");
         }
     }
 
