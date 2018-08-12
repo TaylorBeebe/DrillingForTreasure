@@ -9,60 +9,109 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
+<<<<<<< HEAD
+  m_RootGameObject: {fileID: 1366168473418856}
+  m_IsPrefabAsset: 1
+--- !u!1 &1292810927559680
+=======
   m_RootGameObject: {fileID: 1043596119981816}
   m_IsPrefabAsset: 1
 --- !u!1 &1043596119981816
+>>>>>>> 666ba57c7e9d243e86b53ec80f632a1d01d5d261
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
+<<<<<<< HEAD
+  - component: {fileID: 4596565692580458}
+  - component: {fileID: 114043810184622634}
+  m_Layer: 0
+  m_Name: EnemyManager
+=======
   - component: {fileID: 4725678148598914}
   m_Layer: 0
   m_Name: AiHolder
+>>>>>>> 666ba57c7e9d243e86b53ec80f632a1d01d5d261
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
+--- !u!1 &1366168473418856
+=======
 --- !u!1 &1146968544105036
+>>>>>>> 666ba57c7e9d243e86b53ec80f632a1d01d5d261
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
+<<<<<<< HEAD
+  - component: {fileID: 4315645321453172}
+  m_Layer: 0
+  m_Name: AiHolder
+=======
   - component: {fileID: 4856498569363750}
   - component: {fileID: 114103377551178636}
   m_Layer: 0
   m_Name: A*
+>>>>>>> 666ba57c7e9d243e86b53ec80f632a1d01d5d261
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
+--- !u!1 &1606459240558464
+=======
 --- !u!1 &1595888835705952
+>>>>>>> 666ba57c7e9d243e86b53ec80f632a1d01d5d261
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
+<<<<<<< HEAD
+  - component: {fileID: 4037275621211806}
+  - component: {fileID: 114036909433114940}
+  m_Layer: 0
+  m_Name: A*
+=======
   - component: {fileID: 4526516764105934}
   - component: {fileID: 114793589730559904}
   m_Layer: 0
   m_Name: EnemyManager
+>>>>>>> 666ba57c7e9d243e86b53ec80f632a1d01d5d261
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+<<<<<<< HEAD
+--- !u!4 &4037275621211806
+=======
 --- !u!4 &4526516764105934
+>>>>>>> 666ba57c7e9d243e86b53ec80f632a1d01d5d261
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
+<<<<<<< HEAD
+  m_GameObject: {fileID: 1606459240558464}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.8208394, y: 2.22632, z: -0.120655194}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4315645321453172}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4315645321453172
+=======
   m_GameObject: {fileID: 1595888835705952}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.21146774, y: 2.3489528, z: -0.03667082}
@@ -72,25 +121,50 @@ Transform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4725678148598914
+>>>>>>> 666ba57c7e9d243e86b53ec80f632a1d01d5d261
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
+<<<<<<< HEAD
+  m_GameObject: {fileID: 1366168473418856}
+=======
   m_GameObject: {fileID: 1043596119981816}
+>>>>>>> 666ba57c7e9d243e86b53ec80f632a1d01d5d261
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 4.8208394, y: -2.22632, z: 0.120655194}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+<<<<<<< HEAD
+  - {fileID: 4596565692580458}
+  - {fileID: 4037275621211806}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4596565692580458
+=======
   - {fileID: 4526516764105934}
   - {fileID: 4856498569363750}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4856498569363750
+>>>>>>> 666ba57c7e9d243e86b53ec80f632a1d01d5d261
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
+<<<<<<< HEAD
+  m_GameObject: {fileID: 1292810927559680}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.21146774, y: 2.3489528, z: -0.03667082}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4315645321453172}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114036909433114940
+=======
   m_GameObject: {fileID: 1146968544105036}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -4.8208394, y: 2.22632, z: -0.120655194}
@@ -100,11 +174,16 @@ Transform:
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &114103377551178636
+>>>>>>> 666ba57c7e9d243e86b53ec80f632a1d01d5d261
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
+<<<<<<< HEAD
+  m_GameObject: {fileID: 1606459240558464}
+=======
   m_GameObject: {fileID: 1146968544105036}
+>>>>>>> 666ba57c7e9d243e86b53ec80f632a1d01d5d261
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 78396926cbbfc4ac3b48fc5fc34a87d1, type: 3}
@@ -153,17 +232,29 @@ MonoBehaviour:
     pivotPointRoot: {fileID: 0}
     spreadOutCount: 1
   showGraphs: 1
+<<<<<<< HEAD
+--- !u!114 &114043810184622634
+=======
 --- !u!114 &114793589730559904
+>>>>>>> 666ba57c7e9d243e86b53ec80f632a1d01d5d261
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
+<<<<<<< HEAD
+  m_GameObject: {fileID: 1292810927559680}
+=======
   m_GameObject: {fileID: 1595888835705952}
+>>>>>>> 666ba57c7e9d243e86b53ec80f632a1d01d5d261
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c264f291ba0b8f04391ad1143761be9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   enemies: []
+<<<<<<< HEAD
+  target: {fileID: 0}
+=======
   Player: {fileID: 0}
   Drill: {fileID: 0}
+>>>>>>> 666ba57c7e9d243e86b53ec80f632a1d01d5d261

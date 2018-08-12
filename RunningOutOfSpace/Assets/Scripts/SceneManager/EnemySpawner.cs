@@ -213,9 +213,9 @@ public class EnemySpawner : MonoBehaviour
 
         levelNumber = 1;
 
-        timeBetweenWaves = CalculateTimeBetweenWaves();
+        //timeBetweenWaves = CalculateTimeBetweenWaves();
 
-        //timeBetweenWaves = 1f;
+        timeBetweenWaves = 1f;
         
         //initialize the wave countdown max
         waveCountdown = timeBetweenWaves;
@@ -320,12 +320,12 @@ public class EnemySpawner : MonoBehaviour
 
         int indexLen = waveMakeup.Count;
 
-        Vector2 spawnLocation = GetRandomSpawnLocation();
+        
 
         for (int i = 0; i < indexLen; i++)
         {
             //Debug.Log("Index: " + i);
-            
+            Vector2 spawnLocation = GetRandomSpawnLocation();
             string enemy = waveMakeup.Pop();
             //Debug.Log("Count: " + waveMakeup.Count);
             //Debug.Log("Popping: " + enemy);
@@ -358,9 +358,9 @@ public class EnemySpawner : MonoBehaviour
             }
         }
 
-        timeBetweenWaves = CalculateTimeBetweenWaves();
+        //timeBetweenWaves = CalculateTimeBetweenWaves();
         
-        //timeBetweenWaves = 1f;
+        timeBetweenWaves = 1f;
         
         //initialize the wave countdown max
         waveCountdown = timeBetweenWaves;
@@ -384,8 +384,11 @@ public class EnemySpawner : MonoBehaviour
      */
     void SpawnEnemy(string enemyToSpawn, Vector2 spawnLocation)
     {
-        
+
         Debug.Log("Spawning " + enemyToSpawn + " at " + spawnLocation);
+
+        Instantiate(Enemy1, spawnLocation, Quaternion.identity);
+
         //Pick an enemy to spawn randomly
         //Instantiate the enemy at the spawn location passed in
         //Instantiate(enemyToSpawn, spawnLocation, Quaternion.identity);
