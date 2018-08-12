@@ -12,7 +12,6 @@ public class EnemyManager : MonoBehaviour {
         enemyManager = this;
         foreach(Enemy enemy in enemies)
         {
-            enemy.OnCreate();
         }
 	}
 	
@@ -21,7 +20,6 @@ public class EnemyManager : MonoBehaviour {
 
         foreach (Enemy enemy in enemies)
         {
-            enemy.Execute();
             enemy.AIDestination.target = target;
         }
     }
