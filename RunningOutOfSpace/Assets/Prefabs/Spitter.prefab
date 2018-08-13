@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 70859474701781186}
   m_Layer: 0
   m_Name: Spitter
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -175,8 +175,6 @@ MonoBehaviour:
   damage: 0
   enemyManager: {fileID: 0}
   enemyStates: 0
-  toTarget: {x: 0, y: 0, z: 0}
-  zDegs: 0
   spittle: {fileID: 1217639456018036, guid: 34e43bdcf4e592a4a90bb02a9c470d6a, type: 2}
   attackAnimationTime: 0.35
   spitSpeed: 10
