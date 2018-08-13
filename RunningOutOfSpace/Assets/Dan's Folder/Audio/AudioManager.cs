@@ -11,7 +11,6 @@ public class AudioManager : MonoBehaviour
     public Sound[] sounds;
 
     Sound currentSong;
-    Sound ticking;
 
     public void Awake()
     {
@@ -24,9 +23,10 @@ public class AudioManager : MonoBehaviour
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
-
         }
     }
+
+
 
     // Use this for initialization
     void Start()
@@ -45,10 +45,30 @@ public class AudioManager : MonoBehaviour
         if (currentSong != null) currentSong.source.Stop();
     }
 
-    public void StopTicking()
+
+    public Sound StartAdMusic(string name, bool loop)
     {
-        if (ticking != null) ticking.source.Stop();
+        if (musicMute) return null;
+
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        if (s == null)
+        {
+            Debug.LogWarning("Audio " + name + " not found!");
+            return null;
+        }
+
+        if (currentSong != null) currentSong.source.Stop();
+        currentSong = s;
+        s.source.loop = true;
+        s.source.Play();
+        return s;
     }
+
+    void StopAdMusic(Sound s)
+    {
+        s.source.Stop();
+    }
+
 
     public void SetMusic(string name, bool loop)
     {
@@ -66,6 +86,7 @@ public class AudioManager : MonoBehaviour
         s.source.loop = loop;
         s.source.Play();
     }
+    
 
     public void Play(string name)
     {
@@ -77,7 +98,6 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("Audio " + name + " not found!");
             return;
         }
-        if (name == "Ticking") ticking = s;
         s.source.Play();
 
 
@@ -93,7 +113,6 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("Audio " + name + " not found!");
             return;
         }
-        if (name == "Ticking") ticking = s;
         s.source.pitch = pitch;
         s.source.Play();
 
