@@ -2,27 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
+
+[RequireComponent(typeof(AIDestinationSetter))]
+[RequireComponent(typeof(AIPath))]
+[RequireComponent(typeof(HealthAndVariables))]
 public class Enemy : MonoBehaviour {
 
+    public float _attackTimer = 1f;
     public AIPath aiAgent;
     public AIDestinationSetter AIDestination;
     public Transform target;
-    public float health = 100f;
+    public float health;
     public float distanceThresholdForAttack = 0;
     public bool canMove;
     public float DamagePerSecond;
     public bool canAttack = false;
-
+    public HealthAndVariables healthAndVariables;
     EnemyManager enemyManager;
 
     public enum EnemyStates {
         attack,
         follow,
-        dead
+        dead,
+        idle
     }
     public EnemyStates enemyStates;
     public virtual void Start()
     {
+        healthAndVariables = GetComponent<HealthAndVariables>();
         aiAgent = GetComponent<AIPath>();
         AIDestination = GetComponent<AIDestinationSetter>();
         enemyManager = FindObjectOfType<EnemyManager>();
@@ -33,16 +40,18 @@ public class Enemy : MonoBehaviour {
     }
     public virtual void Update()
     {
+        health = healthAndVariables.Health;
+
         if (health > 0 && Vector3.Distance(transform.position, target.position) <= distanceThresholdForAttack)
         {
             enemyStates = EnemyStates.attack;
         }
         else
-       if ((health > 0 && !(Vector3.Distance(transform.position, target.position) <= distanceThresholdForAttack)))
+        if ((health > 0 && !(Vector3.Distance(transform.position, target.position) <= distanceThresholdForAttack)))
         {
             enemyStates = EnemyStates.follow;
         }
-        else
+        if(health == 0)
         {
             enemyStates = EnemyStates.dead;
         }
@@ -69,12 +78,18 @@ public class Enemy : MonoBehaviour {
     }
     public virtual void OnDeath(float WaitBeforeDestroying)
     {
-        Destroy(this, WaitBeforeDestroying);
+        Destroy(this.gameObject, WaitBeforeDestroying);
     }
-    public virtual void OnAttack() { }
-    public virtual void OnFollow() { }
-    public void DoDamage(float damage)
+    public virtual void OnAttack()
     {
-        health -= damage;
+        canAttack = false;
+
+        Invoke("UpdateCanAttack", _attackTimer);
+    }
+    public virtual void OnFollow() { }
+
+    void UpdateCanAttack()
+    {
+        canAttack = true;
     }
 }

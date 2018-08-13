@@ -4,9 +4,7 @@ using UnityEngine;
 using Pathfinding;
 
 public class MiteEnemy : Enemy {
-
-
-    public float timer = 1f;
+    
     public float breakTime;
 
     public override void Start()
@@ -36,17 +34,12 @@ public class MiteEnemy : Enemy {
     public override void OnAttack()
     {
         canMove = false;
-        canAttack = false;
-
-        Invoke("UpdateCanAttack", timer);
+        base.OnAttack();
     }
     public override void OnDeath(float WaitBeforeDestroying)
     {
         base.OnDeath(WaitBeforeDestroying);
     }
-    void UpdateCanAttack()
-    {
-        canAttack = true;
-    }
+    
 }
 
