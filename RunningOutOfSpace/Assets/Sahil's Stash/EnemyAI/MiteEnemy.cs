@@ -5,14 +5,13 @@ using Pathfinding;
 
 public class MiteEnemy : Enemy {
 
-
-    public float timer = 1f;
-    public float breakTime;
+    public float attackAnimationTime = 0.75f;
+    public float timeBetweenWriggles = 1f;
 
     public override void Start()
     {
         base.Start();
-        InvokeRepeating("MiteMove", breakTime, breakTime);
+        InvokeRepeating("MiteMove", timeBetweenWriggles, timeBetweenWriggles);
     }
     public override void Update()
     {
@@ -30,7 +29,7 @@ public class MiteEnemy : Enemy {
     public void MiteMove()
     {
         canMove = !canMove;
-        Debug.Log("Changed");
+        //Debug.Log("Changed");
       //StartCoroutine(WaitAndGo());
     }
     public override void OnAttack()
@@ -38,12 +37,19 @@ public class MiteEnemy : Enemy {
         canMove = false;
         canAttack = false;
 
-        Invoke("UpdateCanAttack", timer);
+        //HealthAndVariables.DoDamage(5, target); //TODO  replace with damage var 
+        target.GetComponent<HealthAndVariables>().TakeDamage(damage);
+
+        Invoke("UpdateCanAttack", attackAnimationTime);
     }
+
+    /*
     public override void OnDeath(float WaitBeforeDestroying)
     {
         base.OnDeath(WaitBeforeDestroying);
     }
+    */
+
     void UpdateCanAttack()
     {
         canAttack = true;

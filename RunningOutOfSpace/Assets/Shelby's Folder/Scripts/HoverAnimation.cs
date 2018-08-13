@@ -30,7 +30,12 @@ public class HoverAnimation : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     public void StartGame()
     {
-        SceneManager.LoadScene("Game");
+        Invoke("Fade", 0.25f);
+        transform.parent.transform.parent.GetComponent<Animator>().SetTrigger("fade");
+    }
+    public void Fade()
+    {
+        SceneManager.LoadScene("CharacterCreation");
     }
     public void OpenOptions()
     {
