@@ -12,7 +12,7 @@ public class Timer : MonoBehaviour {
     void Start()
     {
         //3600 seconds in an hour
-        timer = timer * 60;
+        timer = 90;
         timerText = GetComponent<Text>();
     }
 

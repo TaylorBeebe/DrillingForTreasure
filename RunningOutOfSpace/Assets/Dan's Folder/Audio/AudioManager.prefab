@@ -1,0 +1,276 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1760295163322966}
+  m_IsPrefabAsset: 1
+--- !u!1 &1760295163322966
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4077610436245248}
+  - component: {fileID: 114334725813622908}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4077610436245248
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1760295163322966}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.03269913, y: 0.44283724, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114334725813622908
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1760295163322966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4c8cd9c4e97cc345b01ee6ee0096087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: AdMusic1
+    clip: {fileID: 8300000, guid: 41f61e2585a910644b71cb42ed49850c, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: AdMusic2
+    clip: {fileID: 8300000, guid: 6be9ef047d67e7a45886c52344a1f853, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: LevelMusic
+    clip: {fileID: 8300000, guid: 23be73bf689f0274f972d635d6a7357d, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: MenuTheme
+    clip: {fileID: 8300000, guid: 8d2ebece47523a446b2c449a8ac1e5bd, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: PanicMusic
+    clip: {fileID: 8300000, guid: b65d633897b377c40a281e69ae61c818, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: VictoryMusic
+    clip: {fileID: 8300000, guid: 029535b6053d0574e8a00f7f1397ae76, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: PopUpEnter
+    clip: {fileID: 8300000, guid: 91d02f81bfe8f2542895ee942bd684dc, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: WarningVoice
+    clip: {fileID: 8300000, guid: a3893824ab83be74c9b9c547a526c891, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Elephant
+    clip: {fileID: 8300000, guid: 74b4bd58907e86d4fa54e378dfe3cdaa, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Monkey
+    clip: {fileID: 8300000, guid: dd763dee88941f947840dc745176a3fc, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Horse
+    clip: {fileID: 8300000, guid: 146a43adbeb81134eb57038120e88197, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Drilling
+    clip: {fileID: 8300000, guid: 52804c9a3f50f1142afe8d04533cc72b, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: EnemyHurt
+    clip: {fileID: 8300000, guid: 4fd186eec87122444b13aa98eba2f7a0, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: EnemyDeath1
+    clip: {fileID: 8300000, guid: dd2393f175fff634299240d98e930038, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: EnemyDeath2
+    clip: {fileID: 8300000, guid: 50087314fc5b22c47adb1d728f2fd65c, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: EnemyDeath3
+    clip: {fileID: 0}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: EnemyDeath4
+    clip: {fileID: 8300000, guid: 71321ea9ff2435e4e987344392b170d4, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: EnemyDeath5
+    clip: {fileID: 8300000, guid: bf72b172fc98e8146896b4031fc4c93e, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: EnemyDeath6
+    clip: {fileID: 8300000, guid: 85d9a324869d9b842a61a43960fb4ccf, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Laser1
+    clip: {fileID: 8300000, guid: 6b39d02f4b17704499922734b4840651, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Laser2
+    clip: {fileID: 8300000, guid: ca519a6102420fb48ab257fc48daa325, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Laser3
+    clip: {fileID: 8300000, guid: 2f3a59d4781b7344b8dbfe91bc303740, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Laser4
+    clip: {fileID: 8300000, guid: de7148291eb5afc4981208365c936d72, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Laser5
+    clip: {fileID: 8300000, guid: 07e8cfb5be441e84bb2290377a1b4adc, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: PlayerHurt1
+    clip: {fileID: 8300000, guid: b92d9dffc0af3b94db2f40a502a7f11c, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: PlayerHurt2
+    clip: {fileID: 8300000, guid: 256d04df7803fc741ab404c81a520016, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: PlayerHurt3
+    clip: {fileID: 8300000, guid: 144729769833c8c49999ddf7ce0f88d9, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: PlayerDeath1
+    clip: {fileID: 8300000, guid: 55b17af9c6c35f44c9f14bf1427d08c0, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: PlayerDeath2
+    clip: {fileID: 8300000, guid: 7d03baccaedda6746a40caefa9171909, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: PlayerDeath3
+    clip: {fileID: 8300000, guid: 6770b35923335ef47883cc2779b05ce7, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: PlayerDeath4
+    clip: {fileID: 8300000, guid: 1734da77fc3a1cd488fb8c287a5130d2, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: PlayerFootstep1
+    clip: {fileID: 8300000, guid: 30ba9e37a1e26dc4f85c015be4459cef, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: PlayerFootstep2
+    clip: {fileID: 8300000, guid: a3dfc4d03210bfa45a45833628cd8917, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: PlayerFootstep3
+    clip: {fileID: 8300000, guid: 3a76c7a92cf36d64d9f45171ea4c1208, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: PlayerFootstep4
+    clip: {fileID: 8300000, guid: 4af9e44497d48ba48b5d4c4318a11767, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: PlayerFootstep5
+    clip: {fileID: 8300000, guid: 212a515535b024b47adb7fedc5883619, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: PlayerFootstep6
+    clip: {fileID: 8300000, guid: 2305d7613d438b14c97eb5106aecb013, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
