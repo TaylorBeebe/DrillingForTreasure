@@ -21,6 +21,9 @@ GameObject:
   - component: {fileID: 4646196113741496}
   - component: {fileID: 212605966165301944}
   - component: {fileID: 58550849838167058}
+  - component: {fileID: 210748595209009310}
+  - component: {fileID: 58723649023302620}
+  - component: {fileID: 114329749567559114}
   m_Layer: 0
   m_Name: Stalagmites_3 1
   m_TagString: Untagged
@@ -56,6 +59,42 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.5}
   serializedVersion: 2
   m_Radius: 0.53
+--- !u!58 &58723649023302620
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1878289682313908}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.5}
+  serializedVersion: 2
+  m_Radius: 0.53
+--- !u!114 &114329749567559114
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1878289682313908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a045a6f48b9fe204f9cd66642378b59d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!210 &210748595209009310
+SortingGroup:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1878289682313908}
+  m_Enabled: 1
+  m_SortingLayerID: -2067773297
+  m_SortingLayer: 1
+  m_SortingOrder: 0
 --- !u!212 &212605966165301944
 SpriteRenderer:
   m_ObjectHideFlags: 1

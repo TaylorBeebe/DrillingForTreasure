@@ -21,6 +21,9 @@ GameObject:
   - component: {fileID: 4127961789961168}
   - component: {fileID: 212956099918351978}
   - component: {fileID: 58901418653512114}
+  - component: {fileID: 210205736148980110}
+  - component: {fileID: 58483696432622524}
+  - component: {fileID: 114731475690045652}
   m_Layer: 0
   m_Name: Stalagmites_2 1
   m_TagString: Untagged
@@ -41,6 +44,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &58483696432622524
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1193539751190594}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -0.58}
+  serializedVersion: 2
+  m_Radius: 0.71
 --- !u!58 &58901418653512114
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -56,6 +74,27 @@ CircleCollider2D:
   m_Offset: {x: 0, y: -0.58}
   serializedVersion: 2
   m_Radius: 0.71
+--- !u!114 &114731475690045652
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1193539751190594}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a045a6f48b9fe204f9cd66642378b59d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!210 &210205736148980110
+SortingGroup:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1193539751190594}
+  m_Enabled: 1
+  m_SortingLayerID: -2067773297
+  m_SortingLayer: 1
+  m_SortingOrder: 0
 --- !u!212 &212956099918351978
 SpriteRenderer:
   m_ObjectHideFlags: 1
