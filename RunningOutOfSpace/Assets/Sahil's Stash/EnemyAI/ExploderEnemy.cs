@@ -20,6 +20,7 @@ public class ExploderEnemy : Enemy
     {
         base.Update();
         aiAgent.canMove = canMove;
+        //aiAgent.canMove = true;
     }
 
     public override void OnFollow()
@@ -45,9 +46,13 @@ public class ExploderEnemy : Enemy
 
         for (int i = 0; i < miteCount; i++)
         {
-            GameObject miteGO = Instantiate(mite);
-            miteGO.transform.position = transform.position;
+            Invoke("Spawn", i * 0.15f);
         }
+    }
+
+    void Spawn()
+    {
+        Instantiate(mite, transform.position, Quaternion.identity);
     }
 
     void UpdateCanAttack()

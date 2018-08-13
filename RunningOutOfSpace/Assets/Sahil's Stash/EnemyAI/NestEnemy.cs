@@ -25,9 +25,9 @@ public class NestEnemy : Enemy
         Invoke("SpawnCreature", delay);
     }
 
-    void SpawnCreature(float delay)
+    void SpawnCreature()
     {
-        Instantiate(creatureToSpawn);
+        Instantiate(creatureToSpawn, this.transform.position, Quaternion.identity);
         QueueSpawn();
     }
 

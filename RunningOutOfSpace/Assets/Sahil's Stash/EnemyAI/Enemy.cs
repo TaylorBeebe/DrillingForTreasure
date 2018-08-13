@@ -28,6 +28,8 @@ public class Enemy : MonoBehaviour {
     public EnemyStates enemyStates;
     public virtual void Start()
     {
+        canMove = true;
+
         aiAgent = GetComponent<AIPath>();
         AIDestination = GetComponent<AIDestinationSetter>();
         enemyManager = FindObjectOfType<EnemyManager>();
