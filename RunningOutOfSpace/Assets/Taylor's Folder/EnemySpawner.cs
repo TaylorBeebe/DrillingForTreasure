@@ -196,7 +196,7 @@ public class EnemySpawner : MonoBehaviour
     private string[] easyEnemies = { "mites", "stickers" };
 
     //Medium enemies in game
-    private string[] mediumEnemies = { "exploders", "spitters" };
+    private string[] mediumEnemies = { "exploders", "spitters", "nest" };
 
     //Hard enemies in game
     private string[] hardEnemies = { "demolishers" };
@@ -213,9 +213,13 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
 
-        levelNumber = PlayerPrefsHandler.GetMinerals();
+
+        levelNumber = gameObject.GetComponent<CharacterController2D>().GetLevelCurrentlyOn();
+        
 
         timeBetweenWaves = CalculateTimeBetweenWaves();
+
+        //timeBetweenWaves = 1f;
 
         //initialize the wave countdown max
         waveCountdown = timeBetweenWaves;
@@ -243,26 +247,40 @@ public class EnemySpawner : MonoBehaviour
             enemyIntroductionOrder.Push(easyEnemies[x]);
         }
 
-        waveForLevel.AddEasyEnemiesAvailableForWaves(enemyIntroductionOrder.Pop());
+        Debug.Log(enemyIntroductionOrder.Count);
 
+        waveForLevel.AddEasyEnemiesAvailableForWaves(enemyIntroductionOrder.Pop());
 
         if (levelNumber == 3 || levelNumber == 4)
         {
-
+                waveForLevel.AddEasyEnemiesAvailableForWaves(enemyIntroductionOrder.Pop());
         }
         else if (levelNumber == 5 || levelNumber == 6)
         {
-
+                waveForLevel.AddEasyEnemiesAvailableForWaves(enemyIntroductionOrder.Pop());
+                waveForLevel.AddMediumEnemiesAvailableForWaves(enemyIntroductionOrder.Pop());
+            
         }
         if (levelNumber == 7 || levelNumber == 8)
         {
-
+                waveForLevel.AddEasyEnemiesAvailableForWaves(enemyIntroductionOrder.Pop());
+                waveForLevel.AddMediumEnemiesAvailableForWaves(enemyIntroductionOrder.Pop());
+                waveForLevel.AddMediumEnemiesAvailableForWaves(enemyIntroductionOrder.Pop());
         }
         if (levelNumber == 9 || levelNumber == 10)
         {
-
+                waveForLevel.AddEasyEnemiesAvailableForWaves(enemyIntroductionOrder.Pop());
+                waveForLevel.AddMediumEnemiesAvailableForWaves(enemyIntroductionOrder.Pop());
+                waveForLevel.AddMediumEnemiesAvailableForWaves(enemyIntroductionOrder.Pop());
+                waveForLevel.AddMediumEnemiesAvailableForWaves(enemyIntroductionOrder.Pop());
+         }
+        else if (levelNumber >= 11) {
+                waveForLevel.AddEasyEnemiesAvailableForWaves(enemyIntroductionOrder.Pop());
+                waveForLevel.AddMediumEnemiesAvailableForWaves(enemyIntroductionOrder.Pop());
+                waveForLevel.AddMediumEnemiesAvailableForWaves(enemyIntroductionOrder.Pop());
+                waveForLevel.AddMediumEnemiesAvailableForWaves(enemyIntroductionOrder.Pop());
+                waveForLevel.AddHardEnemiesAvailableForWaves(enemyIntroductionOrder.Pop());
         }
-
 
         //initialize array of enemies
         Enemyarray = new GameObject[] {
@@ -483,7 +501,6 @@ public class EnemySpawner : MonoBehaviour
         string[] enemyArray = new string[numEasyEnemies + numHardEnemies + numMediumEnemies];
 
         int index = 0;
-
         for (int x = 0; x < numEasyEnemies; x++)
         {
             string enemy = wave.GetEnemy("easy");
@@ -498,11 +515,14 @@ public class EnemySpawner : MonoBehaviour
         }
         for (int x = 0; x < numHardEnemies; x++)
         {
-            string enemy = wave.GetEnemy("hard");
-            enemyArray[index] = enemy;
-            index++;
+            if (levelNumber >= 11)
+            {
+                string enemy = wave.GetEnemy("hard");
+                enemyArray[index] = enemy;
+                index++;
+            }
         }
-
+        
         shuffle(enemyArray);
         for (int x = 0; x < enemyArray.Length; x++)
         {
@@ -665,19 +685,21 @@ public class EnemySpawner : MonoBehaviour
 
         switch (name)
         {
-            case "mite":
+
+
+            case "mites":
                 return Enemyarray[0];
               
-            case "sticker":
+            case "stickers":
                 return Enemyarray[1];
                 
-            case "spitter":
+            case "spitters":
                 return Enemyarray[2];
                 
-            case "demolisher":
+            case "demolishers":
                 return Enemyarray[3];
                
-            case"exploder":
+            case"exploders":
                 return Enemyarray[4];
 
             default:
