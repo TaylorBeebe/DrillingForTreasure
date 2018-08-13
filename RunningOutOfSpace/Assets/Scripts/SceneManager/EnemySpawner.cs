@@ -320,12 +320,12 @@ public class EnemySpawner : MonoBehaviour
 
         int indexLen = waveMakeup.Count;
 
-        
 
+        Vector2 spawnLocation;
         for (int i = 0; i < indexLen; i++)
         {
             //Debug.Log("Index: " + i);
-            Vector2 spawnLocation = GetRandomSpawnLocation();
+            spawnLocation = GetRandomSpawnLocation();
             string enemy = waveMakeup.Pop();
             //Debug.Log("Count: " + waveMakeup.Count);
             //Debug.Log("Popping: " + enemy);
@@ -385,7 +385,7 @@ public class EnemySpawner : MonoBehaviour
     void SpawnEnemy(string enemyToSpawn, Vector2 spawnLocation)
     {
 
-        Debug.Log("Spawning " + enemyToSpawn + " at " + spawnLocation);
+        //Debug.Log("Spawning " + enemyToSpawn + " at " + spawnLocation);
 
         Instantiate(Enemy1, spawnLocation, Quaternion.identity);
 
@@ -426,14 +426,14 @@ public class EnemySpawner : MonoBehaviour
         if (whichNumberToMax == 0)
         {
             //Debug.Log("returning returning maxed width");
-            returnValue = new Vector2(((mainCamera.transform.position.x + cameraWidth) * randomizedValue) + randomizedValue, mainCamera.transform.position.y + Random.Range(cameraHeight * -1, cameraHeight));
+            returnValue = new Vector2(((mainCamera.transform.position.x + cameraWidth) * randomizedValue)  + (Random.Range(10, 31) * randomizedValue), mainCamera.transform.position.y + Random.Range(cameraHeight * (-1), cameraHeight));
 
         }
         //otherwise, max out camera height value
         else
         {
             //Debug.Log("returning maxed height");
-            returnValue = new Vector2(mainCamera.transform.position.x + Random.Range(cameraWidth * (-1), cameraWidth), ((mainCamera.transform.position.y + cameraHeight) * randomizedValue) + randomizedValue);
+            returnValue = new Vector2(mainCamera.transform.position.x + Random.Range(cameraWidth * (-1), cameraWidth), (((mainCamera.transform.position.y + cameraHeight) * randomizedValue)) + (Random.Range(10, 31) * randomizedValue));
 
         }
         //Debug.Log("Returning: " + returnValue);
