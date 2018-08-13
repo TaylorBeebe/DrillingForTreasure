@@ -51,7 +51,6 @@ public class CharacterController2D : MonoBehaviour {
     private bool _canShoot = true;
 
 	void Start () {
-        maxHealth = hav.health;
         ValueCheck();
         maxCharge = charge;
         rb2d = GetComponent<Rigidbody2D>();
@@ -61,7 +60,8 @@ public class CharacterController2D : MonoBehaviour {
         anim = GetComponent<Animator>();
         armPivot = GameObject.Find("Arm Pivot");
         hav = gameObject.GetComponent<HealthAndVariables>();
-	}
+        maxHealth = hav.health;
+    }
 	
 	void Update()
     {
@@ -72,6 +72,7 @@ public class CharacterController2D : MonoBehaviour {
         CamMoveToPlayer();
         CheckDeath();
         GunSetRotation();
+        UIUpdate();
     }
 
     void PlayerMovement()
@@ -111,11 +112,6 @@ public class CharacterController2D : MonoBehaviour {
             charge = charge + (maxCharge * rechargeRate);
         else if (charge > maxCharge)
             charge = maxCharge;
-
-        float uiInfo = charge / maxCharge;
-        uiInfo *= 100;
-        Mathf.Round(uiInfo);
-        uiInfo /= 100;
     }
 
     void UIUpdate()
