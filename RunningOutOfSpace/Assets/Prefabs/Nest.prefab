@@ -91,7 +91,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 0.17, y: 0.1}
+  m_Size: {x: 0.17, y: 0.13}
   m_Direction: 1
 --- !u!95 &95390989471442216
 Animator:
@@ -229,11 +229,14 @@ MonoBehaviour:
   canMove: 0
   canAttack: 0
   damage: 0
+  enemyManager: {fileID: 0}
   enemyStates: 0
   minSpawnDelay: 5
   maxSpawnDelay: 8
   creatureToSpawn: {fileID: 1130405574055168, guid: e535078598921a841a6e1a1f8e76aaee,
     type: 2}
+  deathSprite: {fileID: 21300002, guid: 5f3c0b4e8ab098d4c82f55b52bd79a5c, type: 3}
+  attackSprite: {fileID: 0}
   attackAnimationTime: 0.5
 --- !u!210 &210045303632515838
 SortingGroup:

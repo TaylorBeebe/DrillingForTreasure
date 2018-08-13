@@ -5,27 +5,37 @@ using Pathfinding;
 
 public class MiteEnemy : Enemy {
 
-    public float attackAnimationTime = 0.75f;
+    public float timeBetweenAttacks = 0.75f;
     public float timeBetweenWriggles = 1f;
     bool wasHit = false;
+    SpriteRenderer renderer;
+    public Sprite deathSprite;
+    public Sprite attackSprite;
 
     public override void Start()
     {
         base.Start();
         InvokeRepeating("MiteMove", timeBetweenWriggles, timeBetweenWriggles);
+        renderer = this.gameObject.GetComponentInChildren<SpriteRenderer>();
     }
     public override void Update()
     {
         base.Update();
-        /*
-        if (wasHit) {
-            this.gameObject.GetComponentInChildren<SpriteRenderer>().color = new Color(255, 255, 255);
-            wasHit = false;
-        }
-        */
+        
         aiAgent.canMove = canMove;
        // AIDestination.target = target;
         
+    }
+
+    public void LateUpdate() {
+        if (wasHit)
+        {
+            wasHit = false;
+        }
+        else
+        {
+            renderer.color = Color.white;
+        }
     }
     public override void OnFollow()
     {
@@ -36,22 +46,26 @@ public class MiteEnemy : Enemy {
     {
         canMove = !canMove;
         //Debug.Log("Changed");
-      //StartCoroutine(WaitAndGo());
+        //StartCoroutine(WaitAndGo());
     }
     public override void OnAttack()
     {
-        canMove = false;
-        canAttack = false;
+        if (canAttack)
+        {
+            //canMove = false;
+            canAttack = false;
 
-        //HealthAndVariables.DoDamage(5, target); //TODO  replace with damage var 
-        target.GetComponent<HealthAndVariables>().TakeDamage(damage);
-
-        Invoke("UpdateCanAttack", attackAnimationTime);
+            //HealthAndVariables.DoDamage(5, target); //TODO  replace with damage var 
+            target.GetComponent<HealthAndVariables>().TakeDamage(damage);
+            Debug.Log("Mite Dealing Damage to Player");
+            Invoke("UpdateCanAttack", timeBetweenAttacks);
+        }
     }
     public override void OnDeath()
     {
         base.OnDeath();
         CancelInvoke();
+        renderer.sprite = deathSprite;
         Debug.Log("Mite Died");
     }
     
@@ -63,12 +77,13 @@ public class MiteEnemy : Enemy {
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        
+
         if (other.tag == "Bullet")
         {
             other.GetComponent<Bullet>().Destroy(other.transform.position);
             this.GetComponent<HealthAndVariables>().TakeDamage(20);
-            //this.gameObject.GetComponentInChildren<SpriteRenderer>().color = new Color(245, 159, 159);
-            this.gameObject.GetComponentInChildren<SpriteRenderer>().color = Color.white;
+            renderer.color = Color.red;
             wasHit = true;
         }
     }

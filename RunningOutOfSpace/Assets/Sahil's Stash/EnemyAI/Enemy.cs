@@ -46,14 +46,16 @@ public class Enemy : MonoBehaviour {
 
         // Fetch health from appropriate script
         health = healthAndVariables.health;
-
+        
         if (health <= 0)
         {
             enemyStates = EnemyStates.dead;
         }
-        else if (Vector3.Distance(transform.position, target.position) <= distanceThresholdForAttack)
+        else if (Vector2.Distance(transform.position, target.position) <= distanceThresholdForAttack)
         {
             enemyStates = EnemyStates.attack;
+            canAttack = true;
+            Debug.Log("Switching to attack state");
         }
         else //if (!(Vector3.Distance(transform.position, target.position) <= distanceThresholdForAttack))
         {
@@ -66,13 +68,14 @@ public class Enemy : MonoBehaviour {
                 OnFollow();
                 break;
             case EnemyStates.dead:
+                //Debug.Log(Vector2.Distance(transform.position, target.position));
                 OnDeath();
                 Die();
                 break;
             case EnemyStates.attack:
                 if (canAttack)
                 {
-                    Debug.Log("Attacking " + target.name + " for " + damage + " damage"); //## where is damage stored?
+                    //Debug.Log("Attacking " + target.name + " for " + damage + " damage");
                     OnAttack();
                 }
                 break;
@@ -95,10 +98,11 @@ public class Enemy : MonoBehaviour {
     }
 
     public virtual void OnDeath() {
-        Die();
+        enemyStates = EnemyStates.dead;
         
     }
-    public virtual void OnAttack() { }
+    public virtual void OnAttack() {
+    }
     public virtual void OnFollow() { }
 
 }

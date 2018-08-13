@@ -41,8 +41,9 @@ public class CharacterController2D : MonoBehaviour {
     [HideInInspector] public bool m_FacingRight = true;
     private bool _isDead = false;
     private bool _canShoot = true;
+    HealthAndVariables healthAndVariables;
 
-	void Start () {
+    void Start () {
         ValueCheck();
         maxCharge = charge;
         rb2d = GetComponent<Rigidbody2D>();
@@ -51,16 +52,21 @@ public class CharacterController2D : MonoBehaviour {
         sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         armPivot = GameObject.Find("Arm Pivot");
-	}
+        healthAndVariables = GetComponent<HealthAndVariables>();
+    }
 	
 	void Update()
     {
+
+        this.health = healthAndVariables.health;
+
         PlayerMovement();
         PlayerShoot();
         SetAnimation();
         CamMoveToPlayer();
         CheckDeath();
         GunSetRotation();
+        
     }
 
     void PlayerMovement()
