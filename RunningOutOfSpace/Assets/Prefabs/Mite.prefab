@@ -135,7 +135,8 @@ MonoBehaviour:
   timeBetweenAttacks: 0.75
   timeBetweenWriggles: 1
   deathSprite: {fileID: 21300006, guid: 802a30dce928b7143b4511cf545d075c, type: 3}
-  attackSprite: {fileID: 0}
+  attackSprite: {fileID: 21300004, guid: 802a30dce928b7143b4511cf545d075c, type: 3}
+  aliveSprite: {fileID: 21300000, guid: 802a30dce928b7143b4511cf545d075c, type: 3}
 --- !u!114 &114660844918324072
 MonoBehaviour:
   m_ObjectHideFlags: 1

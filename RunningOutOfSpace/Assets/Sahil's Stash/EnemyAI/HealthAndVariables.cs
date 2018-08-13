@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class HealthAndVariables : MonoBehaviour {
-    [Range(0,1000)]
+    [Range(0,10000)]
     public float health = 100f;
 
     public void TakeDamage(float damage)
