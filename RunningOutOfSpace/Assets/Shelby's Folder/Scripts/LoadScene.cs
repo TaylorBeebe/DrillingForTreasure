@@ -18,8 +18,8 @@ public class LoadScene : MonoBehaviour, IPointerDownHandler
     {
         if (SceneToLoad == "Final Mock Up")
         {
-            print("test");
             PlayerPrefs.SetInt("FloorPers", 1);
+            print(PlayerPrefs.GetInt("FloorPers"));
         }
         SceneManager.LoadScene(SceneToLoad);
     }

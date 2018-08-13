@@ -24,7 +24,7 @@ public class Bullet : MonoBehaviour {
         rb2d = gameObject.GetComponent<Rigidbody2D>();
         cc2d = GameObject.Find("Player").GetComponent<CharacterController2D>();
         facingRight = cc2d.m_FacingRight;
-        transform.position = GameObject.Find("Player").transform.position;
+        transform.position = GameObject.Find("Gun Tip").transform.position;
         if(cc2d.m_FacingRight)transform.eulerAngles = GameObject.Find("Gun Tip").transform.eulerAngles;
         if (!cc2d.m_FacingRight)transform.eulerAngles = -GameObject.Find("Gun Tip").transform.eulerAngles;
         if (!cc2d.m_FacingRight)
