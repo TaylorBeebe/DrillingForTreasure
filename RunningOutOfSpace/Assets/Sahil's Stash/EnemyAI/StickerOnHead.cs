@@ -39,7 +39,7 @@ public class StickerOnHead : MonoBehaviour {
             player.GetComponent<HealthAndVariables>().TakeDamage(damage);
             canAttack = false;
             Invoke("UpdateCanAttack", timeBetweenAttacks);
-            print("BITE!");
+            //print("BITE!");
         }
     }
 

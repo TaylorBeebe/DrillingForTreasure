@@ -10,13 +10,13 @@ public class Spittle : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        print("Despawn time is: " + despawnTime);
+        //print("Despawn time is: " + despawnTime);
         Destroy(gameObject, despawnTime);
     }
 
     public void InheritValues(int _damage, float _speed, float _despawnTime)
     {
-        print("Inheriting!");
+        //print("Inheriting!");
         damage = _damage;
         speed = _speed;
         despawnTime = _despawnTime;
