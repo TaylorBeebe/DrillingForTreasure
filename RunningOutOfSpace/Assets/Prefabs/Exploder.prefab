@@ -154,7 +154,7 @@ MonoBehaviour:
   AIDestination: {fileID: 0}
   target: {fileID: 0}
   health: 100
-  distanceThresholdForAttack: 0
+  distanceThresholdForAttack: 2
   canMove: 0
   canAttack: 0
   damage: 15
