@@ -511,7 +511,7 @@ MonoBehaviour:
   adSpawnDeley: 0
   adSpawnWindowMin: 0
   adSpawnWindowMax: 1
-  stopSpawning: 0
+  stopSpawning: 1
   timerAdMin: 5
   timerAdMax: 9
   shiftsToActivate: 5
