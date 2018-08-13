@@ -18,7 +18,12 @@ public class Timer : MonoBehaviour {
 
     void Update()
     {
-
+        if(timer <= Mathf.Epsilon)
+        {
+            int fl = PlayerPrefs.GetInt("FloorPers");
+            fl += 1;
+            PlayerPrefs.SetInt("FloorPers", fl);
+        }
         timer -= Time.deltaTime;
         minutes = Mathf.Floor((timer % 3600) / 60);
         seconds = Mathf.Floor(timer % 60);
