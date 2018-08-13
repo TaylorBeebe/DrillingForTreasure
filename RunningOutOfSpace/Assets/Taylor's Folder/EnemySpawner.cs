@@ -211,11 +211,10 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
 
-        levelNumber = 1;
+        levelNumber = gameObject.GetComponent<CharacterController2D>().GetLevelCurrentlyOn();
 
-        //timeBetweenWaves = CalculateTimeBetweenWaves();
-
-        timeBetweenWaves = 1f;
+        timeBetweenWaves = CalculateTimeBetweenWaves();
+        
         
         //initialize the wave countdown max
         waveCountdown = timeBetweenWaves;
@@ -329,14 +328,13 @@ public class EnemySpawner : MonoBehaviour
             string enemy = waveMakeup.Pop();
             //Debug.Log("Count: " + waveMakeup.Count);
             //Debug.Log("Popping: " + enemy);
-            
             SpawnEnemy(enemy, spawnLocation);
             yield return new WaitForSeconds(1f / wave.GetRate());
             
         }
 
         //FOR TESTING COMMENT OUT LATER
-        ///*
+        /*
         levelNumber++;
         
         if (levelNumber % 2 == 1 && levelNumber <= 9) {
@@ -360,13 +358,13 @@ public class EnemySpawner : MonoBehaviour
 
         //timeBetweenWaves = CalculateTimeBetweenWaves();
         
-        timeBetweenWaves = 1f;
         
         //initialize the wave countdown max
         waveCountdown = timeBetweenWaves;
 
         enemiesPerWave = CalculateEnemiesPerWave();
-        //*/
+        */
+
         state = SpawnState.COUNTING;
 
         //Debug.Log("SpawnState = Counting");
