@@ -24,6 +24,7 @@ public class PlayerSettings : MonoBehaviour {
         playerName = canv.returnName();
         characterSpriteID = canv.returnSpriteID();
         PlayerPrefs.SetInt("FloatPers", 1);
+        print("test");
         SceneManager.LoadScene(gameSceneBuildIndex);
     }
 }

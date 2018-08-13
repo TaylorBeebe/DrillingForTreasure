@@ -16,6 +16,11 @@ public class LoadScene : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        if (SceneToLoad == "Final Mock Up")
+        {
+            print("test");
+            PlayerPrefs.SetInt("FloorPers", 1);
+        }
         SceneManager.LoadScene(SceneToLoad);
     }
 }
