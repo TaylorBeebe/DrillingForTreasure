@@ -129,7 +129,7 @@ MonoBehaviour:
   distanceThresholdForAttack: 2
   canMove: 0
   canAttack: 0
-  damage: 5
+  damage: 1
   enemyManager: {fileID: 0}
   enemyStates: 0
   timeBetweenAttacks: 1.2
