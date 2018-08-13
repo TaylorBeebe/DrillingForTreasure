@@ -6,11 +6,18 @@ public class AudioTestScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        FindObjectOfType<AudioManager>().Play("AdMusic1");
+        Invoke("Play", 1f);
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    void Play ()
+    {
+        FindObjectOfType<AudioManager>().Play("AdMusic1");
+        print("Commence!");
+    }
+    
+
+    // Update is called once per frame
+    void Update () {
 		
 	}
 }

@@ -31,10 +31,11 @@ public class AudioManager : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        sfxMute = PlayerPrefsHandler.GetSFXMute();
-        musicMute = PlayerPrefsHandler.GetMusicMute();
+        sfxMute = false; //  PlayerPrefsHandler.GetSFXMute();
+        musicMute = false; // PlayerPrefsHandler.GetMusicMute();
 
-        SetMusic("MenuMusic", true);
+        Play("AdMusic1");
+        //SetMusic("MenuMusic", true);
         //PlayOneShot(menuMusic.clip);
         //print("I should be playing " + menuMusic.clip.name + "!");
     }
@@ -90,6 +91,7 @@ public class AudioManager : MonoBehaviour
 
     public void Play(string name)
     {
+
         if (sfxMute) return;
 
         Sound s = Array.Find(sounds, sound => sound.name == name);
@@ -99,7 +101,7 @@ public class AudioManager : MonoBehaviour
             return;
         }
         s.source.Play();
-
+        print("Play!");
 
     }
 
