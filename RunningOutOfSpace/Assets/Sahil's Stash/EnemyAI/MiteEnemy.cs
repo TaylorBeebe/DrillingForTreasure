@@ -16,7 +16,7 @@ public class MiteEnemy : Enemy {
     {
         base.Start();
         InvokeRepeating("MiteMove", timeBetweenWriggles, timeBetweenWriggles);
-        renderer = this.gameObject.GetComponentInChildren<SpriteRenderer>();
+        renderer = gameObject.GetComponentInChildren<SpriteRenderer>();
     }
     public override void Update()
     {

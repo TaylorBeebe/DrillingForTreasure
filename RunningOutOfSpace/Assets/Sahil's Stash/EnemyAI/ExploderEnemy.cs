@@ -84,7 +84,7 @@ public class ExploderEnemy : Enemy
         if (other.tag == "Bullet")
         {
             other.GetComponent<Bullet>().Destroy(other.transform.position);
-            this.GetComponent<HealthAndVariables>().TakeDamage(20);
+            GetComponent<HealthAndVariables>().TakeDamage(20);
             renderer.color = Color.red;
             wasHit = true;
         }
