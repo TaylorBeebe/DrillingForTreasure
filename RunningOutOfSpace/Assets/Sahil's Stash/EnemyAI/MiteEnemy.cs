@@ -60,7 +60,6 @@ public class MiteEnemy : Enemy {
         {
             canAttack = false;
             AttackAnimation();
-            //HealthAndVariables.DoDamage(5, target); //TODO  replace with damage var 
             target.GetComponent<HealthAndVariables>().TakeDamage(damage);
             Debug.Log("Mite Dealing Damage to Player");
             Invoke("UpdateCanAttack", timeBetweenAttacks);

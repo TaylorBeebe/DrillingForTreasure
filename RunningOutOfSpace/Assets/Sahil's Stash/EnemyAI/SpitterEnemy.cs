@@ -36,7 +36,7 @@ public class SpitterEnemy : Enemy
     {
         base.OnAttack();
 
-        //if (!canAttack) return;
+        if (!canAttack) return;
 
         Spit();
         //target.GetComponent<HealthAndVariables>().TakeDamage(damage);
@@ -74,8 +74,6 @@ public class SpitterEnemy : Enemy
         else if (targetPoint.x >= spawnPoint.x && targetPoint.y <= spawnPoint.y) zDegs = 90f - (zDegs + 180);//zDegs += 180;
         else if (targetPoint.x >= spawnPoint.x && targetPoint.y >= spawnPoint.y) zDegs += 270;
 
-
-
         ////GameObject go = Instantiate(spittle, spawnPoint, Quaternion.LookRotation(new Vector3(toTarget.x, 0f, 0f)));
         GameObject go = Instantiate(spittle, spawnPoint, Quaternion.Euler(0, 0, zDegs)); //Quaternion.Euler(toTarget.x, 0, 1));  
         //GameObject go = Instantiate(spittle, spawnPoint, Quaternion.LookRotation(new Vector3(toTarget.x, 0f, 0f)));
@@ -90,6 +88,7 @@ public class SpitterEnemy : Enemy
     void UpdateCanAttack()
     {
         canAttack = true;
+        canMove = true;
     }
 }
 

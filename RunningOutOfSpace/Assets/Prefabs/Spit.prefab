@@ -21,8 +21,8 @@ GameObject:
   - component: {fileID: 4586867972019018}
   - component: {fileID: 212491025583573108}
   - component: {fileID: 50645880309205392}
-  - component: {fileID: 114633818082323964}
   - component: {fileID: 210925120036364044}
+  - component: {fileID: 114755574678253240}
   m_Layer: 0
   m_Name: Spit
   m_TagString: Untagged
@@ -63,6 +63,12 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &114755574678253240
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1217639456018036}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 84af3b0ca9e80c2459e6b834adb52274, type: 3}
