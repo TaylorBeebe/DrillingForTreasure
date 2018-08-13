@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Shelby's Folder/GameOver.unity
     guid: f9094a9b0d57b054b9e8210942196e43
+  - enabled: 1
+    path: Assets/Taylor's Folder/Level Mockup.unity
+    guid: ea6283cb98d6e764789ad2e416605cb5
   m_configObjects: {}
