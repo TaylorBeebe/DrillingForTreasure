@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AdSpawner : MonoBehaviour {
 
@@ -22,6 +23,11 @@ public class AdSpawner : MonoBehaviour {
     public int shiftsToActivate;
     public float shiftResetTime;
     int stickyPress;
+    public Image ShiftAlert;
+    public bool clinged;
+    //0 == None
+    //1 == Up
+    //2 == Down
 
     [Header("Captcha Settings")]
     public string captchaTypeText;
@@ -36,12 +42,17 @@ public class AdSpawner : MonoBehaviour {
     void Start()
     {
         //StopSpawn(5f);
-        if(!stopSpawning)
+        if (!stopSpawning)
             Invoke("SpawnAds", adSpawnDeley);       
     }
 
     void Update()
     {
+        if(clinged)
+            ShiftAlert.gameObject.SetActive(true);
+        else
+            ShiftAlert.gameObject.SetActive(false);
+
         Invoke("resetSticky", shiftResetTime);
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
