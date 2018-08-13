@@ -247,8 +247,7 @@ public class EnemySpawner : MonoBehaviour
             enemyIntroductionOrder.Push(easyEnemies[x]);
         }
 
-        Debug.Log(enemyIntroductionOrder.Count);
-
+        
         waveForLevel.AddEasyEnemiesAvailableForWaves(enemyIntroductionOrder.Pop());
 
         if (levelNumber == 3 || levelNumber == 4)
@@ -465,14 +464,14 @@ public class EnemySpawner : MonoBehaviour
         if (whichNumberToMax == 0)
         {
             //Debug.Log("returning returning maxed width");
-            returnValue = new Vector2(((mainCamera.transform.position.x + cameraWidth) * randomizedValue) + (Random.Range(10, 31) * randomizedValue), mainCamera.transform.position.y + Random.Range(cameraHeight * (-1), cameraHeight));
+            returnValue = new Vector2(((mainCamera.transform.position.x + cameraWidth) * randomizedValue) + (Random.Range(10, 16) * randomizedValue), mainCamera.transform.position.y + Random.Range(cameraHeight * (-1), cameraHeight));
 
         }
         //otherwise, max out camera height value
         else
         {
             //Debug.Log("returning maxed height");
-            returnValue = new Vector2(mainCamera.transform.position.x + Random.Range(cameraWidth * (-1), cameraWidth), (((mainCamera.transform.position.y + cameraHeight) * randomizedValue)) + (Random.Range(10, 31) * randomizedValue));
+            returnValue = new Vector2(mainCamera.transform.position.x + Random.Range(cameraWidth * (-1), cameraWidth), (((mainCamera.transform.position.y + cameraHeight) * randomizedValue)) + (Random.Range(10, 16) * randomizedValue));
 
         }
         //Debug.Log("Returning: " + returnValue);
