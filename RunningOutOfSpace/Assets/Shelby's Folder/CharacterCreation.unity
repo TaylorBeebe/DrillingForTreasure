@@ -1224,12 +1224,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterSprites:
-  - {fileID: 21300000, guid: 5b836718780695442a871a2bb4b7ec83, type: 3}
   - {fileID: 21300000, guid: b562da1bab3866543bf1304a32a2c298, type: 3}
-  - {fileID: 21300000, guid: e60d65fa47194cf458671b433f5e1da5, type: 3}
-  - {fileID: 21300000, guid: 53104ddf62321df4ca5892fa922fae7e, type: 3}
-  - {fileID: 21300000, guid: 8fb40c497c419fd44b84cf0075920931, type: 3}
-  - {fileID: 21300000, guid: 9904aeb9f6c72444f811de5b0b4f8782, type: 3}
+  - {fileID: 21300000, guid: b562da1bab3866543bf1304a32a2c298, type: 3}
+  - {fileID: 21300000, guid: b562da1bab3866543bf1304a32a2c298, type: 3}
+  - {fileID: 21300000, guid: b562da1bab3866543bf1304a32a2c298, type: 3}
+  - {fileID: 21300000, guid: b562da1bab3866543bf1304a32a2c298, type: 3}
+  - {fileID: 21300000, guid: b562da1bab3866543bf1304a32a2c298, type: 3}
   readyButton: {fileID: 602372756}
 --- !u!1 &1201834676
 GameObject:
@@ -1322,6 +1322,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerName: 
   characterSpriteID: 0
+  gameSceneBuildIndex: 5
 --- !u!4 &1781633038
 Transform:
   m_ObjectHideFlags: 0
