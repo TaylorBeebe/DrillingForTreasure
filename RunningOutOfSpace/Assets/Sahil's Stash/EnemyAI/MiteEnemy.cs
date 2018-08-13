@@ -4,19 +4,13 @@ using UnityEngine;
 using Pathfinding;
 
 public class MiteEnemy : Enemy {
-
-    public float timeBetweenAttacks = 0.75f;
-    public float timeBetweenWriggles = 1f;
-    bool wasHit = false;
-    SpriteRenderer renderer;
-    public Sprite deathSprite;
-    public Sprite attackSprite;
+    
+    public float breakTime;
 
     public override void Start()
     {
         base.Start();
-        InvokeRepeating("MiteMove", timeBetweenWriggles, timeBetweenWriggles);
-        renderer = this.gameObject.GetComponentInChildren<SpriteRenderer>();
+        InvokeRepeating("MiteMove", breakTime, breakTime);
     }
     public override void Update()
     {
@@ -26,17 +20,6 @@ public class MiteEnemy : Enemy {
        // AIDestination.target = target;
         
     }
-
-    public void LateUpdate() {
-        if (wasHit)
-        {
-            wasHit = false;
-        }
-        else
-        {
-            renderer.color = Color.white;
-        }
-    }
     public override void OnFollow()
     {
         base.OnFollow();
@@ -45,47 +28,18 @@ public class MiteEnemy : Enemy {
     public void MiteMove()
     {
         canMove = !canMove;
-        //Debug.Log("Changed");
-        //StartCoroutine(WaitAndGo());
+        Debug.Log("Changed");
+      //StartCoroutine(WaitAndGo());
     }
     public override void OnAttack()
     {
-        if (canAttack)
-        {
-            //canMove = false;
-            canAttack = false;
-
-            //HealthAndVariables.DoDamage(5, target); //TODO  replace with damage var 
-            target.GetComponent<HealthAndVariables>().TakeDamage(damage);
-            Debug.Log("Mite Dealing Damage to Player");
-            Invoke("UpdateCanAttack", timeBetweenAttacks);
-        }
+        canMove = false;
+        base.OnAttack();
     }
-    public override void OnDeath()
+    public override void OnDeath(float WaitBeforeDestroying)
     {
-        base.OnDeath();
-        CancelInvoke();
-        renderer.sprite = deathSprite;
-        //Debug.Log("Mite Died");
+        base.OnDeath(WaitBeforeDestroying);
     }
     
-
-    void UpdateCanAttack()
-    {
-        canAttack = true;
-    }
-
-    void OnTriggerEnter2D(Collider2D other)
-    {
-        
-
-        if (other.tag == "Bullet")
-        {
-            other.GetComponent<Bullet>().Destroy(other.transform.position);
-            this.GetComponent<HealthAndVariables>().TakeDamage(20);
-            renderer.color = Color.red;
-            wasHit = true;
-        }
-    }
 }
 
