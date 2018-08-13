@@ -7,6 +7,7 @@ TagManager:
   - Drill
   - Bullet
   - Scrap
+  - Sticker
   layers:
   - Default
   - TransparentFX

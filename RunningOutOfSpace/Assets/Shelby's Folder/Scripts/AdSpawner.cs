@@ -24,10 +24,6 @@ public class AdSpawner : MonoBehaviour {
     public float shiftResetTime;
     int stickyPress;
     public Image ShiftAlert;
-    public bool clinged;
-    //0 == None
-    //1 == Up
-    //2 == Down
 
     [Header("Captcha Settings")]
     public string captchaTypeText;
@@ -48,7 +44,7 @@ public class AdSpawner : MonoBehaviour {
 
     void Update()
     {
-        if(clinged)
+        if(GameObject.FindGameObjectWithTag("Sticker"))
             ShiftAlert.gameObject.SetActive(true);
         else
             ShiftAlert.gameObject.SetActive(false);
