@@ -35,6 +35,9 @@ public class AdSpawner : MonoBehaviour {
     public Sprite[] verticalSmallAds;
     public Sprite[] stickyKeysAds;
 
+    [Header("Ad sprites")]
+    public GameObject[] adMusic;
+
     void Start()
     {
         //StopSpawn(5f);
