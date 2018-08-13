@@ -31,6 +31,7 @@ public class CharacterController2D : MonoBehaviour {
     [Header("UI Stuff")]
     [SerializeField] Image playerHealthUI;
     [SerializeField] Image gunChargeUI;
+    [SerializeField] Text scrapUI;
 
     [Header("Build Indexes")]
     [SerializeField] int gameOverBuildIndex;
@@ -70,6 +71,7 @@ public class CharacterController2D : MonoBehaviour {
 	void Update()
     {
         health = hav.health;
+
         PlayerShoot();
         SetAnimation();
         CamMoveToPlayer();
@@ -135,6 +137,8 @@ public class CharacterController2D : MonoBehaviour {
         Mathf.Round(uiInfo);
         uiInfo /= 100;
         playerHealthUI.fillAmount = uiInfo;
+
+        scrapUI.text = scrap.ToString();
     }
 
 
