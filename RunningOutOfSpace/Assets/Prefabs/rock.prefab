@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4287648319101018}
   - component: {fileID: 212973743655982660}
+  - component: {fileID: 70056648839245678}
   m_Layer: 0
   m_Name: rock
   m_TagString: Untagged
@@ -40,6 +41,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!70 &70056648839245678
+CapsuleCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1131869707555256}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: -3.4}
+  m_Size: {x: 26.3, y: 12}
+  m_Direction: 1
 --- !u!212 &212973743655982660
 SpriteRenderer:
   m_ObjectHideFlags: 1
