@@ -157,6 +157,7 @@ MonoBehaviour:
   distanceThresholdForAttack: 2
   canMove: 0
   canAttack: 0
+  scrap: {fileID: 1108187095687172, guid: 4022c985654fabd43b454787a723ce17, type: 2}
   damage: 15
   enemyManager: {fileID: 0}
   enemyStates: 0

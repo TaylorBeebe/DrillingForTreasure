@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
+using UnityEngine.Rendering;
 
 public class MiteEnemy : Enemy {
 
@@ -13,9 +14,13 @@ public class MiteEnemy : Enemy {
     public Sprite attackSprite;
     public Sprite aliveSprite;
 
+    SortingGroup group;
+
     public override void Start()
     {
         base.Start();
+        group = GetComponent<SortingGroup>();
+
         InvokeRepeating("MiteMove", timeBetweenWriggles, timeBetweenWriggles);
         renderer = gameObject.GetComponentInChildren<SpriteRenderer>();
     }
@@ -66,7 +71,7 @@ public class MiteEnemy : Enemy {
         base.OnDeath();
         CancelInvoke();
         renderer.sprite = deathSprite;
-        //Debug.Log("Mite Died");
+        group.enabled = false;
     }
     
 

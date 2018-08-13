@@ -85,9 +85,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 837b72e52a0f0ef47b808ddf60cb558e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  upgradeType: 0
   upgradeName: HEALTH
-  upgradeDescription: THIS IS A TEST.
+  upgradeDescription: Boosts max HP.
   upgradePrice: 400
+  upgradeLevel: 0
+  upgradeButton: {fileID: 0}
 --- !u!114 &114729299595704008
 MonoBehaviour:
   m_ObjectHideFlags: 1

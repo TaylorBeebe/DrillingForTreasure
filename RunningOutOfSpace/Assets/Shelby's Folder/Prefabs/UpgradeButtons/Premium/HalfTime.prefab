@@ -120,8 +120,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeType: 1
   upgradeName: Half Time
-  upgradeDescription: THIS IS A TEST.
-  upgradePrice: 400
+  upgradeDescription: Reduces timer of timed ads.
+  upgradePrice: 1
+  upgradeLevel: 0
+  upgradeButton: {fileID: 0}
 --- !u!114 &114839749451908786
 MonoBehaviour:
   m_ObjectHideFlags: 1
