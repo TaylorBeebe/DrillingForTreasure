@@ -55,7 +55,7 @@ public class Bullet : MonoBehaviour {
 	}
 
     public void Destroy(Vector2 pos) {
-        Debug.Log("Destroying Bullet");
+        //Debug.Log("Destroying Bullet");
         gameObject.transform.position = pos;
         allowedToMove = false;
     }

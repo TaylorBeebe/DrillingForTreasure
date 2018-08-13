@@ -66,7 +66,7 @@ public class MiteEnemy : Enemy {
         base.OnDeath();
         CancelInvoke();
         renderer.sprite = deathSprite;
-        Debug.Log("Mite Died");
+        //Debug.Log("Mite Died");
     }
     
 
