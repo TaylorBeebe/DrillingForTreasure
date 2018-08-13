@@ -20,6 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4279792283040984}
   - component: {fileID: 212962995667357256}
+  - component: {fileID: 114554197132131222}
+  - component: {fileID: 95532810012269300}
   m_Layer: 0
   m_Name: Drill
   m_TagString: Untagged
@@ -35,7 +37,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4470605318939658}
-  - component: {fileID: 95901022866952060}
+  - component: {fileID: 114127278066591772}
   m_Layer: 0
   m_Name: Drill
   m_TagString: Untagged
@@ -111,7 +113,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1449918421300560}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0, y: -0.16, z: 0}
+  m_LocalPosition: {x: -0, y: -0.31, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4470605318939658}
@@ -141,8 +143,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1570881691772104}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.008, y: -3.965, z: 0}
-  m_LocalScale: {x: 2.4605892, y: 2.469, z: 1}
+  m_LocalPosition: {x: -0.008, y: -5.2, z: 0}
+  m_LocalScale: {x: 22.432224, y: 32.791367, z: 1}
   m_Children: []
   m_Father: {fileID: 4470605318939658}
   m_RootOrder: 2
@@ -154,22 +156,22 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1942350704721788}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.52, z: 0}
+  m_LocalPosition: {x: 0, y: -2.67, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4470605318939658}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &95901022866952060
+--- !u!95 &95532810012269300
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1509892654420974}
+  m_GameObject: {fileID: 1449918421300560}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 113b26b5d908eb449bd83b23262f29fb, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -178,6 +180,31 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114127278066591772
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1509892654420974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9fb0027df8d5f9419346674e4459465, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+--- !u!114 &114554197132131222
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1449918421300560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23de8616c9d21484d953f9a23b117efd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  locChange: {x: 0, y: -0.85}
+  oscillationPeriod: 2
 --- !u!212 &212346721476230560
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -351,7 +378,7 @@ SpriteMask:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b26a4c2424e7eb34f98b9b9006533bf9, type: 3}
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   m_MaskAlphaCutoff: 0.2
   m_FrontSortingLayerID: 0
   m_BackSortingLayerID: 0

@@ -36,6 +36,7 @@ public class CharacterController2D : MonoBehaviour {
     private Animator anim;
     private GameObject armPivot;
     private Vector3 _vel = Vector3.zero;
+    private HealthAndVariables hav;
     private float maxCharge;
     private int mag;
     [HideInInspector] public bool m_FacingRight = true;
@@ -55,6 +56,7 @@ public class CharacterController2D : MonoBehaviour {
 	
 	void Update()
     {
+        health = hav.health;
         PlayerMovement();
         PlayerShoot();
         SetAnimation();
