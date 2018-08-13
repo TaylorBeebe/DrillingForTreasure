@@ -27,9 +27,10 @@ GameObject:
   - component: {fileID: 210421805185377966}
   - component: {fileID: 114970508523473452}
   - component: {fileID: 70199302776870464}
+  - component: {fileID: 95421162657878914}
   m_Layer: 1
   m_Name: Mite
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -71,7 +72,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1130405574055168}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.9498796, y: 1.6875347, z: 0.020900287}
+  m_LocalPosition: {x: -14.420009, y: -4.8400283, z: 0.020895766}
   m_LocalScale: {x: 10.44, y: 11.21, z: 1}
   m_Children:
   - {fileID: 4616241341306918}
@@ -93,6 +94,24 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 0.1, y: 0.13}
   m_Direction: 0
+--- !u!95 &95421162657878914
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1130405574055168}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: b151a0d9414cec44d896132da181794e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!95 &95739572006293400
 Animator:
   serializedVersion: 3
@@ -122,10 +141,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: addd9a1ad1fde414a97a6faa538432c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aiAgent: {fileID: 0}
-  AIDestination: {fileID: 0}
+  aiAgent: {fileID: 114660844918324072}
+  AIDestination: {fileID: 114750364220414746}
   target: {fileID: 0}
-  health: 100
+  health: 80
   distanceThresholdForAttack: 2
   canMove: 0
   canAttack: 0
@@ -133,7 +152,7 @@ MonoBehaviour:
   damage: 1
   enemyManager: {fileID: 0}
   enemyStates: 0
-  timeBetweenAttacks: 0.75
+  timeBetweenAttacks: 5
   timeBetweenWriggles: 1
   deathSprite: {fileID: 21300006, guid: 802a30dce928b7143b4511cf545d075c, type: 3}
   attackSprite: {fileID: 21300004, guid: 802a30dce928b7143b4511cf545d075c, type: 3}
@@ -152,7 +171,7 @@ MonoBehaviour:
   version: 2
   repathRate: 0.5
   canSearch: 1
-  canMove: 1
+  canMove: 0
   maxSpeed: 3
   gravity: {x: 0, y: 0, z: 0}
   groundMask:
@@ -221,10 +240,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d21b51587824d4b4580f6acf9f878d74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  graphic: {fileID: 0}
-  anim: {fileID: 0}
-  ai: {fileID: 0}
-  baseScale: {x: 0, y: 0, z: 0}
+  graphic: {fileID: 1636306571559288}
+  anim: {fileID: 95739572006293400}
+  ai: {fileID: 114355737758830678}
+  baseScale: {x: 0.072990336, y: 0.072990336, z: 0.072990336}
+  isLookingLeft: 0
+  eType: 0
 --- !u!114 &114970508523473452
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -236,7 +257,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9fb0027df8d5f9419346674e4459465, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 80
 --- !u!210 &210421805185377966
 SortingGroup:
   m_ObjectHideFlags: 1

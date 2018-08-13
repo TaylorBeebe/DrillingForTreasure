@@ -20,6 +20,7 @@ public class NestEnemy : Enemy
     SpriteRenderer renderer;
 
     SortingGroup group;
+    bool isDead;
 
     public override void Start()
     {
@@ -30,6 +31,7 @@ public class NestEnemy : Enemy
 
         aiAgent.canMove = false;
         QueueSpawn();
+        isDead = false;
     }
     public void LateUpdate()
     {
@@ -75,8 +77,9 @@ public class NestEnemy : Enemy
         base.OnDeath();
         
         renderer.sprite = deathSprite;
-
+       
         group.enabled = false;
+        isDead = true;
         
     }
     void OnTriggerEnter2D(Collider2D other)

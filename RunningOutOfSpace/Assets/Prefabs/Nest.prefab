@@ -42,11 +42,12 @@ GameObject:
   - component: {fileID: 114186391208737368}
   - component: {fileID: 114926095336115428}
   - component: {fileID: 114166699333757850}
+  - component: {fileID: 114623165844241594}
   - component: {fileID: 210045303632515838}
   - component: {fileID: 70525030265608488}
   m_Layer: 0
   m_Name: Nest
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -71,7 +72,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1998117452179674}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.07, y: -2.09, z: 0.020900287}
+  m_LocalPosition: {x: 14.938923, y: 4.3942647, z: 0.020900287}
   m_LocalScale: {x: 10.44, y: 11.21, z: 1}
   m_Children:
   - {fileID: 4136710371694358}
@@ -151,6 +152,8 @@ MonoBehaviour:
   anim: {fileID: 0}
   ai: {fileID: 0}
   baseScale: {x: 0, y: 0, z: 0}
+  isLookingLeft: 0
+  eType: 0
 --- !u!114 &114597158321267982
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -184,6 +187,23 @@ MonoBehaviour:
   slowWhenNotFacingTarget: 1
   whenCloseToDestination: 0
   constrainInsideGraph: 0
+--- !u!114 &114623165844241594
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1998117452179674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d21b51587824d4b4580f6acf9f878d74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  graphic: {fileID: 0}
+  anim: {fileID: 0}
+  ai: {fileID: 0}
+  baseScale: {x: 0, y: 0, z: 0}
+  isLookingLeft: 0
+  eType: 0
 --- !u!114 &114781838213805108
 MonoBehaviour:
   m_ObjectHideFlags: 1

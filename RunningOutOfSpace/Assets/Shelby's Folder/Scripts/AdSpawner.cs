@@ -43,7 +43,7 @@ public class AdSpawner : MonoBehaviour {
     void Update()
     {
         Invoke("resetSticky", shiftResetTime);
-        if (Input.GetKeyDown(KeyCode.LeftShift))
+        if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
         {
             stickyPress++;
             CancelInvoke("resetSticky");
