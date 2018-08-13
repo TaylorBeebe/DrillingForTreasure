@@ -2,28 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
+using SimpleJSON;
+using UnityEngine.UI;
 
 public class LeaderboardManager : MonoBehaviour {
 
 
     public string playerName;
-    public int floor;
-    public int minerals;
+    public string floor;
+    public string minerals;
+
+    public GameObject[] scores;
 
     void Start()
     {
-        StartCoroutine(GetHighscores());
         StartCoroutine(SubmitHighscore());
+        StartCoroutine(GetHighscores());     
     }
 
     IEnumerator GetHighscores()
     {
-        List<IMultipartFormSection> formData = new List<IMultipartFormSection>();
-        formData.Add(new MultipartFormDataSection("myname", "mark"));
-        formData.Add(new MultipartFormFileSection("myscore", "145"));
-        formData.Add(new MultipartFormFileSection("date", "2018-08-13T00:19:17.633Z"));
+        WWWForm form = new WWWForm();
+        form.AddField("myscore", "3002");
+        form.AddField("date", "2018-08-13T00:19:17.633Z");
 
-        UnityWebRequest www = UnityWebRequest.Post("http://206.189.191.161/api/mft/getHighscores", formData);
+        UnityWebRequest www = UnityWebRequest.Post("http://206.189.191.161/api/mft/getHighscores", form); //http://206.189.191.161/api/mft/getHighscores
         www.SetRequestHeader("auth", "38gq9G3b83f9BF3&^@f9f2!933");
 
         yield return www.SendWebRequest();
@@ -34,20 +37,35 @@ public class LeaderboardManager : MonoBehaviour {
         }
         else
         {
-            Debug.Log("Form upload complete!");
-            Debug.Log(www.downloadHandler.text);
+            //Debug.Log("Form upload complete!");
+            //Debug.Log(www.downloadHandler.text);
 
+            var highscores = JSON.Parse(www.downloadHandler.text);
+
+            for (int i = 0; i < 10; i++)
+            {
+                scores[i].transform.Find("name").GetComponent<Text>().text = highscores["data"]["highscores"][i]["name"];
+                scores[i].transform.Find("minerals").GetComponent<Text>().text = highscores["data"]["highscores"][i]["minerals"];
+                scores[i].transform.Find("floor").GetComponent<Text>().text = highscores["data"]["highscores"][i]["floor"];
+                Debug.Log(highscores["data"]["myrank"]);
+            }
+
+            scores[10].transform.Find("name").GetComponent<Text>().text = playerName;
+            scores[10].transform.Find("minerals").GetComponent<Text>().text = minerals;
+            scores[10].transform.Find("floor").GetComponent<Text>().text = floor;
+            scores[10].transform.Find("Place").GetComponent<Text>().text = highscores["data"]["myrank"];
         }
     }
 
     IEnumerator SubmitHighscore()
     {
-        List<IMultipartFormSection> formData = new List<IMultipartFormSection>();
-        formData.Add(new MultipartFormDataSection("name", "claire"));
-        formData.Add(new MultipartFormFileSection("minerals", "1234"));
-        formData.Add(new MultipartFormFileSection("floor", "3"));
+        WWWForm form1 = new WWWForm();
+        form1.AddField("name", playerName);
+        form1.AddField("minerals", minerals);
+        form1.AddField("floor", floor);
 
-        UnityWebRequest www = UnityWebRequest.Post("http://206.189.191.161/api/mft/submitHighscore", formData);
+
+        UnityWebRequest www = UnityWebRequest.Post("http://206.189.191.161/api/mft/submitHighscore", form1); //http://206.189.191.161/api/mft/submitHighscore
         www.SetRequestHeader("auth", "bueibwf&#@b830B*wnUW&!$9nce#");
 
         yield return www.SendWebRequest();
@@ -58,8 +76,8 @@ public class LeaderboardManager : MonoBehaviour {
         }
         else
         {
-            Debug.Log("Form upload complete!");
-            Debug.Log(www.downloadHandler.text);
+            //Debug.Log("Form upload complete!");
+            //Debug.Log(www.downloadHandler.text);
 
         }
     }
