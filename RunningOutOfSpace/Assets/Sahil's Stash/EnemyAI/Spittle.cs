@@ -28,4 +28,11 @@ public class Spittle : MonoBehaviour {
 	}
 
     // OnCollide, deal damage
+
+    public void Destroy(Vector2 pos)
+    {
+        //Debug.Log("Destroying Bullet");
+        //gameObject.transform.position = pos;
+        Destroy(gameObject, 0f);
+    }
 }

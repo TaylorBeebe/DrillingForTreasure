@@ -90,4 +90,11 @@ public class SpitterEnemy : Enemy
 
         return zDegs;
     }
+
+    public void Destroy(Vector2 pos)
+    {
+        //Debug.Log("Destroying Bullet");
+        gameObject.transform.position = pos;
+        //allowedToMove = false;
+    }
 }
