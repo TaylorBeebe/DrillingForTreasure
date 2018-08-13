@@ -11,6 +11,7 @@ public class Bullet : MonoBehaviour {
 
     bool facingRight;
     bool allowedToMove = false;
+    float angle;
     Rigidbody2D rb2d;
     Vector2 bulletPos;
     SpriteRenderer sr;
@@ -25,13 +26,22 @@ public class Bullet : MonoBehaviour {
         cc2d = GameObject.Find("Player").GetComponent<CharacterController2D>();
         facingRight = cc2d.m_FacingRight;
         transform.position = GameObject.Find("Gun Tip").transform.position;
-        if(cc2d.m_FacingRight)transform.eulerAngles = GameObject.Find("Gun Tip").transform.eulerAngles;
+
+        /*if(cc2d.m_FacingRight)transform.eulerAngles = GameObject.Find("Gun Tip").transform.eulerAngles;
         if (!cc2d.m_FacingRight)transform.eulerAngles = -GameObject.Find("Gun Tip").transform.eulerAngles;
         if (!cc2d.m_FacingRight)
         {
             transform.eulerAngles = new Vector3(transform.eulerAngles.x, 0, transform.eulerAngles.z);
             sr.flipX = true;
-        }
+        } */
+
+        if (facingRight)
+            angle = AngleBetweenTwoPoints(Input.mousePosition, transform.position);
+        else
+            angle = -AngleBetweenTwoPoints(transform.position, Input.mousePosition);
+
+        if (facingRight) transform.rotation = Quaternion.Euler(new Vector3(transform.rotation.x, 0, Mathf.Clamp(angle, -90, 90)));
+        if (!facingRight) transform.rotation = Quaternion.Euler(new Vector3(transform.rotation.x, 180, Mathf.Clamp(angle, -90, 90)));
         allowedToMove = true;
 	}
 	
@@ -58,5 +68,10 @@ public class Bullet : MonoBehaviour {
         //Debug.Log("Destroying Bullet");
         gameObject.transform.position = pos;
         allowedToMove = false;
+    }
+
+    float AngleBetweenTwoPoints(Vector3 a, Vector3 b)
+    {
+        return Mathf.Atan2(b.y - a.y, b.x - a.x) * Mathf.Rad2Deg;
     }
 }
