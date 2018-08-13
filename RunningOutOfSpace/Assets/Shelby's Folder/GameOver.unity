@@ -813,7 +813,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 647263df70c76bc46a9a9a72dd481c01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneToLoad: Leaderboard
+  SceneToLoad: Leaderboards
 --- !u!1 &1322015617
 GameObject:
   m_ObjectHideFlags: 0

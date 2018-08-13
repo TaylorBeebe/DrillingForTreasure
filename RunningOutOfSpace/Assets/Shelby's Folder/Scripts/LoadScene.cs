@@ -11,6 +11,6 @@ public class LoadScene : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        SceneManager.LoadScene("SceneToLoad");
+        SceneManager.LoadScene(SceneToLoad);
     }
 }
