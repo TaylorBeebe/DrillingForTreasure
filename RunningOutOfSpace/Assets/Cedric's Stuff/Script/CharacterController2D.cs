@@ -8,7 +8,8 @@ using UnityEditor;
 
 [DisallowMultipleComponent]
 [RequireComponent(typeof(Rigidbody2D))]
-public class CharacterController2D : MonoBehaviour {
+public class CharacterController2D : MonoBehaviour
+{
 
     [Header("Editable")]
     [SerializeField] [Range(100, 1000)] float movementSpeed;
@@ -38,8 +39,8 @@ public class CharacterController2D : MonoBehaviour {
 
     [Header("Reference")]
     [SerializeField] Camera _camera;
-    [SerializeField] GameObject deathOverlay;
     [SerializeField] GameObject bulletPrefab;
+    [SerializeField] Text floor;
 
     private Rigidbody2D rb2d;
     private SpriteRenderer sr;
@@ -55,13 +56,11 @@ public class CharacterController2D : MonoBehaviour {
     [HideInInspector] public int scrap = 0;
     private bool _isDead = false;
     private bool _canShoot = true;
-    
 
-	void Start () {
 
-        DontDestroyOnLoad(gameObject);
-
-        levelCurrentlyOn = 1;
+    void Start()
+    {
+        levelCurrentlyOn = PlayerPrefs.GetInt("FloorPers");
 
         ValueCheck();
         maxCharge = charge;
@@ -74,8 +73,8 @@ public class CharacterController2D : MonoBehaviour {
         hav = gameObject.GetComponent<HealthAndVariables>();
         maxHealth = hav.health;
     }
-	
-	void Update()
+
+    void Update()
     {
         health = hav.health;
 
@@ -86,7 +85,7 @@ public class CharacterController2D : MonoBehaviour {
         GunSetRotation();
         UIUpdate();
     }
-    
+
     void FixedUpdate()
     {
         PlayerMovement();
@@ -96,24 +95,25 @@ public class CharacterController2D : MonoBehaviour {
     {
         float horzAxis;
         float vertAxis;
-        if(rawAxis)
+        if (rawAxis)
         {
             horzAxis = Input.GetAxisRaw("Horizontal");
             vertAxis = Input.GetAxisRaw("Vertical");
-        } else
+        }
+        else
         {
             horzAxis = Input.GetAxis("Horizontal");
             vertAxis = Input.GetAxis("Vertical");
         }
 
         rb2d.velocity = new Vector2(movementSpeed * horzAxis * Time.deltaTime, movementSpeed * vertAxis * Time.deltaTime);
-        
+
     }
 
     void PlayerShoot()
     {
         //print(charge);
-        if(Input.GetMouseButton(0) && charge > 0 && _canShoot)
+        if (Input.GetMouseButton(0) && charge > 0 && _canShoot)
         {
             if (charge > 0 && _canShoot)
             {
@@ -121,9 +121,10 @@ public class CharacterController2D : MonoBehaviour {
                 StartCoroutine(ShootFix());
                 Instantiate(bulletPrefab);
             }
-        } else if(charge <= Mathf.Epsilon)
+        }
+        else if (charge <= Mathf.Epsilon)
         {
-            if (charge < 0) charge = 0;   
+            if (charge < 0) charge = 0;
         }
         if (!Input.GetMouseButton(0) && charge < maxCharge)
             charge = charge + (maxCharge * rechargeRate);
@@ -146,6 +147,8 @@ public class CharacterController2D : MonoBehaviour {
         playerHealthUI.fillAmount = uiInfo;
 
         scrapUI.text = scrap.ToString();
+
+        floor.text = levelCurrentlyOn.ToString();
     }
 
 
@@ -158,15 +161,17 @@ public class CharacterController2D : MonoBehaviour {
         if (m_FacingRight)
         {
             transform.eulerAngles = new Vector3(0, 0, transform.eulerAngles.z);
-        } else if(!m_FacingRight)
+        }
+        else if (!m_FacingRight)
         {
             transform.eulerAngles = new Vector3(0, 180, transform.eulerAngles.z);
         }
-        
-        if(horzAxis != 0 || vertAxis != 0)
+
+        if (horzAxis != 0 || vertAxis != 0)
         {
             anim.SetInteger("State", 1);
-        } else
+        }
+        else
         {
             anim.SetInteger("State", 0);
         }
@@ -182,13 +187,13 @@ public class CharacterController2D : MonoBehaviour {
 
         _camera.transform.position = Vector3.SmoothDamp(_camera.transform.position, destination, ref _vel, cameraDampTime);
 
-        _camera.transform.position = new Vector3(Mathf.Clamp(_camera.transform.position.x, cameraClampL, cameraClampR), 
+        _camera.transform.position = new Vector3(Mathf.Clamp(_camera.transform.position.x, cameraClampL, cameraClampR),
             Mathf.Clamp(_camera.transform.position.y, cameraClampBot, cameraClampUp), _camera.transform.position.z);
     }
 
     void ValueCheck()
     {
-        if(health == 0 || _camera == null || movementSpeed == 0)
+        if (health == 0 || _camera == null || movementSpeed == 0)
         {
             /*if (EditorApplication.isPlaying)
             {
@@ -210,7 +215,8 @@ public class CharacterController2D : MonoBehaviour {
                 //EditorUtility.DisplayDialog("Error", "Game Over Build Index is not set in CharacterController2D on '" + gameObject.name + "'.", "Ok");
             }*/
             gameObject.SendMessage("LoadScene", "GameOver");
-        } else if(GameObject.Find("Drill").GetComponentInChildren<HealthAndVariables>().health <= Mathf.Epsilon)
+        }
+        else if (GameObject.Find("Drill").GetComponentInChildren<HealthAndVariables>().health <= Mathf.Epsilon)
         {
             gameObject.SendMessage("LoadScene", "GameOver");
         }
@@ -218,13 +224,15 @@ public class CharacterController2D : MonoBehaviour {
 
     void GetDirectionFacing(float hAxis)
     {
-        if(hAxis > 0)
+        if (hAxis > 0)
         {
             m_FacingRight = true;
-        } else if(hAxis < 0)
+        }
+        else if (hAxis < 0)
         {
             m_FacingRight = false;
-        } else
+        }
+        else
         {
             return;
         }
@@ -261,7 +269,8 @@ public class CharacterController2D : MonoBehaviour {
         if (angle > -90 && angle < 90)
         {
             m_FacingRight = true;
-        } else
+        }
+        else
         {
             m_FacingRight = false;
         }
@@ -273,7 +282,7 @@ public class CharacterController2D : MonoBehaviour {
 
         if (m_FacingRight) armPivot.transform.rotation = Quaternion.Euler(new Vector3(armPivot.transform.rotation.x, 0, Mathf.Clamp(angle, -90, 90)));
         if (!m_FacingRight) armPivot.transform.rotation = Quaternion.Euler(new Vector3(armPivot.transform.rotation.x, 180, Mathf.Clamp(angle, -90, 90)));
-        
+
     }
 
     IEnumerator ShootFix()
@@ -288,10 +297,12 @@ public class CharacterController2D : MonoBehaviour {
         return Mathf.Atan2(b.y - a.y, b.x - a.x) * Mathf.Rad2Deg;
     }
 
-    public void SetLevelCurrentlyOn(int newLevel) {
+    public void SetLevelCurrentlyOn(int newLevel)
+    {
         levelCurrentlyOn = newLevel;
     }
-    public int GetLevelCurrentlyOn() {
+    public int GetLevelCurrentlyOn()
+    {
         return levelCurrentlyOn;
     }
 

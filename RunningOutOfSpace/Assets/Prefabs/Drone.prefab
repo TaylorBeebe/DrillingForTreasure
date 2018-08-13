@@ -56,12 +56,6 @@ MonoBehaviour:
   owner: {fileID: 0}
   floatRadius: 2.89
   moveSpeed: 10
-  canAttack: 1
-  bullet: {fileID: 1754788755518090, guid: 85e3b5d7298b58146a3a8df9614b4c3e, type: 2}
-  bulletSpeed: 10
-  bulletDespawnTime: 4
-  damage: 10
-  timeBetweenAttacks: 2
   enemies: []
   currentTarget: {fileID: 0}
   enemyCheckDist: 10
@@ -75,7 +69,7 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: -2067773297
   m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingOrder: 1
 --- !u!212 &212987421852615938
 SpriteRenderer:
   m_ObjectHideFlags: 1

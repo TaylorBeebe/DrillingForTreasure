@@ -510,14 +510,14 @@ MonoBehaviour:
   - {fileID: 1576740925629782, guid: 9136cd265e5c215478368131720f3f4f, type: 2}
   adSpawnDeley: 0
   adSpawnWindowMin: 0
-  adSpawnWindowMax: 10
-  stopSpawning: 0
+  adSpawnWindowMax: 1
+  stopSpawning: 1
   timerAdMin: 5
   timerAdMax: 9
   shiftsToActivate: 5
   shiftResetTime: 0.8
   ShiftAlert: {fileID: 114044606290421426}
-  captchaTypeText: nuces nutrientibus in illis
+  captchaTypeText: annoying
   boxAds:
   - {fileID: 21300000, guid: e7a34f34489731c46b013a98c37a7632, type: 3}
   - {fileID: 21300000, guid: dfe182aca0342934184613dc5b3a14e1, type: 3}
@@ -542,6 +542,14 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 09b91b6eb730b874c924a764ab35bcaf, type: 3}
   stickyKeysAds:
   - {fileID: 21300000, guid: 0005a7db754c87243ae07eaa9e331c54, type: 3}
+  adMusic:
+  - {fileID: 1880505962223182, guid: 27dc5dad1a3d39b40b7ec1d99524966d, type: 2}
+  - {fileID: 1620878372495936, guid: 8df920b51298df645b208591fac0ea0e, type: 2}
+  - {fileID: 1404172908235158, guid: 6e4bbcfb97c604944b6c3a316f292fb4, type: 2}
+  - {fileID: 1497026462764366, guid: 6c82d71200e9c4c4fba6da9a337efce2, type: 2}
+  - {fileID: 1006900667998176, guid: ace34dba26d03174399618176a83a6fb, type: 2}
+  - {fileID: 1499743682049850, guid: 534c913a4740f4644bdf08ca7c77a0ee, type: 2}
+  - {fileID: 1861694803888948, guid: 34aa09b14562990418cceec8818a912b, type: 2}
 --- !u!114 &114339977478365204
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -26,6 +26,7 @@ public class Ad : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDownHand
         StickyKeys
     }
 
+    GameObject[] music;
     Sprite[] boxAds;
     Sprite[] horizontalAds;
     Sprite[] verticalAds;
@@ -56,6 +57,7 @@ public class Ad : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDownHand
         verticalAds = transform.parent.GetComponent<AdSpawner>().verticalAds;
         verticalSmallAds = transform.parent.GetComponent<AdSpawner>().verticalSmallAds;
         stickyKeysAds = transform.parent.GetComponent<AdSpawner>().stickyKeysAds;
+        music = transform.parent.GetComponent<AdSpawner>().adMusic;
 
         //Check if the ad needs a special sprite
         if (adType == AdType.StickyKeys)
@@ -95,6 +97,18 @@ public class Ad : MonoBehaviour, IDragHandler, IEndDragHandler, IPointerDownHand
         {
             captchaText = transform.parent.GetComponent<AdSpawner>().captchaTypeText;
             captchaInput = transform.Find("CaptchaText").transform.Find("CaptcaTextInput").GetComponent<Text>();
+        }
+
+        int randomAdSong = Random.Range(2, music.Length);
+        if (GetComponent<Image>().sprite.name == "Ad03")
+            Instantiate(music[0], transform.position, Quaternion.identity, transform);
+        else if (GetComponent<Image>().sprite.name == "Ad04")
+            Instantiate(music[1], transform.position, Quaternion.identity, transform);
+        else
+        {
+            int makeNoise = Random.Range(0, 2);
+            if(makeNoise == 1)
+                Instantiate(music[randomAdSong], transform.position, Quaternion.identity, transform);
         }
     }
     void Update()
