@@ -52,6 +52,7 @@ public class CharacterController2D : MonoBehaviour {
         sr = GetComponent<SpriteRenderer>();
         anim = GetComponent<Animator>();
         armPivot = GameObject.Find("Arm Pivot");
+        hav = gameObject.GetComponent<HealthAndVariables>();
 	}
 	
 	void Update()

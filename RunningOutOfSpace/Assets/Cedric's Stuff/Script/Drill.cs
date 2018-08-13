@@ -33,7 +33,7 @@ public class Drill : MonoBehaviour {
         {
 
             drillDown += 1;
-            print(canCheck);
+            //print(canCheck);
             canCheck = false;
         } else if(canCheck == false)
         {

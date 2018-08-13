@@ -2,58 +2,64 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
-
-[RequireComponent(typeof(AIDestinationSetter))]
-[RequireComponent(typeof(AIPath))]
 [RequireComponent(typeof(HealthAndVariables))]
 public class Enemy : MonoBehaviour {
 
-    public float _attackTimer = 1f;
     public AIPath aiAgent;
     public AIDestinationSetter AIDestination;
     public Transform target;
-    public float health;
-    public float distanceThresholdForAttack = 0;
-    public bool canMove;
-    public float DamagePerSecond;
-    public bool canAttack = false;
-    public HealthAndVariables healthAndVariables;
-    EnemyManager enemyManager;
+    [HideInInspector] public float health = 100f;
+    public float distanceThresholdForAttack = 10f;
+    [HideInInspector] public bool canMove;
+    //public float DamagePerSecond;
+    [HideInInspector] public bool canAttack = false;
+
+    public int damage;
+
+    HealthAndVariables healthAndVariables; 
+
+    [HideInInspector] public EnemyManager enemyManager;
 
     public enum EnemyStates {
         attack,
         follow,
-        dead,
-        idle
+        dead
     }
     public EnemyStates enemyStates;
     public virtual void Start()
     {
-        healthAndVariables = GetComponent<HealthAndVariables>();
+        canMove = true;
+
         aiAgent = GetComponent<AIPath>();
         AIDestination = GetComponent<AIDestinationSetter>();
         enemyManager = FindObjectOfType<EnemyManager>();
-        int i = Random.Range(0, 2);
-        if (i == 0) target = enemyManager.Player;
-        else target = enemyManager.Drill;
-    
+
+        RandomiseTarget();
+
+        healthAndVariables = GetComponent<HealthAndVariables>();
+
     }
     public virtual void Update()
     {
-        health = healthAndVariables.Health;
+        // Do nothing if dead
+        if (enemyStates == EnemyStates.dead) return;
 
-        if (health > 0 && Vector3.Distance(transform.position, target.position) <= distanceThresholdForAttack)
-        {
-            enemyStates = EnemyStates.attack;
-        }
-        else
-        if ((health > 0 && !(Vector3.Distance(transform.position, target.position) <= distanceThresholdForAttack)))
-        {
-            enemyStates = EnemyStates.follow;
-        }
-        if(health == 0)
+        // Fetch health from appropriate script
+        health = healthAndVariables.health;
+        
+        if (health <= 0)
         {
             enemyStates = EnemyStates.dead;
+        }
+        else if (Vector2.Distance(transform.position, target.position) <= distanceThresholdForAttack)
+        {
+            enemyStates = EnemyStates.attack;
+            canAttack = true;
+            Debug.Log("Switching to attack state");
+        }
+        else //if (!(Vector3.Distance(transform.position, target.position) <= distanceThresholdForAttack))
+        {
+            enemyStates = EnemyStates.follow;
         }
 
         switch (enemyStates)
@@ -62,13 +68,15 @@ public class Enemy : MonoBehaviour {
                 OnFollow();
                 break;
             case EnemyStates.dead:
-                OnDeath(2f);
+                //Debug.Log(Vector2.Distance(transform.position, target.position));
+                OnDeath();
+                Die();
                 break;
             case EnemyStates.attack:
                 if (canAttack)
                 {
+                    //Debug.Log("Attacking " + target.name + " for " + damage + " damage");
                     OnAttack();
-                    Debug.Log("Attack");
                 }
                 break;
         }
@@ -76,20 +84,25 @@ public class Enemy : MonoBehaviour {
         AIDestination.target = target;
         //aiAgent.canMove = canMove;
     }
-    public virtual void OnDeath(float WaitBeforeDestroying)
-    {
-        Destroy(this.gameObject, WaitBeforeDestroying);
-    }
-    public virtual void OnAttack()
-    {
-        canAttack = false;
 
-        Invoke("UpdateCanAttack", _attackTimer);
+    public void Die()
+    {
+        GetComponent<Collider2D>().enabled = false; // prevents further bullets from hitting it
+        this.canMove = false;
+        Destroy(gameObject, 2f);
+    }
+
+    void RandomiseTarget()
+    {
+        target = (Random.Range(0, 2) == 0) ? enemyManager.Player : enemyManager.Drill;
+    }
+
+    public virtual void OnDeath() {
+        enemyStates = EnemyStates.dead;
+        
+    }
+    public virtual void OnAttack() {
     }
     public virtual void OnFollow() { }
 
-    void UpdateCanAttack()
-    {
-        canAttack = true;
-    }
 }

@@ -9,7 +9,7 @@ public class EnemyManager : MonoBehaviour {
     public Transform Player;
     public Transform Drill;
 
-    private void Awake()
+    private void Start()
     {
         Player = GameObject.FindGameObjectWithTag("Player").transform;
         Drill = GameObject.FindGameObjectWithTag("Drill").transform;
