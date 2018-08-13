@@ -92,12 +92,12 @@ public class MiteEnemy : Enemy {
 
     void AttackAnimation()
     {
-       // renderer.sprite = attackSprite;
+       renderer.sprite = attackSprite;
         Invoke("NormalAnimation", 0.5f);
     }
 
     void NormalAnimation() {
-       // renderer.sprite = aliveSprite;
+       renderer.sprite = aliveSprite;
     }
 
 }

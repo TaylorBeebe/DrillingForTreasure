@@ -19,6 +19,10 @@ public class StickerOnHead : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        // If we nest as parent, we don't need to lock movement 
+        transform.position = new Vector3 (player.transform.position.x, player.transform.position.y + 0.01f, player.transform.position.z); 
+        
+
         if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
         {
             stickyPress++;
@@ -27,6 +31,7 @@ public class StickerOnHead : MonoBehaviour {
         if (stickyPress >= shiftPressKillCount)
         {
             Destroy(gameObject);
+            // TODO could do with corpse
         }
 
         if (canAttack)
