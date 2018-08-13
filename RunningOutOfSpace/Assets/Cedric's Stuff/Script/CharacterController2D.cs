@@ -66,13 +66,17 @@ public class CharacterController2D : MonoBehaviour {
 	void Update()
     {
         health = hav.health;
-        PlayerMovement();
         PlayerShoot();
         SetAnimation();
         CamMoveToPlayer();
         CheckDeath();
         GunSetRotation();
         UIUpdate();
+    }
+    
+    void FixedUpdate()
+    {
+        PlayerMovement();
     }
 
     void PlayerMovement()
