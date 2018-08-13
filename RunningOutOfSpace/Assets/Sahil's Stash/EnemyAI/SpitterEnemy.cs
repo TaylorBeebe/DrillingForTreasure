@@ -4,7 +4,7 @@ using UnityEngine;
 using Pathfinding;
 
 public class SpitterEnemy : Enemy
-{ 
+{
 
     public GameObject spittle;
     public float attackAnimationTime = 0.35f;
@@ -47,10 +47,10 @@ public class SpitterEnemy : Enemy
     void Spit()
     {
         Vector2 spawnPoint = transform.position;
-        Vector2 targetPoint = target.transform.position;
-        Vector2 toTarget = targetPoint - spawnPoint;
-
-        GameObject go = Instantiate(spittle, spawnPoint, Quaternion.LookRotation(new Vector3(toTarget.x, 0f, 0f)));
+        float zDir = GetShootAngle(spawnPoint, target.transform.position);
+        ////GameObject go = Instantiate(spittle, spawnPoint, Quaternion.LookRotation(new Vector3(toTarget.x, 0f, 0f)));
+        GameObject go = Instantiate(spittle, spawnPoint, Quaternion.Euler(0, 0, zDir)); //Quaternion.Euler(toTarget.x, 0, 1));  
+        //GameObject go = Instantiate(spittle, spawnPoint, Quaternion.LookRotation(new Vector3(toTarget.x, 0f, 0f)));
         go.GetComponent<Spittle>().InheritValues(damage, spitSpeed, spitDespawnTime);
     }
 
@@ -62,6 +62,32 @@ public class SpitterEnemy : Enemy
     void UpdateCanAttack()
     {
         canAttack = true;
+        canMove = true;
+    }
+    float GetShootAngle(Vector2 startPoint, Vector2 endPoint)
+    {
+        Vector2 toTarget = endPoint - startPoint;
+        Vector2 thirdPoint = new Vector2(endPoint.x, startPoint.y);
+
+        /*
+        Vector3 startPoint = transform.position;
+        Vector3 endPoint = target.transform.position;
+        /*Vector3// toTarget = endPoint - startPoint;
+        */
+
+        float hyp = Vector2.Distance(startPoint, endPoint);
+        float opp = Vector2.Distance(thirdPoint, endPoint);
+
+        float zRads = Mathf.Asin(opp / hyp);
+        /*float*/
+        float zDegs = zRads * Mathf.Rad2Deg;
+
+        // Cast it
+        if (endPoint.x <= startPoint.x && endPoint.y >= startPoint.y) zDegs = 90 - zDegs;
+        else if (endPoint.x <= startPoint.x && endPoint.y <= startPoint.y) zDegs += 90;
+        else if (endPoint.x >= startPoint.x && endPoint.y <= startPoint.y) zDegs = 90f - (zDegs + 180);//zDegs += 180;
+        else if (endPoint.x >= startPoint.x && endPoint.y >= startPoint.y) zDegs += 270;
+
+        return zDegs;
     }
 }
-
