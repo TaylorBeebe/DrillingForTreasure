@@ -60,8 +60,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeType: 1
   upgradeName: Ad Stop
-  upgradeDescription: THIS IS A TEST.
-  upgradePrice: 400
+  upgradeDescription: Lowers chance of an ad spawning.
+  upgradePrice: 5
+  upgradeLevel: 0
+  upgradeButton: {fileID: 0}
 --- !u!114 &114431728790212588
 MonoBehaviour:
   m_ObjectHideFlags: 1

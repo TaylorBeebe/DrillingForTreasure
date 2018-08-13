@@ -60,8 +60,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeType: 1
   upgradeName: Remove All Ads
-  upgradeDescription: THIS IS A TEST.
-  upgradePrice: 400
+  upgradeDescription: Removes all ads from the game.
+  upgradePrice: 99
+  upgradeLevel: 0
+  upgradeButton: {fileID: 0}
 --- !u!114 &114759017113742764
 MonoBehaviour:
   m_ObjectHideFlags: 1

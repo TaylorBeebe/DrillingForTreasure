@@ -99,9 +99,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 837b72e52a0f0ef47b808ddf60cb558e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradeName: WEAPON RECHARGE TIME
-  upgradeDescription: THIS IS A TEST.
+  upgradeType: 0
+  upgradeName: WEAPON RECHARGE
+  upgradeDescription: Reduces weapon charge time.
   upgradePrice: 400
+  upgradeLevel: 0
+  upgradeButton: {fileID: 0}
 --- !u!114 &114113633116456554
 MonoBehaviour:
   m_ObjectHideFlags: 1
