@@ -43,6 +43,7 @@ GameObject:
   - component: {fileID: 114926095336115428}
   - component: {fileID: 114166699333757850}
   - component: {fileID: 210045303632515838}
+  - component: {fileID: 70525030265608488}
   m_Layer: 0
   m_Name: Nest
   m_TagString: Untagged
@@ -77,6 +78,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!70 &70525030265608488
+CapsuleCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1998117452179674}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.17, y: 0.1}
+  m_Direction: 1
 --- !u!95 &95390989471442216
 Animator:
   serializedVersion: 3

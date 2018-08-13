@@ -24,9 +24,9 @@ GameObject:
   - component: {fileID: 114750364220414746}
   - component: {fileID: 114355737758830678}
   - component: {fileID: 114766049231595340}
-  - component: {fileID: 58987947165111596}
   - component: {fileID: 210421805185377966}
   - component: {fileID: 114970508523473452}
+  - component: {fileID: 70199302776870464}
   m_Layer: 1
   m_Name: Mite
   m_TagString: Untagged
@@ -78,8 +78,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!58 &58987947165111596
-CircleCollider2D:
+--- !u!70 &70199302776870464
+CapsuleCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -91,8 +91,8 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.06
+  m_Size: {x: 0.1, y: 0.13}
+  m_Direction: 0
 --- !u!95 &95739572006293400
 Animator:
   serializedVersion: 3
