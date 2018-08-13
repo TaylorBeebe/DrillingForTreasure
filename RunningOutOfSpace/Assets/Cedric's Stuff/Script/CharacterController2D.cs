@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEditor;
+using EZCameraShake;
 
 [DisallowMultipleComponent]
 [RequireComponent(typeof(Rigidbody2D))]
@@ -120,6 +121,8 @@ public class CharacterController2D : MonoBehaviour {
                 charge = charge - (maxCharge * chargeLoseRate);
                 StartCoroutine(ShootFix());
                 Instantiate(bulletPrefab);
+                CameraShaker.Instance.ShakeOnce(4, 4, 0.1f, .1f);
+                CameraShaker.Instance.transform.position = new Vector3(CameraShaker.Instance.transform.position.x, CameraShaker.Instance.transform.position.y, -10);
             }
         } else if(charge <= Mathf.Epsilon)
         {
@@ -177,13 +180,13 @@ public class CharacterController2D : MonoBehaviour {
         Vector3 point = _camera.WorldToViewportPoint(transform.position); //Get's Player's Position in World to View Port;
         Vector3 delta = transform.position - _camera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, point.z));  //Finds the difference between the middle of the screen/camera and our targets pos
         Vector3 destination = _camera.transform.position + delta; //Gets the correct position for the target to bein the center of the camera
-
+       
         //print("Point: " + point + "Target Pos:" + target.position + "Delta: " + delta + "Destination" + destination);
 
-        _camera.transform.position = Vector3.SmoothDamp(_camera.transform.position, destination, ref _vel, cameraDampTime);
+        _camera.transform.parent.position = Vector3.SmoothDamp(_camera.transform.position, destination, ref _vel, cameraDampTime);
 
-        _camera.transform.position = new Vector3(Mathf.Clamp(_camera.transform.position.x, cameraClampL, cameraClampR), 
-            Mathf.Clamp(_camera.transform.position.y, cameraClampBot, cameraClampUp), _camera.transform.position.z);
+        _camera.transform.parent.position = new Vector3(Mathf.Clamp(_camera.transform.parent.position.x, cameraClampL, cameraClampR), 
+            Mathf.Clamp(_camera.transform.parent.position.y, cameraClampBot, cameraClampUp), _camera.transform.parent.position.z);
     }
 
     void ValueCheck()
