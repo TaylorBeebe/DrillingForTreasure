@@ -190,13 +190,13 @@ public class CharacterController2D : MonoBehaviour {
     {
         if(health == 0 || _camera == null || movementSpeed == 0)
         {
-            if (EditorApplication.isPlaying)
+            /*if (EditorApplication.isPlaying)
             {
-                EditorApplication.isPlaying = false;
-                if (_camera == null) EditorUtility.DisplayDialog("Error", "Camera is not referenced in CharacterController2D on '" + gameObject.name + "'.", "Ok");
-                if (movementSpeed == 0) EditorUtility.DisplayDialog("Error", "Movement Speed is not set in CharacterController2D on '" + gameObject.name + "'.", "Ok");
-                if (health == 0) EditorUtility.DisplayDialog("Error", "Health is not set in CharacterController2D on '" + gameObject.name + "'.", "Ok");
-            }
+                //EditorApplication.isPlaying = false;
+                //if (_camera == null) EditorUtility.DisplayDialog("Error", "Camera is not referenced in CharacterController2D on '" + gameObject.name + "'.", "Ok");
+                //if (movementSpeed == 0) EditorUtility.DisplayDialog("Error", "Movement Speed is not set in CharacterController2D on '" + gameObject.name + "'.", "Ok");
+               // if (health == 0) EditorUtility.DisplayDialog("Error", "Health is not set in CharacterController2D on '" + gameObject.name + "'.", "Ok");
+            }*/
         }
     }
 
@@ -204,11 +204,11 @@ public class CharacterController2D : MonoBehaviour {
     {
         if (health <= Mathf.Epsilon)
         {
-            if (EditorApplication.isPlaying && gameOverBuildIndex == 0)
+            /*if (EditorApplication.isPlaying && gameOverBuildIndex == 0)
             {
-                EditorApplication.isPlaying = false;
-                EditorUtility.DisplayDialog("Error", "Game Over Build Index is not set in CharacterController2D on '" + gameObject.name + "'.", "Ok");
-            }
+                //EditorApplication.isPlaying = false;
+                //EditorUtility.DisplayDialog("Error", "Game Over Build Index is not set in CharacterController2D on '" + gameObject.name + "'.", "Ok");
+            }*/
             gameObject.SendMessage("LoadScene", "GameOver");
         } else if(GameObject.Find("Drill").GetComponentInChildren<HealthAndVariables>().health <= Mathf.Epsilon)
         {
