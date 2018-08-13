@@ -60,6 +60,7 @@ public class MiteEnemy : Enemy {
         {
             canAttack = false;
             AttackAnimation();
+            //HealthAndVariables.DoDamage(5, target); //TODO  replace with damage var 
             target.GetComponent<HealthAndVariables>().TakeDamage(damage);
             Debug.Log("Mite Dealing Damage to Player");
             Invoke("UpdateCanAttack", timeBetweenAttacks);
@@ -69,7 +70,7 @@ public class MiteEnemy : Enemy {
     {
         base.OnDeath();
         CancelInvoke();
-       // renderer.sprite = deathSprite;
+        renderer.sprite = deathSprite;
         group.enabled = false;
     }
     
@@ -92,12 +93,12 @@ public class MiteEnemy : Enemy {
 
     void AttackAnimation()
     {
-       renderer.sprite = attackSprite;
+        renderer.sprite = attackSprite;
         Invoke("NormalAnimation", 0.5f);
     }
 
     void NormalAnimation() {
-       renderer.sprite = aliveSprite;
+        renderer.sprite = aliveSprite;
     }
 
 }

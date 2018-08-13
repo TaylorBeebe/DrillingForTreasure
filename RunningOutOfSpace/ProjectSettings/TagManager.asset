@@ -7,7 +7,6 @@ TagManager:
   - Drill
   - Bullet
   - Scrap
-  - Enemy
   layers:
   - Default
   - TransparentFX

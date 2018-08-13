@@ -248,7 +248,6 @@ MonoBehaviour:
   cameraClampBot: -35.7
   playerHealthUI: {fileID: 0}
   gunChargeUI: {fileID: 0}
-  scrapUI: {fileID: 0}
   gameOverBuildIndex: 5
   _camera: {fileID: 0}
   deathOverlay: {fileID: 0}

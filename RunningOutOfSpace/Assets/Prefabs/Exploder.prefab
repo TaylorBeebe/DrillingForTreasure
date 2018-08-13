@@ -29,7 +29,7 @@ GameObject:
   - component: {fileID: 70304364820524760}
   m_Layer: 0
   m_Name: Exploder
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -126,8 +126,6 @@ MonoBehaviour:
   anim: {fileID: 0}
   ai: {fileID: 0}
   baseScale: {x: 0, y: 0, z: 0}
-  isLookingLeft: 0
-  eType: 0
 --- !u!114 &114209642911359894
 MonoBehaviour:
   m_ObjectHideFlags: 1
