@@ -57,7 +57,7 @@ public class ExploderEnemy : Enemy {
             AttackAnimation();
             //HealthAndVariables.DoDamage(5, target); //TODO  replace with damage var 
             target.GetComponent<HealthAndVariables>().TakeDamage(damage);
-            Debug.Log("Exploder Dealing Damage to Player");
+            //Debug.Log("Exploder Dealing Damage to Player");
             Invoke("UpdateCanAttack", timeBetweenAttacks);
         }
     }
