@@ -6,7 +6,7 @@ public class EnemySpawner : MonoBehaviour
 {
 
     //Array holding the different enemy types
-    [SerializeField] GameObject Enemy1, Enemy2, Enemy3;
+    [SerializeField] GameObject Mite, Sticker, Spitter, Demolisher, Exploder, Nest;
 
     //Get and create set for array so it can be initialized at start
     public GameObject[] Enemyarray
@@ -35,7 +35,7 @@ public class EnemySpawner : MonoBehaviour
         private Vector2 spawnLocation;
         public int rate = 2;
         private bool doesGathererSpawn;
-        
+
         private List<string> easyEnemiesIntroduced = new List<string>();
         private List<string> mediumEnemiesIntroduced = new List<string>();
         private List<string> hardEnemiesIntroduced = new List<string>();
@@ -77,10 +77,12 @@ public class EnemySpawner : MonoBehaviour
             //roll dice here. super small chance
             return doesGathererSpawn;
         }
-        public List<string> GetEasyEnemiesAvailableForWaves() {
+        public List<string> GetEasyEnemiesAvailableForWaves()
+        {
             return easyEnemiesIntroduced;
         }
-        public void AddEasyEnemiesAvailableForWaves(string newEasyEnemy) {
+        public void AddEasyEnemiesAvailableForWaves(string newEasyEnemy)
+        {
             easyEnemiesIntroduced.Add(newEasyEnemy);
         }
         public List<string> GetMediumEnemiesAvailableForWaves()
@@ -137,7 +139,7 @@ public class EnemySpawner : MonoBehaviour
         public string GetRandomHardEnemy()
         {
             int random = Random.Range(0, hardEnemiesIntroduced.Count);
-           
+
             return hardEnemiesIntroduced[random];
         }
     }
@@ -173,7 +175,7 @@ public class EnemySpawner : MonoBehaviour
     private float cameraWidth;
 
     //didn't account for first few levels because all enemies will be easy
-    private int roundStartCalculatingEasyPercentage = 3; 
+    private int roundStartCalculatingEasyPercentage = 3;
 
     //Round when the first medium enemy spawns
     private int roundMediumEnemiesStartSpawning = 3;
@@ -191,13 +193,13 @@ public class EnemySpawner : MonoBehaviour
     private int roundHardEnemisGoToInfinity = 9;
 
     //Easy enemies in game
-    private string[] easyEnemies = {"mites"};
+    private string[] easyEnemies = { "mites", "stickers" };
 
     //Medium enemies in game
-    private string[] mediumEnemies = {"exploders", "spitters"};
+    private string[] mediumEnemies = { "exploders", "spitters" };
 
     //Hard enemies in game
-    private string[] hardEnemies = { "clammies", "demolishers" };
+    private string[] hardEnemies = { "demolishers" };
 
     //FOR TESTING
     private Stack<string> enemyIntroductionOrder;
@@ -211,11 +213,10 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
 
-        levelNumber = gameObject.GetComponent<CharacterController2D>().GetLevelCurrentlyOn();
+        levelNumber = PlayerPrefsHandler.GetMinerals();
 
         timeBetweenWaves = CalculateTimeBetweenWaves();
-        
-        
+
         //initialize the wave countdown max
         waveCountdown = timeBetweenWaves;
 
@@ -228,7 +229,7 @@ public class EnemySpawner : MonoBehaviour
         shuffle(easyEnemies);
         shuffle(mediumEnemies);
         shuffle(hardEnemies);
-        
+
         for (int x = 0; x < hardEnemies.Length; x++)
         {
             enemyIntroductionOrder.Push(hardEnemies[x]);
@@ -243,17 +244,36 @@ public class EnemySpawner : MonoBehaviour
         }
 
         waveForLevel.AddEasyEnemiesAvailableForWaves(enemyIntroductionOrder.Pop());
-        
+
+
+        if (levelNumber == 3 || levelNumber == 4)
+        {
+
+        }
+        else if (levelNumber == 5 || levelNumber == 6)
+        {
+
+        }
+        if (levelNumber == 7 || levelNumber == 8)
+        {
+
+        }
+        if (levelNumber == 9 || levelNumber == 10)
+        {
+
+        }
+
+
         //initialize array of enemies
         Enemyarray = new GameObject[] {
-            Enemy1, Enemy2, Enemy3
-        };
+            Mite, Sticker, Spitter, Demolisher, Exploder, Nest
+    };
 
         screenAspect = (float)Screen.width / (float)Screen.height;
         cameraHeight = mainCamera.orthographicSize;
         cameraWidth = screenAspect * cameraHeight;
 
-       
+
 
         //Code for testing totals of the formulas added together
         /*
@@ -326,11 +346,14 @@ public class EnemySpawner : MonoBehaviour
             //Debug.Log("Index: " + i);
             spawnLocation = GetRandomSpawnLocation();
             string enemy = waveMakeup.Pop();
+
+            GameObject enemyToSpawn = GetEnemyReference(enemy);
+
             //Debug.Log("Count: " + waveMakeup.Count);
             //Debug.Log("Popping: " + enemy);
-            SpawnEnemy(enemy, spawnLocation);
+            SpawnEnemy(enemyToSpawn, spawnLocation);
             yield return new WaitForSeconds(1f / wave.GetRate());
-            
+
         }
 
         //FOR TESTING COMMENT OUT LATER
@@ -380,12 +403,12 @@ public class EnemySpawner : MonoBehaviour
      * @ Pre: None
      * @ Post: Enemy spawned at location
      */
-    void SpawnEnemy(string enemyToSpawn, Vector2 spawnLocation)
+    void SpawnEnemy(GameObject enemyToSpawn, Vector2 spawnLocation)
     {
 
         //Debug.Log("Spawning " + enemyToSpawn + " at " + spawnLocation);
 
-        Instantiate(Enemy1, spawnLocation, Quaternion.identity);
+        Instantiate(enemyToSpawn, spawnLocation, Quaternion.identity);
 
         //Pick an enemy to spawn randomly
         //Instantiate the enemy at the spawn location passed in
@@ -424,7 +447,7 @@ public class EnemySpawner : MonoBehaviour
         if (whichNumberToMax == 0)
         {
             //Debug.Log("returning returning maxed width");
-            returnValue = new Vector2(((mainCamera.transform.position.x + cameraWidth) * randomizedValue)  + (Random.Range(10, 31) * randomizedValue), mainCamera.transform.position.y + Random.Range(cameraHeight * (-1), cameraHeight));
+            returnValue = new Vector2(((mainCamera.transform.position.x + cameraWidth) * randomizedValue) + (Random.Range(10, 31) * randomizedValue), mainCamera.transform.position.y + Random.Range(cameraHeight * (-1), cameraHeight));
 
         }
         //otherwise, max out camera height value
@@ -446,7 +469,7 @@ public class EnemySpawner : MonoBehaviour
     {
 
         Stack<string> waveMakeup = new Stack<string>();
-        
+
         //Get Percent of Each Enemy Class Per Wave
         float easyEnemiesPercent = PercentageEasyEnemies();
         float mediumEnemiesPercent = PercentageMediumEnemies();
@@ -460,8 +483,9 @@ public class EnemySpawner : MonoBehaviour
         string[] enemyArray = new string[numEasyEnemies + numHardEnemies + numMediumEnemies];
 
         int index = 0;
-        
-        for (int x = 0; x < numEasyEnemies; x++) {
+
+        for (int x = 0; x < numEasyEnemies; x++)
+        {
             string enemy = wave.GetEnemy("easy");
             enemyArray[index] = enemy;
             index++;
@@ -480,13 +504,15 @@ public class EnemySpawner : MonoBehaviour
         }
 
         shuffle(enemyArray);
-        for (int x = 0; x < enemyArray.Length; x++) {
+        for (int x = 0; x < enemyArray.Length; x++)
+        {
             waveMakeup.Push(enemyArray[x]);
         }
         return waveMakeup;
     }
 
-    float PercentageEasyEnemies() {
+    float PercentageEasyEnemies()
+    {
         float easyEnemiesBeforeInfinity;
 
         int level = levelNumber;
@@ -495,11 +521,12 @@ public class EnemySpawner : MonoBehaviour
         {
             return 1;
         }
-        else if (level >= roundEasyEnemiesGoToInfinity) {
+        else if (level >= roundEasyEnemiesGoToInfinity)
+        {
             return PercentageEasyEnemiesAtInfinity();
         }
 
-        easyEnemiesBeforeInfinity = ((-0.01458f) * (Mathf.Pow(level,3))) + (0.2687f * (Mathf.Pow(level, 2))) + ((-1.635f) * level) + 3.781f;
+        easyEnemiesBeforeInfinity = ((-0.01458f) * (Mathf.Pow(level, 3))) + (0.2687f * (Mathf.Pow(level, 2))) + ((-1.635f) * level) + 3.781f;
 
         //Debug.Log("Easy Enemies Before Infinity: " + System.Math.Round(easyEnemiesBeforeInfinity,2));
 
@@ -510,7 +537,7 @@ public class EnemySpawner : MonoBehaviour
         int level = levelNumber;
 
         float easyEnemiesInfinity = 0.2485f * Mathf.Pow(level, -0.09884f);
-        
+
         //Debug.Log("Easy Enemies At Infinity: " + System.Math.Round(easyEnemiesInfinity, 2));
 
         return easyEnemiesInfinity;
@@ -529,7 +556,7 @@ public class EnemySpawner : MonoBehaviour
             return PercentageMediumEnemiesAtInfinity();
         }
 
-        float mediumEnemiesBeforeInfinity = (0.1923f * Mathf.Pow(level,2) + -0.3077f * level + 0.1154f) / (Mathf.Pow(level, 2) + -9.231f * level + 27.92f);
+        float mediumEnemiesBeforeInfinity = (0.1923f * Mathf.Pow(level, 2) + -0.3077f * level + 0.1154f) / (Mathf.Pow(level, 2) + -9.231f * level + 27.92f);
 
         //Debug.Log("Medium Enemies Before Infinity: " + System.Math.Round(mediumEnemiesBeforeInfinity, 2));
 
@@ -541,7 +568,7 @@ public class EnemySpawner : MonoBehaviour
 
         int level = levelNumber;
 
-        float mediumEnemiesInfinity = 0.5362f * Mathf.Pow(level,-0.03182f);
+        float mediumEnemiesInfinity = 0.5362f * Mathf.Pow(level, -0.03182f);
 
         //Debug.Log("Medium Enemies At Infinity: " + System.Math.Round(mediumEnemiesInfinity, 2));
 
@@ -567,7 +594,8 @@ public class EnemySpawner : MonoBehaviour
 
         return hardEnemiesBeforeInfinity;
     }
-    float PercentageHardEnemiesAtInfinity(){
+    float PercentageHardEnemiesAtInfinity()
+    {
 
         int level = levelNumber;
 
@@ -578,16 +606,18 @@ public class EnemySpawner : MonoBehaviour
         return hardEnemiesInfinity;
     }
 
-    int CalculateTimeBetweenWaves() {
+    int CalculateTimeBetweenWaves()
+    {
 
-        float time = ((1/(Mathf.Pow(levelNumber, 1.01f) + 3 + Mathf.Cos(levelNumber * (Mathf.PI * 0.5f))) * 35) + 4);
+        float time = ((1 / (Mathf.Pow(levelNumber, 1.01f) + 3 + Mathf.Cos(levelNumber * (Mathf.PI * 0.5f))) * 35) + 4);
 
         //Debug.Log("Time Between Waves = " + Mathf.FloorToInt(timeBetweenWaves));
 
         return Mathf.FloorToInt(time);
     }
 
-    int CalculateEnemiesPerWave() {
+    int CalculateEnemiesPerWave()
+    {
 
         float waveCount = Mathf.Log(levelNumber + 1) * 5;
 
@@ -605,7 +635,7 @@ public class EnemySpawner : MonoBehaviour
     {
         for (int t = 0; t < texts.Length; t++)
         {
-            
+
             string tmp = texts[t];
             int r = Random.Range(t, texts.Length);
             texts[t] = texts[r];
@@ -616,14 +646,44 @@ public class EnemySpawner : MonoBehaviour
     /* @ Param: string array holds array to search, string itemLookingFor holds item to be found
      * @ Pre: None
      * @ Post: Returns true if item is in array
-     */ 
-    bool IsPresent(string[] array, string itemLookingFor) {
+     */
+    bool IsPresent(string[] array, string itemLookingFor)
+    {
 
-        for (int x = 0; x < array.Length; x++) {
-            if (array[x] == itemLookingFor){
+        for (int x = 0; x < array.Length; x++)
+        {
+            if (array[x] == itemLookingFor)
+            {
                 return true;
             }
         }
         return false;
+    }
+
+    private GameObject GetEnemyReference(string name)
+    {
+
+        switch (name)
+        {
+            case "mite":
+                return Enemyarray[0];
+              
+            case "sticker":
+                return Enemyarray[1];
+                
+            case "spitter":
+                return Enemyarray[2];
+                
+            case "demolisher":
+                return Enemyarray[3];
+               
+            case"exploder":
+                return Enemyarray[4];
+
+            default:
+                return Enemyarray[5];
+                
+        }
+
     }
 }
