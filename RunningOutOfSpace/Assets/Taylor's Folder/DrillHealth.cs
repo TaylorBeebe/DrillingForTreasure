@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class DrillHealth : MonoBehaviour {
 
     [SerializeField] Image drillHealthUI;
+
     HealthAndVariables hav;
     float health;
     float maxHealth;

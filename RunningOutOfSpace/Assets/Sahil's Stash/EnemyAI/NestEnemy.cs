@@ -69,6 +69,7 @@ public class NestEnemy : Enemy
     public override void OnDeath()
     {
         base.OnDeath();
+
         renderer.sprite = deathSprite;
     }
     void OnTriggerEnter2D(Collider2D other)

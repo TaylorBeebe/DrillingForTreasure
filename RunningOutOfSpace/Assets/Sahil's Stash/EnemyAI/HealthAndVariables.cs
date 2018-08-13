@@ -10,7 +10,7 @@ public class HealthAndVariables : MonoBehaviour {
     {
         health -= damage;
 
-        if (this.gameObject.tag == "Player") {
+        if (gameObject.tag == "Player") {
             Debug.Log("TAG IS PLAYER ON HIT");
         }
 
