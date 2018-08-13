@@ -39,6 +39,8 @@ GameObject:
   - component: {fileID: 114945480651339476}
   - component: {fileID: 95283077895995806}
   - component: {fileID: 61074948660203166}
+  - component: {fileID: 210758227911459998}
+  - component: {fileID: 114008147474127070}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -195,6 +197,18 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114008147474127070
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1733815321748164}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9fb0027df8d5f9419346674e4459465, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 500
 --- !u!114 &114945480651339476
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -208,7 +222,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementSpeed: 300
   cameraDampTime: 0.15
-  health: 100
+  health: 500
   rawAxis: 0
   fireRate: 0.1
   charge: 500
@@ -223,6 +237,16 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1486049813128980, guid: 77061671a17e7834b8a903d0dcb7f91c,
     type: 2}
   m_FacingRight: 1
+--- !u!210 &210758227911459998
+SortingGroup:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1733815321748164}
+  m_Enabled: 1
+  m_SortingLayerID: -2067773297
+  m_SortingLayer: 1
+  m_SortingOrder: 0
 --- !u!212 &212819212529864830
 SpriteRenderer:
   m_ObjectHideFlags: 1

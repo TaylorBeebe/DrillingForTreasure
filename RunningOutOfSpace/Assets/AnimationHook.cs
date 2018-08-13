@@ -18,7 +18,7 @@ public class AnimationHook : MonoBehaviour {
     private void Update()
     {
         Vector3 vel = ai.aiAgent.velocity;
-        anim.SetFloat("Velocity", vel.magnitude);
+        //anim.SetFloat("Velocity", vel.magnitude);
         if (ai.enemyStates == Enemy.EnemyStates.follow)
         {
             if (vel.x > 0)

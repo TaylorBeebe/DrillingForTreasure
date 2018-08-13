@@ -12,15 +12,34 @@ public class ExploderEnemy : Enemy
     public float attackAnimationTime = 0.5f;
     public GameObject mite;
 
+    bool wasHit = false;
+    SpriteRenderer renderer;
+
+    public Sprite deathSprite;
+    public Sprite attackSprite;
+    
     public override void Start()
     {
         base.Start();
+        renderer = this.gameObject.GetComponentInChildren<SpriteRenderer>();
     }
     public override void Update()
     {
         base.Update();
         aiAgent.canMove = canMove;
         //aiAgent.canMove = true;
+    }
+
+    public void LateUpdate()
+    {
+        if (wasHit)
+        {
+            wasHit = false;
+        }
+        else
+        {
+            renderer.color = Color.white;
+        }
     }
 
     public override void OnFollow()
@@ -40,7 +59,7 @@ public class ExploderEnemy : Enemy
     public override void OnDeath()
     {
         base.OnDeath();
-
+        renderer.sprite = deathSprite;
         int miteCount = Random.Range(minMites, maxMites + 1);
         Debug.Log("Exploder died! Spawning " + miteCount + " mites!");
 
@@ -58,6 +77,17 @@ public class ExploderEnemy : Enemy
     void UpdateCanAttack()
     {
         canAttack = true;
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Bullet")
+        {
+            other.GetComponent<Bullet>().Destroy(other.transform.position);
+            this.GetComponent<HealthAndVariables>().TakeDamage(20);
+            renderer.color = Color.red;
+            wasHit = true;
+        }
     }
 }
 

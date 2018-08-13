@@ -130,9 +130,12 @@ MonoBehaviour:
   canMove: 0
   canAttack: 0
   damage: 5
+  enemyManager: {fileID: 0}
   enemyStates: 0
-  attackAnimationTime: 0.75
+  timeBetweenAttacks: 1.2
   timeBetweenWriggles: 1
+  deathSprite: {fileID: 21300006, guid: 802a30dce928b7143b4511cf545d075c, type: 3}
+  attackSprite: {fileID: 0}
 --- !u!114 &114660844918324072
 MonoBehaviour:
   m_ObjectHideFlags: 1

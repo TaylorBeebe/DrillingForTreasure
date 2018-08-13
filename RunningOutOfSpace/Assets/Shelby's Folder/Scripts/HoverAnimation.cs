@@ -8,6 +8,7 @@ using UnityEngine.SceneManagement;
 public class HoverAnimation : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     Animator anim;
+    string sceneToLoad;
 
     void Start()
     {
@@ -28,17 +29,14 @@ public class HoverAnimation : MonoBehaviour, IPointerEnterHandler, IPointerExitH
         Application.Quit();
     }
 
-    public void StartGame()
+    public void LoadScene(string scene)
     {
+        sceneToLoad = scene;
         Invoke("Fade", 0.25f);
-        transform.parent.transform.parent.GetComponent<Animator>().SetTrigger("fade");
+        GameObject.Find("FadeController").GetComponent<Animator>().SetTrigger("fade");
     }
     public void Fade()
     {
-        SceneManager.LoadScene("CharacterCreation");
-    }
-    public void OpenOptions()
-    {
-
+        SceneManager.LoadScene(sceneToLoad);
     }
 }

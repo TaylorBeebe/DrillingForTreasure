@@ -10,13 +10,33 @@ public class NestEnemy : Enemy
     public float maxSpawnDelay = 8f;
     public GameObject creatureToSpawn;
 
+    public Sprite deathSprite;
+    public Sprite attackSprite;
+
     public float attackAnimationTime = 0.5f;
+
+    bool wasHit = false;
+    SpriteRenderer renderer;
 
     public override void Start()
     {
         base.Start();
+
+        renderer = this.gameObject.GetComponentInChildren<SpriteRenderer>();
+
         aiAgent.canMove = false;
         QueueSpawn();
+    }
+    public void LateUpdate()
+    {
+        if (wasHit)
+        {
+            wasHit = false;
+        }
+        else
+        {
+            renderer.color = Color.white;
+        }
     }
 
     void QueueSpawn()
@@ -49,6 +69,17 @@ public class NestEnemy : Enemy
     public override void OnDeath()
     {
         base.OnDeath();
+        renderer.sprite = deathSprite;
+    }
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Bullet")
+        {
+            other.GetComponent<Bullet>().Destroy(other.transform.position);
+            this.GetComponent<HealthAndVariables>().TakeDamage(20);
+            renderer.color = Color.red;
+            wasHit = true;
+        }
     }
 }
 
