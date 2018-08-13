@@ -33,7 +33,7 @@ public class Bullet : MonoBehaviour {
             sr.flipX = true;
         }
         allowedToMove = true;
-	}
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -58,5 +58,10 @@ public class Bullet : MonoBehaviour {
         //Debug.Log("Destroying Bullet");
         gameObject.transform.position = pos;
         allowedToMove = false;
+    }
+
+    float AngleBetweenTwoPoints(Vector3 a, Vector3 b)
+    {
+        return Mathf.Atan2(b.y - a.y, b.x - a.x) * Mathf.Rad2Deg;
     }
 }

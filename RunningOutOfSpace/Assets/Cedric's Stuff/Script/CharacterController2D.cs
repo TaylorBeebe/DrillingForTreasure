@@ -237,8 +237,11 @@ public class CharacterController2D : MonoBehaviour {
         if (!m_FacingRight) armPivot.transform.rotation = Quaternion.Euler(new Vector3(armPivot.transform.rotation.x, 180, Mathf.Clamp(angle, -25, 25)));
         */
 
+
         angle = AngleBetweenTwoPoints(positionOnScreen, mouseOnScreen);
-        if(angle > -90 && angle < 90)
+
+        print(angle);
+        if (angle > -90 && angle < 90)
         {
             m_FacingRight = true;
         } else
@@ -266,11 +269,5 @@ public class CharacterController2D : MonoBehaviour {
     float AngleBetweenTwoPoints(Vector3 a, Vector3 b)
     {
         return Mathf.Atan2(b.y - a.y, b.x - a.x) * Mathf.Rad2Deg;
-    }
-    
-    public void TakeDamage(float aod) //aod = AmountOfDamage
-    {
-        health -= aod;
-        print("Player took " + aod + " damage");
     }
 }
