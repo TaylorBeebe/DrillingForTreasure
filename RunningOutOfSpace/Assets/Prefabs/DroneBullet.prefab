@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 212596004579473786}
   - component: {fileID: 50168766176977084}
   - component: {fileID: 210249150745075554}
+  - component: {fileID: 114775987780420114}
   m_Layer: 0
   m_Name: DroneBullet
   m_TagString: Untagged
@@ -62,6 +63,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &114775987780420114
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1754788755518090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c775ea063b09b7f46ac60d01accb40a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!210 &210249150745075554
 SortingGroup:
   m_ObjectHideFlags: 1

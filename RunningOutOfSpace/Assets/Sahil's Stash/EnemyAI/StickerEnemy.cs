@@ -28,8 +28,7 @@ public class StickerEnemy : Enemy
 
     public override void OnAttack()
     {
-        // create other sticker 
-        // delete this 
+        base.OnAttack();
         Instantiate(headSticker, target.transform.position, Quaternion.identity);
         Destroy(gameObject);
     }

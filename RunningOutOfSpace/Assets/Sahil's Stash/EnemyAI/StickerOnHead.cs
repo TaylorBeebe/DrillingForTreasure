@@ -20,7 +20,7 @@ public class StickerOnHead : MonoBehaviour {
     void Update()
     {
         // If we nest as parent, we don't need to lock movement 
-        transform.position = new Vector3 (player.transform.position.x, player.transform.position.y + 0.01f, player.transform.position.z); 
+        transform.position = new Vector3 (player.transform.position.x, player.transform.position.y - 0.01f, player.transform.position.z); 
         
 
         if (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift))
@@ -38,7 +38,8 @@ public class StickerOnHead : MonoBehaviour {
         {
             player.GetComponent<HealthAndVariables>().TakeDamage(damage);
             canAttack = false;
-            Invoke("UpdateCanAttack)", timeBetweenAttacks);
+            Invoke("UpdateCanAttack", timeBetweenAttacks);
+            print("BITE!");
         }
     }
 
