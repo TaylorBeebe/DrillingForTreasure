@@ -61,6 +61,7 @@ public class CharacterController2D : MonoBehaviour
     void Start()
     {
         levelCurrentlyOn = PlayerPrefs.GetInt("FloorPers");
+        print(PlayerPrefs.GetInt("FloorPers"));
 
         ValueCheck();
         maxCharge = charge;
