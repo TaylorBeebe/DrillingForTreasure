@@ -131,7 +131,7 @@ Animator:
   m_GameObject: {fileID: 1559703904264170}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b151a0d9414cec44d896132da181794e, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -200,16 +200,16 @@ MonoBehaviour:
   distanceThresholdForAttack: 10
   canMove: 0
   canAttack: 0
+  scrap: {fileID: 0}
   damage: 0
   enemyManager: {fileID: 0}
   enemyStates: 0
   timeBetweenAttacks: 0.75
-  timeBetweenWriggles: 1
   deathSprite: {fileID: 21300006, guid: d72e32294dd959345bb039832781d259, type: 3}
   attackSprite: {fileID: 21300004, guid: d72e32294dd959345bb039832781d259, type: 3}
   aliveSprite: {fileID: 21300000, guid: d72e32294dd959345bb039832781d259, type: 3}
   spit: {fileID: 1217639456018036, guid: 34e43bdcf4e592a4a90bb02a9c470d6a, type: 2}
-  bulletSpawn: {fileID: 0}
+  bulletSpawn: {fileID: 4009266063333048}
 --- !u!114 &114507865793084094
 MonoBehaviour:
   m_ObjectHideFlags: 1
