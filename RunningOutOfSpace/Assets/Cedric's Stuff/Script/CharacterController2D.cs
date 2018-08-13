@@ -294,4 +294,15 @@ public class CharacterController2D : MonoBehaviour {
     public int GetLevelCurrentlyOn() {
         return levelCurrentlyOn;
     }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Spit")
+        {
+            other.GetComponent<Spittle>().Destroy(other.transform.position);
+            this.GetComponent<HealthAndVariables>().TakeDamage(20);
+            //renderer.color = Color.red;
+            //wasHit = true;
+        }
+    }
 }

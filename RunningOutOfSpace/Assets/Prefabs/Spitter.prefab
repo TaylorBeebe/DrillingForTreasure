@@ -126,8 +126,6 @@ MonoBehaviour:
   anim: {fileID: 0}
   ai: {fileID: 0}
   baseScale: {x: 0, y: 0, z: 0}
-  isLookingLeft: 0
-  eType: 0
 --- !u!114 &114169556867918052
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -168,7 +166,7 @@ MonoBehaviour:
   AIDestination: {fileID: 0}
   target: {fileID: 0}
   health: 100
-  distanceThresholdForAttack: 14
+  distanceThresholdForAttack: 5
   canMove: 0
   canAttack: 0
   scrap: {fileID: 0}
@@ -179,6 +177,9 @@ MonoBehaviour:
   attackAnimationTime: 0.35
   spitSpeed: 10
   spitDespawnTime: 4
+  deathSprite: {fileID: 21300006, guid: d72e32294dd959345bb039832781d259, type: 3}
+  attackSprite: {fileID: 21300004, guid: d72e32294dd959345bb039832781d259, type: 3}
+  aliveSprite: {fileID: 21300000, guid: d72e32294dd959345bb039832781d259, type: 3}
 --- !u!114 &114853312548153066
 MonoBehaviour:
   m_ObjectHideFlags: 1
