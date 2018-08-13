@@ -8,6 +8,7 @@ public class AnimationHook : MonoBehaviour {
     public Animator anim;
     public Enemy ai;
     public Vector3 baseScale;
+    public bool isLookingLeft;
     private void Start()
     {
         ai = GetComponent<Enemy>();
@@ -23,12 +24,38 @@ public class AnimationHook : MonoBehaviour {
         {
             if (vel.x > 0)
             {
-                graphic.transform.localScale = baseScale;
+                LookDir(false);
             }
             if (vel.x < 0)
             {
-                graphic.transform.localScale = new Vector3(baseScale.x * -1,baseScale.y,baseScale.z);
+                LookDir(true);
             }
+        }
+        if(ai.enemyStates == Enemy.EnemyStates.attack)
+        {
+            Vector2 TargetDir = ai.target.position - transform.position;
+            
+            if(TargetDir.x > 0)
+            {
+                LookDir(false);
+            }
+            else
+            {
+                LookDir(true);
+            }
+
+        }
+    }
+
+    public void LookDir(bool Left)
+    {
+        if (!Left)
+        {
+            graphic.transform.localScale = baseScale;
+        }
+        if (Left)
+        {
+            graphic.transform.localScale = new Vector3(baseScale.x * -1, baseScale.y, baseScale.z);
         }
     }
 }
