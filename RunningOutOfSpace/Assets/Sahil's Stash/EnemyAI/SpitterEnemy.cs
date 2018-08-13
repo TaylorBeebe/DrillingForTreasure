@@ -4,7 +4,7 @@ using UnityEngine;
 using Pathfinding;
 
 public class SpitterEnemy : Enemy
-{ 
+{
 
     public GameObject spittle;
     public float attackAnimationTime = 0.35f;
@@ -33,7 +33,7 @@ public class SpitterEnemy : Enemy
     {
         base.OnAttack();
 
-        //if (!canAttack) return;
+        if (!canAttack) return;
 
         Spit();
         //target.GetComponent<HealthAndVariables>().TakeDamage(damage);
@@ -62,6 +62,6 @@ public class SpitterEnemy : Enemy
     void UpdateCanAttack()
     {
         canAttack = true;
+        canMove = true;
     }
 }
-
