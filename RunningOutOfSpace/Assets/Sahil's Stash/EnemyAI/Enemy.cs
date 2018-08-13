@@ -29,6 +29,7 @@ public class Enemy : MonoBehaviour {
     public virtual void Start()
     {
         canMove = true;
+        canAttack = true;
 
         aiAgent = GetComponent<AIPath>();
         AIDestination = GetComponent<AIDestinationSetter>();
@@ -54,8 +55,7 @@ public class Enemy : MonoBehaviour {
         else if (Vector2.Distance(transform.position, target.position) <= distanceThresholdForAttack)
         {
             enemyStates = EnemyStates.attack;
-            canAttack = true;
-            Debug.Log("Switching to attack state");
+            //Debug.Log("Switching to attack state");
         }
         else //if (!(Vector3.Distance(transform.position, target.position) <= distanceThresholdForAttack))
         {

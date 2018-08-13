@@ -11,12 +11,13 @@ public class MiteEnemy : Enemy {
     SpriteRenderer renderer;
     public Sprite deathSprite;
     public Sprite attackSprite;
+    public Sprite aliveSprite;
 
     public override void Start()
     {
         base.Start();
         InvokeRepeating("MiteMove", timeBetweenWriggles, timeBetweenWriggles);
-        renderer = this.gameObject.GetComponentInChildren<SpriteRenderer>();
+        renderer = gameObject.GetComponentInChildren<SpriteRenderer>();
     }
     public override void Update()
     {
@@ -52,9 +53,8 @@ public class MiteEnemy : Enemy {
     {
         if (canAttack)
         {
-            //canMove = false;
             canAttack = false;
-
+            AttackAnimation();
             //HealthAndVariables.DoDamage(5, target); //TODO  replace with damage var 
             target.GetComponent<HealthAndVariables>().TakeDamage(damage);
             Debug.Log("Mite Dealing Damage to Player");
@@ -77,8 +77,6 @@ public class MiteEnemy : Enemy {
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        
-
         if (other.tag == "Bullet")
         {
             other.GetComponent<Bullet>().Destroy(other.transform.position);
@@ -87,5 +85,16 @@ public class MiteEnemy : Enemy {
             wasHit = true;
         }
     }
+
+    void AttackAnimation()
+    {
+        renderer.sprite = attackSprite;
+        Invoke("NormalAnimation", 0.5f);
+    }
+
+    void NormalAnimation() {
+        renderer.sprite = aliveSprite;
+    }
+
 }
 
