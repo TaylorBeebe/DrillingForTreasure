@@ -6,9 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Taylor's Folder/Level Mockup.unity
-    guid: ea6283cb98d6e764789ad2e416605cb5
-  - enabled: 1
     path: Assets/Shelby's Folder/MainMenu.unity
     guid: a63cf46a517d0694490cb35a91bf7c06
   - enabled: 1
