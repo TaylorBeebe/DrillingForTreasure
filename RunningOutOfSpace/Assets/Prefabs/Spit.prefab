@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4586867972019018}
   - component: {fileID: 212491025583573108}
   - component: {fileID: 114633818082323964}
+  - component: {fileID: 210925120036364044}
   m_Layer: 0
   m_Name: Spit
   m_TagString: Untagged
@@ -52,6 +53,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84af3b0ca9e80c2459e6b834adb52274, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!210 &210925120036364044
+SortingGroup:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1217639456018036}
+  m_Enabled: 1
+  m_SortingLayerID: -2067773297
+  m_SortingLayer: 1
+  m_SortingOrder: 0
 --- !u!212 &212491025583573108
 SpriteRenderer:
   m_ObjectHideFlags: 1

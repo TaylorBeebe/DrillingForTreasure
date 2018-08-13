@@ -21,10 +21,10 @@ GameObject:
   - component: {fileID: 4700347804872812}
   - component: {fileID: 114585436152566050}
   - component: {fileID: 114208124384511378}
+  - component: {fileID: 114640664419131564}
   - component: {fileID: 114697085389131422}
   - component: {fileID: 114584231733955216}
   - component: {fileID: 114872294713162938}
-  - component: {fileID: 114199293625672770}
   - component: {fileID: 210945346972083476}
   - component: {fileID: 70477657480960914}
   m_Layer: 0
@@ -111,31 +111,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114199293625672770
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1281263389442946}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d83b152d4fe52d948af1cb2c3f7360f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  aiAgent: {fileID: 0}
-  AIDestination: {fileID: 0}
-  target: {fileID: 0}
-  health: 100
-  distanceThresholdForAttack: 15
-  canMove: 0
-  canAttack: 0
-  damage: 15
-  enemyManager: {fileID: 0}
-  enemyStates: 0
-  minMites: 3
-  maxMites: 5
-  attackAnimationTime: 0.5
-  mite: {fileID: 1130405574055168, guid: e535078598921a841a6e1a1f8e76aaee, type: 2}
 --- !u!114 &114208124384511378
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -210,6 +185,32 @@ MonoBehaviour:
   traversableTags: -1
   tagPenalties: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
   graphMask: -1
+--- !u!114 &114640664419131564
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1281263389442946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51135dd34c4166544a6c56e404d67712, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  aiAgent: {fileID: 0}
+  AIDestination: {fileID: 0}
+  target: {fileID: 0}
+  health: 100
+  distanceThresholdForAttack: 20
+  canMove: 0
+  canAttack: 0
+  scrap: {fileID: 0}
+  damage: 0
+  enemyManager: {fileID: 0}
+  enemyStates: 0
+  spittle: {fileID: 1217639456018036, guid: 34e43bdcf4e592a4a90bb02a9c470d6a, type: 2}
+  attackAnimationTime: 0.35
+  spitSpeed: 10
+  spitDespawnTime: 4
 --- !u!114 &114697085389131422
 MonoBehaviour:
   m_ObjectHideFlags: 1

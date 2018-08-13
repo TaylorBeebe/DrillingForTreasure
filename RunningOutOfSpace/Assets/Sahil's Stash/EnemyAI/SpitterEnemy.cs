@@ -50,7 +50,9 @@ public class SpitterEnemy : Enemy
         Vector2 targetPoint = target.transform.position;
         Vector2 toTarget = targetPoint - spawnPoint;
 
-        GameObject go = Instantiate(spittle, spawnPoint, Quaternion.LookRotation(new Vector3(toTarget.x, 0f, 0f)));
+        ////GameObject go = Instantiate(spittle, spawnPoint, Quaternion.LookRotation(new Vector3(toTarget.x, 0f, 0f)));
+        GameObject go = Instantiate(spittle, spawnPoint, Quaternion.LookRotation(new Vector3(toTarget.x, 0f, 0f))); Quaternion.Euler(toTarget.x, 0, 1);
+        //GameObject go = Instantiate(spittle, spawnPoint, Quaternion.LookRotation(new Vector3(toTarget.x, 0f, 0f)));
         go.GetComponent<Spittle>().InheritValues(damage, spitSpeed, spitDespawnTime);
     }
 
