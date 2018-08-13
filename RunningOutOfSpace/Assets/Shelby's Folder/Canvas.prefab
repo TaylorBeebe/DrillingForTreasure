@@ -505,7 +505,6 @@ MonoBehaviour:
   - {fileID: 1083377479447382, guid: 4ab86022fc5c93e4c8291f73f508aae3, type: 2}
   - {fileID: 1083377479447382, guid: 8c9860663b64f634aa1e34acfd30920e, type: 2}
   - {fileID: 1880738329212614, guid: 668a32bcbd4e6c540bf8c7051febd686, type: 2}
-  - {fileID: 1655083164462232, guid: 35819b4b070eec0409145b5c170bf177, type: 2}
   stickyKeys:
   - {fileID: 1576740925629782, guid: 9136cd265e5c215478368131720f3f4f, type: 2}
   adSpawnDeley: 0
