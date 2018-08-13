@@ -251,7 +251,7 @@ public class CharacterController2D : MonoBehaviour {
 
         angle = AngleBetweenTwoPoints(positionOnScreen, mouseOnScreen);
 
-        print(angle);
+        //print(angle);
         if (angle > -90 && angle < 90)
         {
             m_FacingRight = true;
