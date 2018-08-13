@@ -202,7 +202,6 @@ public class CharacterController2D : MonoBehaviour {
                 EditorApplication.isPlaying = false;
                 EditorUtility.DisplayDialog("Error", "Game Over Build Index is not set in CharacterController2D on '" + gameObject.name + "'.", "Ok");
             }
-            Time.timeScale = 0;
             gameObject.SendMessage("LoadScene", "GameOver");
         } else if(GameObject.Find("Drill").GetComponentInChildren<HealthAndVariables>().health <= Mathf.Epsilon)
         {
