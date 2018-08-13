@@ -9,15 +9,18 @@ EditorBuildSettings:
     path: Assets/Shelby's Folder/MainMenu.unity
     guid: a63cf46a517d0694490cb35a91bf7c06
   - enabled: 1
+    path: Assets/Shelby's Folder/LeaderboardView.unity
+    guid: 5680b962223715b479c4fcfc9dbfe107
+  - enabled: 1
     path: Assets/Shelby's Folder/CharacterCreation.unity
     guid: 06a9409b4e892884480834adb5b3709f
   - enabled: 1
     path: Assets/Shelby's Folder/UpgradeScene.unity
     guid: 7245cb43e16ef804ea906c2f5161d03b
   - enabled: 1
+    path: Assets/Shelby's Folder/LeaderboardUpload.unity
+    guid: 17a105f31778f004f9f6689d554545d0
+  - enabled: 1
     path: Assets/Shelby's Folder/GameOver.unity
     guid: f9094a9b0d57b054b9e8210942196e43
-  - enabled: 1
-    path: Assets/Shelby's Folder/Leaderboards.unity
-    guid: 5680b962223715b479c4fcfc9dbfe107
   m_configObjects: {}
