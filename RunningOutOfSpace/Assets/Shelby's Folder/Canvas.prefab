@@ -510,7 +510,7 @@ MonoBehaviour:
   - {fileID: 1576740925629782, guid: 9136cd265e5c215478368131720f3f4f, type: 2}
   adSpawnDeley: 0
   adSpawnWindowMin: 0
-  adSpawnWindowMax: 1
+  adSpawnWindowMax: 10
   stopSpawning: 1
   timerAdMin: 5
   timerAdMax: 9
@@ -843,7 +843,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 119e9b411f9482c4292b974c5113c380, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timer: 5
+  timer: 2
 --- !u!222 &222019431319392514
 CanvasRenderer:
   m_ObjectHideFlags: 1

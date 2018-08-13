@@ -77,6 +77,7 @@ public class CharacterController2D : MonoBehaviour
     void Update()
     {
         health = hav.health;
+        levelCurrentlyOn = PlayerPrefs.GetInt("FloorPers");
 
         PlayerShoot();
         SetAnimation();
