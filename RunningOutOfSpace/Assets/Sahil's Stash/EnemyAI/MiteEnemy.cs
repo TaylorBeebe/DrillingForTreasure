@@ -38,7 +38,14 @@ public class MiteEnemy : Enemy {
     }
     public override void OnDeath(float WaitBeforeDestroying)
     {
+<<<<<<< HEAD
         base.OnDeath(WaitBeforeDestroying);
+=======
+        base.OnDeath();
+        CancelInvoke();
+        renderer.sprite = deathSprite;
+        Debug.Log("Mite Died");
+>>>>>>> parent of a70fd12... Minor Changes. Properly merged with Cedric Branch
     }
     
 }
