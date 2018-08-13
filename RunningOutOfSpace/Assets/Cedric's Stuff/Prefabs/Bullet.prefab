@@ -22,9 +22,11 @@ GameObject:
   - component: {fileID: 212881530436418332}
   - component: {fileID: 114621761045707762}
   - component: {fileID: 50781009425988870}
+  - component: {fileID: 210335554491057926}
+  - component: {fileID: 70448335049741212}
   m_Layer: 0
   m_Name: Bullet
-  m_TagString: Untagged
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1486049813128980}
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 4.5604014, y: -0.046221673, z: -14.624493}
+  m_LocalPosition: {x: 4.993087, y: 1.6136664, z: -14.624493}
   m_LocalScale: {x: 0.05, y: 0.05, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -62,6 +64,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!70 &70448335049741212
+CapsuleCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1486049813128980}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 1.93, y: 0.8}
+  m_Size: {x: 21.84, y: 8.6}
+  m_Direction: 1
 --- !u!114 &114621761045707762
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -74,6 +91,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletSpeed: 900
+--- !u!210 &210335554491057926
+SortingGroup:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1486049813128980}
+  m_Enabled: 1
+  m_SortingLayerID: -2067773297
+  m_SortingLayer: 1
+  m_SortingOrder: 2
 --- !u!212 &212881530436418332
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -108,7 +135,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 6
   m_Sprite: {fileID: 21300000, guid: 9dc709e2b0056b446bdac8aae2cbff35, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
