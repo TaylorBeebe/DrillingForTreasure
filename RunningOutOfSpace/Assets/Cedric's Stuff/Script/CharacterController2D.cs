@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 using UnityEditor;
 
 [DisallowMultipleComponent]
@@ -32,6 +32,9 @@ public class CharacterController2D : MonoBehaviour {
     [SerializeField] Image playerHealthUI;
     [SerializeField] Image gunChargeUI;
 
+    [Header("Build Indexes")]
+    [SerializeField] int gameOverBuildIndex;
+
     [Header("Reference")]
     [SerializeField] Camera _camera;
     [SerializeField] GameObject deathOverlay;
@@ -47,6 +50,7 @@ public class CharacterController2D : MonoBehaviour {
     private float maxHealth;
     private int mag;
     [HideInInspector] public bool m_FacingRight = true;
+    [HideInInspector] public int scrap = 0;
     private bool _isDead = false;
     private bool _canShoot = true;
 
@@ -175,7 +179,7 @@ public class CharacterController2D : MonoBehaviour {
     {
         if(health == 0 || _camera == null || movementSpeed == 0)
         {
-            if (EditorApplication.isPlaying && deathOverlay == null)
+            if (EditorApplication.isPlaying)
             {
                 EditorApplication.isPlaying = false;
                 if (_camera == null) EditorUtility.DisplayDialog("Error", "Camera is not referenced in CharacterController2D on '" + gameObject.name + "'.", "Ok");
@@ -189,13 +193,16 @@ public class CharacterController2D : MonoBehaviour {
     {
         if (health <= Mathf.Epsilon)
         {
-            if (EditorApplication.isPlaying && deathOverlay == null)
+            if (EditorApplication.isPlaying && gameOverBuildIndex == 0)
             {
                 EditorApplication.isPlaying = false;
-                EditorUtility.DisplayDialog("Error", "Death Overlay is not referenced in CharacterController2D on '" + gameObject.name + "'.", "Ok");
+                EditorUtility.DisplayDialog("Error", "Game Over Build Index is not set in CharacterController2D on '" + gameObject.name + "'.", "Ok");
             }
             Time.timeScale = 0;
-            deathOverlay.SetActive(true);
+            gameObject.SendMessage("LoadScene", "GameOver");
+        } else if(GameObject.Find("Drill").GetComponentInChildren<HealthAndVariables>().health <= Mathf.Epsilon)
+        {
+            gameObject.SendMessage("LoadScene", "GameOver");
         }
     }
 

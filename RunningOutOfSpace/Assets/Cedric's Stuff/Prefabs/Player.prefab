@@ -248,11 +248,13 @@ MonoBehaviour:
   cameraClampBot: -35.7
   playerHealthUI: {fileID: 0}
   gunChargeUI: {fileID: 0}
+  gameOverBuildIndex: 5
   _camera: {fileID: 0}
   deathOverlay: {fileID: 0}
   bulletPrefab: {fileID: 1486049813128980, guid: 77061671a17e7834b8a903d0dcb7f91c,
     type: 2}
   m_FacingRight: 1
+  scrap: 0
 --- !u!114 &114778313333007828
 MonoBehaviour:
   m_ObjectHideFlags: 1
