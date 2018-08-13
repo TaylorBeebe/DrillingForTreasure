@@ -214,8 +214,8 @@ public class EnemySpawner : MonoBehaviour
     {
 
 
-        levelNumber = gameObject.GetComponent<CharacterController2D>().GetLevelCurrentlyOn();
-        
+        //levelNumber = gameObject.GetComponent<CharacterController2D>().GetLevelCurrentlyOn();
+        levelNumber = 11;
 
         timeBetweenWaves = CalculateTimeBetweenWaves();
 
