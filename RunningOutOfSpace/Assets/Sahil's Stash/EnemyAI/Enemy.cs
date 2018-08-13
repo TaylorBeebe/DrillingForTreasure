@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour {
 
     HealthAndVariables healthAndVariables; 
 
-    EnemyManager enemyManager;
+    [HideInInspector] public EnemyManager enemyManager;
 
     public enum EnemyStates {
         attack,
@@ -33,9 +33,8 @@ public class Enemy : MonoBehaviour {
         aiAgent = GetComponent<AIPath>();
         AIDestination = GetComponent<AIDestinationSetter>();
         enemyManager = FindObjectOfType<EnemyManager>();
-        int i = Random.Range(0, 2);
-        if (i == 0) target = enemyManager.Player;
-        else target = enemyManager.Drill;
+
+        RandomiseTarget();
 
         healthAndVariables = GetComponent<HealthAndVariables>();
 
@@ -87,6 +86,11 @@ public class Enemy : MonoBehaviour {
     {
         GetComponent<Collider>().isTrigger = true; // prevents further bullets from hitting it
         Destroy(gameObject, 2f);
+    }
+
+    void RandomiseTarget()
+    {
+        target = (Random.Range(0, 2) == 0) ? enemyManager.Player : enemyManager.Drill;
     }
 
     public virtual void OnDeath() { }
