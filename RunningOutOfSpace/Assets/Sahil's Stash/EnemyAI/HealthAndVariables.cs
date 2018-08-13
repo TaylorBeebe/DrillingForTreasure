@@ -9,11 +9,12 @@ public class HealthAndVariables : MonoBehaviour {
     public void TakeDamage(float damage)
     {
         health -= damage;
-
+        /*
         if (gameObject.tag == "Player") {
-            Debug.Log("TAG IS PLAYER ON HIT");
+            
+            //Debug.Log("TAG IS PLAYER ON HIT");
         }
-
+        */
         // player? enemy? drill? 
 
     }
