@@ -50,12 +50,19 @@ public class CharacterController2D : MonoBehaviour {
     private float maxCharge;
     private float maxHealth;
     private int mag;
+    private int levelCurrentlyOn;
     [HideInInspector] public bool m_FacingRight = true;
     [HideInInspector] public int scrap = 0;
     private bool _isDead = false;
     private bool _canShoot = true;
+    
 
 	void Start () {
+
+        DontDestroyOnLoad(gameObject);
+
+        levelCurrentlyOn = 1;
+
         ValueCheck();
         maxCharge = charge;
         rb2d = GetComponent<Rigidbody2D>();
@@ -280,5 +287,12 @@ public class CharacterController2D : MonoBehaviour {
     float AngleBetweenTwoPoints(Vector3 a, Vector3 b)
     {
         return Mathf.Atan2(b.y - a.y, b.x - a.x) * Mathf.Rad2Deg;
+    }
+
+    public void SetLevelCurrentlyOn(int newLevel) {
+        levelCurrentlyOn = newLevel;
+    }
+    public int GetLevelCurrentlyOn() {
+        return levelCurrentlyOn;
     }
 }
