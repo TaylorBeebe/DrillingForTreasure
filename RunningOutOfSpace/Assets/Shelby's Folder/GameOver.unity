@@ -350,6 +350,7 @@ GameObject:
   - component: {fileID: 904838839}
   - component: {fileID: 904838838}
   - component: {fileID: 904838837}
+  - component: {fileID: 904838840}
   m_Layer: 5
   m_Name: MainMenuButton
   m_TagString: Untagged
@@ -451,6 +452,18 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 904838835}
   m_CullTransparentMesh: 0
+--- !u!114 &904838840
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 904838835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 647263df70c76bc46a9a9a72dd481c01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SceneToLoad: MainMenu
 --- !u!1 &1049252662
 GameObject:
   m_ObjectHideFlags: 0
@@ -687,6 +700,7 @@ GameObject:
   - component: {fileID: 1310504986}
   - component: {fileID: 1310504985}
   - component: {fileID: 1310504984}
+  - component: {fileID: 1310504987}
   m_Layer: 5
   m_Name: LeaderboardButton
   m_TagString: Untagged
@@ -788,6 +802,18 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1310504982}
   m_CullTransparentMesh: 0
+--- !u!114 &1310504987
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1310504982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 647263df70c76bc46a9a9a72dd481c01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SceneToLoad: Leaderboard
 --- !u!1 &1322015617
 GameObject:
   m_ObjectHideFlags: 0
@@ -955,6 +981,7 @@ GameObject:
   - component: {fileID: 1463076972}
   - component: {fileID: 1463076971}
   - component: {fileID: 1463076970}
+  - component: {fileID: 1463076973}
   m_Layer: 5
   m_Name: RetryButton
   m_TagString: Untagged
@@ -1056,6 +1083,18 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1463076968}
   m_CullTransparentMesh: 0
+--- !u!114 &1463076973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1463076968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 647263df70c76bc46a9a9a72dd481c01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SceneToLoad: CharacterCreation
 --- !u!1 &2092380006
 GameObject:
   m_ObjectHideFlags: 0
