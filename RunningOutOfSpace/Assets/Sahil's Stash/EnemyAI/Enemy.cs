@@ -12,7 +12,7 @@ public class Enemy : MonoBehaviour {
     public float distanceThresholdForAttack = 10f;
     [HideInInspector] public bool canMove;
     //public float DamagePerSecond;
-    [HideInInspector] public bool canAttack = false;
+    [HideInInspector] public bool canAttack = true;
 
     public int damage;
 
@@ -54,10 +54,14 @@ public class Enemy : MonoBehaviour {
         else if (Vector3.Distance(transform.position, target.position) <= distanceThresholdForAttack)
         {
             enemyStates = EnemyStates.attack;
+            //canAttack = true;
+            //Debug.Log("Time to strike!");
+            canMove = false;
         }
         else //if (!(Vector3.Distance(transform.position, target.position) <= distanceThresholdForAttack))
         {
             enemyStates = EnemyStates.follow;
+            Debug.Log("Following");
         }
 
         switch (enemyStates)
@@ -70,11 +74,14 @@ public class Enemy : MonoBehaviour {
                 Die();
                 break;
             case EnemyStates.attack:
+                OnAttack();
+                /*
                 if (canAttack)
                 {
                     Debug.Log("Attacking " + target.name + " for " + damage + " damage"); //## where is damage stored?
                     OnAttack();
                 }
+                */
                 break;
         }
         //aiAgent.destination = target.position;
