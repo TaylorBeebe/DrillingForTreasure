@@ -268,7 +268,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1879504839303404
 GameObject:
   m_ObjectHideFlags: 1
@@ -517,7 +517,6 @@ MonoBehaviour:
   shiftsToActivate: 5
   shiftResetTime: 0.8
   ShiftAlert: {fileID: 114044606290421426}
-  clinged: 0
   captchaTypeText: nuces nutrientibus in illis
   boxAds:
   - {fileID: 21300000, guid: e7a34f34489731c46b013a98c37a7632, type: 3}
