@@ -25,7 +25,6 @@ public class HealthAndVariables : MonoBehaviour {
     public void TakeDamage(float damage)
     {
         health -= damage;
-
         // player? enemy? drill? 
 
     }

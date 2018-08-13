@@ -82,9 +82,10 @@ public class Enemy : MonoBehaviour {
         //aiAgent.canMove = canMove;
     }
 
-    void Die()
+    public void Die()
     {
-        GetComponent<Collider>().isTrigger = true; // prevents further bullets from hitting it
+        GetComponent<Collider2D>().enabled = false; // prevents further bullets from hitting it
+        this.canMove = false;
         Destroy(gameObject, 2f);
     }
 
@@ -93,7 +94,10 @@ public class Enemy : MonoBehaviour {
         target = (Random.Range(0, 2) == 0) ? enemyManager.Player : enemyManager.Drill;
     }
 
-    public virtual void OnDeath() { }
+    public virtual void OnDeath() {
+        Die();
+        
+    }
     public virtual void OnAttack() { }
     public virtual void OnFollow() { }
 

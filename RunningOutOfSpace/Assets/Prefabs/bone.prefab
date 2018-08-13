@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4746153218095646}
   - component: {fileID: 212614539058908352}
   - component: {fileID: 70940226273673880}
+  - component: {fileID: 210645186785753110}
   m_Layer: 0
   m_Name: bone
   m_TagString: Untagged
@@ -56,6 +57,16 @@ CapsuleCollider2D:
   m_Offset: {x: -1.96, y: -1.56}
   m_Size: {x: 17.8, y: 2.6}
   m_Direction: 1
+--- !u!210 &210645186785753110
+SortingGroup:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1249115404766418}
+  m_Enabled: 1
+  m_SortingLayerID: -2067773297
+  m_SortingLayer: 1
+  m_SortingOrder: 0
 --- !u!212 &212614539058908352
 SpriteRenderer:
   m_ObjectHideFlags: 1

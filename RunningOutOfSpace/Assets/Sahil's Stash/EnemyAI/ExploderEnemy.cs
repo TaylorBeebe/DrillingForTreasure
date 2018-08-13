@@ -59,5 +59,14 @@ public class ExploderEnemy : Enemy
     {
         canAttack = true;
     }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Bullet")
+        {
+            other.GetComponent<Bullet>().Destroy(other.transform.position);
+            this.GetComponent<HealthAndVariables>().TakeDamage(20);
+        }
+    }
 }
 

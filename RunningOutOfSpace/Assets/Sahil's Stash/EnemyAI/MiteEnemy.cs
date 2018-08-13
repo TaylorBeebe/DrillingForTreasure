@@ -7,6 +7,7 @@ public class MiteEnemy : Enemy {
 
     public float attackAnimationTime = 0.75f;
     public float timeBetweenWriggles = 1f;
+    bool wasHit = false;
 
     public override void Start()
     {
@@ -16,7 +17,12 @@ public class MiteEnemy : Enemy {
     public override void Update()
     {
         base.Update();
-        
+        /*
+        if (wasHit) {
+            this.gameObject.GetComponentInChildren<SpriteRenderer>().color = new Color(255, 255, 255);
+            wasHit = false;
+        }
+        */
         aiAgent.canMove = canMove;
        // AIDestination.target = target;
         
@@ -42,17 +48,29 @@ public class MiteEnemy : Enemy {
 
         Invoke("UpdateCanAttack", attackAnimationTime);
     }
-
-    /*
-    public override void OnDeath(float WaitBeforeDestroying)
+    public override void OnDeath()
     {
-        base.OnDeath(WaitBeforeDestroying);
+        base.OnDeath();
+        CancelInvoke();
+        Debug.Log("Mite Died");
     }
-    */
+    
 
     void UpdateCanAttack()
     {
         canAttack = true;
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Bullet")
+        {
+            other.GetComponent<Bullet>().Destroy(other.transform.position);
+            this.GetComponent<HealthAndVariables>().TakeDamage(20);
+            //this.gameObject.GetComponentInChildren<SpriteRenderer>().color = new Color(245, 159, 159);
+            this.gameObject.GetComponentInChildren<SpriteRenderer>().color = Color.white;
+            wasHit = true;
+        }
     }
 }
 

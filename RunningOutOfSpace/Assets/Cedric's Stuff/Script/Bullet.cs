@@ -10,10 +10,12 @@ public class Bullet : MonoBehaviour {
     CharacterController2D cc2d;
 
     bool facingRight;
-    bool aloudToMove = false;
+    bool allowedToMove = false;
     Rigidbody2D rb2d;
     Vector2 bulletPos;
     SpriteRenderer sr;
+
+    bool destroyed;
 
 	// Use this for initialization
 	void Start () {
@@ -30,12 +32,12 @@ public class Bullet : MonoBehaviour {
             transform.eulerAngles = new Vector3(transform.eulerAngles.x, 0, transform.eulerAngles.z);
             sr.flipX = true;
         }
-        aloudToMove = true;
+        allowedToMove = true;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (aloudToMove)
+        if (allowedToMove)
         {
             bulletPos = (Vector2)_camera.WorldToViewportPoint(transform.position);
             if (facingRight)
@@ -47,5 +49,13 @@ public class Bullet : MonoBehaviour {
                 Destroy(gameObject);
             }
         }
+        else {
+            Destroy(gameObject);
+        }
 	}
+
+    public void Destroy(Vector2 pos) {
+        gameObject.transform.position = pos;
+        allowedToMove = false;
+    }
 }
