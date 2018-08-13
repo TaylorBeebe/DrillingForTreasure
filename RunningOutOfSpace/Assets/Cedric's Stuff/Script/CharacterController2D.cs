@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Audio;
 using UnityEditor;
 
@@ -26,6 +28,10 @@ public class CharacterController2D : MonoBehaviour {
     [SerializeField] float cameraClampUp;
     [SerializeField] float cameraClampBot;
 
+    [Header("UI Stuff")]
+    [SerializeField] Image playerHealthUI;
+    [SerializeField] Image gunChargeUI;
+
     [Header("Reference")]
     [SerializeField] Camera _camera;
     [SerializeField] GameObject deathOverlay;
@@ -38,12 +44,14 @@ public class CharacterController2D : MonoBehaviour {
     private Vector3 _vel = Vector3.zero;
     private HealthAndVariables hav;
     private float maxCharge;
+    private float maxHealth;
     private int mag;
     [HideInInspector] public bool m_FacingRight = true;
     private bool _isDead = false;
     private bool _canShoot = true;
 
 	void Start () {
+        maxHealth = hav.health;
         ValueCheck();
         maxCharge = charge;
         rb2d = GetComponent<Rigidbody2D>();
@@ -103,7 +111,29 @@ public class CharacterController2D : MonoBehaviour {
             charge = charge + (maxCharge * rechargeRate);
         else if (charge > maxCharge)
             charge = maxCharge;
+
+        float uiInfo = charge / maxCharge;
+        uiInfo *= 100;
+        Mathf.Round(uiInfo);
+        uiInfo /= 100;
     }
+
+    void UIUpdate()
+    {
+        float uiInfo = charge / maxCharge;
+        uiInfo *= 100;
+        Mathf.Round(uiInfo);
+        uiInfo /= 100;
+        gunChargeUI.fillAmount = uiInfo;
+
+        uiInfo = health / maxHealth;
+        uiInfo *= 100;
+        Mathf.Round(uiInfo);
+        uiInfo /= 100;
+        playerHealthUI.fillAmount = uiInfo;
+    }
+
+
 
     void SetAnimation()
     {
