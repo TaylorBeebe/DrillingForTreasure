@@ -7,6 +7,8 @@ public class AudioManager : MonoBehaviour
 
     [HideInInspector] static public bool sfxMute, musicMute;
 
+    public static AudioManager instance;
+
     // all sounds used in the game go here!
     public Sound[] sounds;
 
@@ -14,6 +16,15 @@ public class AudioManager : MonoBehaviour
 
     public void Awake()
     {
+
+        if (instance == null)
+        {
+            instance = this;
+        } else
+        {
+            Destroy(gameObject);
+        }
+
         DontDestroyOnLoad(gameObject);
 
         foreach (Sound s in sounds)
@@ -34,7 +45,6 @@ public class AudioManager : MonoBehaviour
         sfxMute = false; //  PlayerPrefsHandler.GetSFXMute();
         musicMute = false; // PlayerPrefsHandler.GetMusicMute();
 
-        Play("AdMusic1");
         //SetMusic("MenuMusic", true);
         //PlayOneShot(menuMusic.clip);
         //print("I should be playing " + menuMusic.clip.name + "!");
@@ -46,8 +56,8 @@ public class AudioManager : MonoBehaviour
         if (currentSong != null) currentSong.source.Stop();
     }
 
-
-    public Sound StartAdMusic(string name, bool loop)
+    /*
+    public Sound StartAdLoop(string name)
     {
         if (musicMute) return null;
 
@@ -65,10 +75,11 @@ public class AudioManager : MonoBehaviour
         return s;
     }
 
-    void StopAdMusic(Sound s)
+    public void StopAdLoop(Sound s)
     {
         s.source.Stop();
     }
+    */
 
 
     public void SetMusic(string name, bool loop)

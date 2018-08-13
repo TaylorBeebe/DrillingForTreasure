@@ -4,15 +4,26 @@ using UnityEngine;
 
 public class AudioTestScript : MonoBehaviour {
 
+    public float startTime = 1f;
+    public float stopTime = 5f; 
+
+    Sound s; 
+
 	// Use this for initialization
 	void Start () {
-        Invoke("Play", 1f);
+        Invoke("Play", startTime);
+        Invoke("Stop", stopTime);
     }
 
     void Play ()
     {
-        FindObjectOfType<AudioManager>().Play("AdMusic1");
+        //s = FindObjectOfType<AudioManager>().StartAdLoop("AdMusic1");
         print("Commence!");
+    }
+
+    void Stop ()
+    {
+        //FindObjectOfType<AudioManager>().StopAdLoop(s);
     }
     
 
