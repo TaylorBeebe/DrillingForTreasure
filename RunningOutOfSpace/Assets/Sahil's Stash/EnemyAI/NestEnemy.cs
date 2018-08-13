@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
+using UnityEngine.Rendering;
 
 public class NestEnemy : Enemy
 {
@@ -18,9 +19,12 @@ public class NestEnemy : Enemy
     bool wasHit = false;
     SpriteRenderer renderer;
 
+    SortingGroup group;
+
     public override void Start()
     {
         base.Start();
+        group = GetComponent<SortingGroup>();
 
         renderer = this.gameObject.GetComponentInChildren<SpriteRenderer>();
 
@@ -69,8 +73,11 @@ public class NestEnemy : Enemy
     public override void OnDeath()
     {
         base.OnDeath();
-
+        
         renderer.sprite = deathSprite;
+
+        group.enabled = false;
+        
     }
     void OnTriggerEnter2D(Collider2D other)
     {

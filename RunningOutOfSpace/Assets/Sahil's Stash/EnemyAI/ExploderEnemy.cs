@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
+using UnityEngine.Rendering;
 
 public class ExploderEnemy : Enemy {
 
@@ -14,10 +15,13 @@ public class ExploderEnemy : Enemy {
     public Sprite deathSprite;
     public Sprite attackSprite;
     public Sprite aliveSprite;
-    
+
+    SortingGroup group;
+
     public override void Start()
     {
         base.Start();
+        group = GetComponent<SortingGroup>();
         renderer = this.gameObject.GetComponentInChildren<SpriteRenderer>();
         canAttack = true;
     }

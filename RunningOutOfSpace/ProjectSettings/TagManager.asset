@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Drill
   - Bullet
+  - Scrap
   layers:
   - Default
   - TransparentFX

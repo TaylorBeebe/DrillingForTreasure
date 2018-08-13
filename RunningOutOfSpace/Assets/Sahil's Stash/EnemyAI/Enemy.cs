@@ -14,6 +14,8 @@ public class Enemy : MonoBehaviour {
     //public float DamagePerSecond;
     [HideInInspector] public bool canAttack = false;
 
+    public GameObject scrap;
+
     public int damage;
 
     HealthAndVariables healthAndVariables; 
@@ -30,7 +32,6 @@ public class Enemy : MonoBehaviour {
     {
         canMove = true;
         canAttack = true;
-
         aiAgent = GetComponent<AIPath>();
         AIDestination = GetComponent<AIDestinationSetter>();
         enemyManager = FindObjectOfType<EnemyManager>();
@@ -89,6 +90,15 @@ public class Enemy : MonoBehaviour {
     {
         GetComponent<Collider2D>().enabled = false; // prevents further bullets from hitting it
         this.canMove = false;
+
+        if (Random.Range(0, 100) < 75) {
+
+            Vector2 pos = transform.position;
+
+            Instantiate(scrap, pos, Quaternion.identity);
+
+        }
+        
         Destroy(gameObject, 2f);
     }
 
