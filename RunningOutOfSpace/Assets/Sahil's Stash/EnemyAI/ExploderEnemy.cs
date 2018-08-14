@@ -67,6 +67,7 @@ public class ExploderEnemy : Enemy {
         renderer.sprite = deathSprite;
         int miteCount = Random.Range(minMites, maxMites + 1);
         //Debug.Log("Exploder died! Spawning " + miteCount + " mites!");
+        group.enabled = false;
 
         for (int i = 0; i < miteCount; i++)
         {
