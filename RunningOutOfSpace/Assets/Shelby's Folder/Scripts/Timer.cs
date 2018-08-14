@@ -10,23 +10,28 @@ public class Timer : MonoBehaviour {
     private Text timerText;
     private FadeController fc;
     private float minutes, seconds, milliseconds;
+    private bool timerCanRun = true;
 
     void Start()
     {
         //3600 seconds in an hour
-        timer = 90;
+        timer = 15;
         timerText = GetComponent<Text>();
         fc = GetComponent<FadeController>();
     }
 
     void Update()
     {
-        if(timer <= Mathf.Epsilon)
+        if(timer <= 0 && timerCanRun)
         {
-            int fl = PlayerPrefs.GetInt("FloorPers");
+            int fl = GameObject.Find("Player").GetComponent<CharacterController2D>().GetLevelCurrentlyOn();
             fl += 1;
-            PlayerPrefs.SetInt("FloorPers", fl);
+            GameObject.Find("Player").GetComponent<CharacterController2D>().SetLevelCurrentlyOn(fl);
+            timerCanRun = false;
             fc.LoadScene(SceneManager.GetActiveScene().name);
+        } else
+        {
+            timer = 0;
         }
         timer -= Time.deltaTime;
         minutes = Mathf.Floor((timer % 3600) / 60);
@@ -37,6 +42,6 @@ public class Timer : MonoBehaviour {
         if (milliseconds < 1)
             milliseconds = 100;
 
-        timerText.text = minutes.ToString("00") + ":" + seconds.ToString("00") + ":" + milliseconds.ToString("00");
+        if(timerCanRun) timerText.text = minutes.ToString("00") + ":" + seconds.ToString("00") + ":" + milliseconds.ToString("00");
     }
 }

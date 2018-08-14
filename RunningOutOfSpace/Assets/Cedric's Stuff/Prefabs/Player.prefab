@@ -59,6 +59,7 @@ GameObject:
   - component: {fileID: 210782589903304440}
   - component: {fileID: 114360826443824916}
   - component: {fileID: 58479868745397868}
+  - component: {fileID: 114144322194935742}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -204,6 +205,17 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &114144322194935742
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1626020167733436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f721439aae9a4b44b82d736fc07d8b17, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114360826443824916
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -215,10 +227,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e7db5b801a14d744ae738661c9baf5e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy1: {fileID: 1130405574055168, guid: e535078598921a841a6e1a1f8e76aaee, type: 2}
-  Enemy2: {fileID: 0}
-  Enemy3: {fileID: 0}
-  levelNumber: 0
+  Mite: {fileID: 1130405574055168, guid: e535078598921a841a6e1a1f8e76aaee, type: 2}
+  Sticker: {fileID: 1498289736052232, guid: 25219afc669340a40a1703db8f30e884, type: 2}
+  Spitter: {fileID: 1639392361509744, guid: a66336832dbcc00438514571781e5082, type: 2}
+  Demolisher: {fileID: 1744111210908924, guid: 0ed9d7300dab75a4eb6d9ed4574120a7, type: 2}
+  Exploder: {fileID: 1038745074890770, guid: d745ee44ac863c544a7a6e81dc66539e, type: 2}
+  Nest: {fileID: 1998117452179674, guid: 905c1addfae4f4e49bd4c7244aba4add, type: 2}
+  levelNumber: 1
   delaySearchEnemies: 2
   waveCountdown: 0
   mainCamera: {fileID: 0}
@@ -248,11 +263,12 @@ MonoBehaviour:
   cameraClampBot: -35.7
   playerHealthUI: {fileID: 0}
   gunChargeUI: {fileID: 0}
+  scrapUI: {fileID: 0}
   gameOverBuildIndex: 5
   _camera: {fileID: 0}
-  deathOverlay: {fileID: 0}
   bulletPrefab: {fileID: 1486049813128980, guid: 77061671a17e7834b8a903d0dcb7f91c,
     type: 2}
+  floor: {fileID: 0}
   m_FacingRight: 1
   scrap: 0
 --- !u!114 &114778313333007828

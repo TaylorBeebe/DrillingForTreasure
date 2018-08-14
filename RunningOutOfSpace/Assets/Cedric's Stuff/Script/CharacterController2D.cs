@@ -38,7 +38,7 @@ public class CharacterController2D : MonoBehaviour
     [SerializeField] int gameOverBuildIndex;
 
     [Header("Reference")]
-    [SerializeField] Camera _camera;
+    private Camera _camera;
     [SerializeField] GameObject bulletPrefab;
     [SerializeField] Text floor;
 
@@ -51,7 +51,7 @@ public class CharacterController2D : MonoBehaviour
     private float maxCharge;
     private float maxHealth;
     private int mag;
-    private int levelCurrentlyOn;
+    private int levelCurrentlyOn = 1;
     [HideInInspector] public bool m_FacingRight = true;
     [HideInInspector] public int scrap = 0;
     [HideInInspector] public static CharacterController2D Instance { get; private set; }
@@ -63,11 +63,12 @@ public class CharacterController2D : MonoBehaviour
         int numOfCc2d = FindObjectsOfType<CharacterController2D>().Length;
         if (numOfCc2d > 1)
             Destroy(gameObject);
+        else
+            DontDestroyOnLoad(gameObject);
     }
 
     void Start()
     {
-        levelCurrentlyOn = 1;
 
         ValueCheck();
         maxCharge = charge;
@@ -78,13 +79,13 @@ public class CharacterController2D : MonoBehaviour
         anim = GetComponent<Animator>();
         armPivot = GameObject.Find("Arm Pivot");
         hav = gameObject.GetComponent<HealthAndVariables>();
+        _camera = GameObject.Find("Main Camera").GetComponent<Camera>();
         maxHealth = hav.health;
     }
 
     void Update()
     {
         health = hav.health;
-        levelCurrentlyOn = 1;
 
         PlayerShoot();
         SetAnimation();
