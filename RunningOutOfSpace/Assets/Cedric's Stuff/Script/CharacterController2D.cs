@@ -54,9 +54,21 @@ public class CharacterController2D : MonoBehaviour
     private int levelCurrentlyOn;
     [HideInInspector] public bool m_FacingRight = true;
     [HideInInspector] public int scrap = 0;
+    [HideInInspector] public static CharacterController2D Instance { get; private set; };
     private bool _isDead = false;
     private bool _canShoot = true;
 
+    void Awake()
+    {
+        if(Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        } else
+        {
+            Destroy(gameObject);
+        }
+    }
 
     void Start()
     {
