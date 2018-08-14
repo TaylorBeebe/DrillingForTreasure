@@ -29,9 +29,6 @@ public class Timer : MonoBehaviour {
             GameObject.Find("Player").GetComponent<CharacterController2D>().SetLevelCurrentlyOn(fl);
             timerCanRun = false;
             fc.LoadScene(SceneManager.GetActiveScene().name);
-        } else
-        {
-            timer = 0;
         }
         timer -= Time.deltaTime;
         minutes = Mathf.Floor((timer % 3600) / 60);
