@@ -89,6 +89,10 @@ public class CharacterController2D : MonoBehaviour
     void Update()
     {
         health = hav.health;
+        if(SceneManager.GetActiveScene().buildIndex == 5)
+        {
+            Destroy(gameObject);
+        }
 
         PlayerShoot();
         SetAnimation();
