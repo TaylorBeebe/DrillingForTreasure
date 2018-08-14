@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Singleton : MonoBehaviour {
 
@@ -20,7 +21,7 @@ public class Singleton : MonoBehaviour {
                 return;
 
             case (SingletonTypes.Canvas):
-                int amountOfCanvases = FindObjectsOfType<Canvas>().Length;
+                int amountOfCanvases = GameObject.FindGameObjectsWithTag("Canvas").Length;
                 if (amountOfCanvases > 1)
                     Destroy(gameObject);
                 else
@@ -50,6 +51,9 @@ public class Singleton : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if(SceneManager.GetActiveScene().buildIndex == 5)
+        {
+            Destroy(gameObject);
+        }
 	}
 }

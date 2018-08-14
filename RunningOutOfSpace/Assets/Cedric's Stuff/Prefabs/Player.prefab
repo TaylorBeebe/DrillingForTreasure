@@ -256,7 +256,9 @@ MonoBehaviour:
   fireRate: 0.1
   charge: 500
   chargeLoseRate: 0.05
-  rechargeRate: 0.15
+  rechargeRate: 0.025
+  timer: 90
+  timerMultiplayer: 0.1
   cameraClampL: -50
   cameraClampR: 50
   cameraClampUp: 43.73
@@ -265,7 +267,6 @@ MonoBehaviour:
   gunChargeUI: {fileID: 0}
   scrapUI: {fileID: 0}
   gameOverBuildIndex: 5
-  _camera: {fileID: 0}
   bulletPrefab: {fileID: 1486049813128980, guid: 77061671a17e7834b8a903d0dcb7f91c,
     type: 2}
   floor: {fileID: 0}

@@ -23,6 +23,10 @@ public class CharacterController2D : MonoBehaviour
     [SerializeField] [Range(0.0f, 1.0f)] float chargeLoseRate;
     [SerializeField] [Range(0.0f, 1.0f)] float rechargeRate;
 
+    [Header("Timer")]
+    public float timer;
+    [Range(0.0f, 1.0f)] public float timerMultiplayer;
+
     [Header("Camera")]
     [SerializeField] float cameraClampL;
     [SerializeField] float cameraClampR;
@@ -54,7 +58,6 @@ public class CharacterController2D : MonoBehaviour
     private int levelCurrentlyOn = 1;
     [HideInInspector] public bool m_FacingRight = true;
     [HideInInspector] public int scrap = 0;
-    [HideInInspector] public static CharacterController2D Instance { get; private set; }
     private bool _isDead = false;
     private bool _canShoot = true;
 
