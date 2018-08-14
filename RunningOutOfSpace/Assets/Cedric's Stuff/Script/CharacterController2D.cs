@@ -60,14 +60,9 @@ public class CharacterController2D : MonoBehaviour
 
     void Awake()
     {
-        if(Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        } else
-        {
+        int numOfCc2d = FindObjectsOfType<CharacterController2D>().Length;
+        if (numOfCc2d > 1)
             Destroy(gameObject);
-        }
     }
 
     void Start()
