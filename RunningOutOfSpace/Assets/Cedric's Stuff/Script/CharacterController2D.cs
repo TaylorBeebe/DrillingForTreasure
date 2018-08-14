@@ -216,13 +216,14 @@ public class CharacterController2D : MonoBehaviour
 
     void CheckDeath()
     {
-        if (health <= Mathf.Epsilon)
+        if (health <= Mathf.Epsilon && !_isDead)
         {
             /*if (EditorApplication.isPlaying && gameOverBuildIndex == 0)
             {
                 //EditorApplication.isPlaying = false;
                 //EditorUtility.DisplayDialog("Error", "Game Over Build Index is not set in CharacterController2D on '" + gameObject.name + "'.", "Ok");
             }*/
+            _isDead = true;
             gameObject.SendMessage("LoadScene", "GameOver");
         }
         else if (GameObject.Find("Drill").GetComponentInChildren<HealthAndVariables>().health <= Mathf.Epsilon)

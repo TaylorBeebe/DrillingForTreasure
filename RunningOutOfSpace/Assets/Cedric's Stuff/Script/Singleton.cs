@@ -4,19 +4,11 @@ using UnityEngine;
 
 public class Singleton : MonoBehaviour {
 
-    enum SingletonTypes {None, Camera, Canvas};
+    enum SingletonTypes {None, Camera, Canvas, AudioSourceGame, Drill};
     [SerializeField] SingletonTypes type = SingletonTypes.Camera;
 
 	// Use this for initialization
 	void Awake () {
-		if(type == SingletonTypes.Camera)
-        {
-            int amountOfCams = FindObjectsOfType<Camera>().Length;
-            if (amountOfCams > 1)
-                Destroy(gameObject);
-            else
-                DontDestroyOnLoad(gameObject);
-        }
         switch(type)
         {
             case (SingletonTypes.Camera):
@@ -30,6 +22,21 @@ public class Singleton : MonoBehaviour {
             case (SingletonTypes.Canvas):
                 int amountOfCanvases = FindObjectsOfType<Canvas>().Length;
                 if (amountOfCanvases > 1)
+                    Destroy(gameObject);
+                else
+                    DontDestroyOnLoad(gameObject);
+                return;
+
+            case (SingletonTypes.AudioSourceGame):
+                int amooutOfAudioSources = FindObjectsOfType<AudioSource>().Length;
+                if (amooutOfAudioSources > 1)
+                    Destroy(gameObject);
+                else
+                    DontDestroyOnLoad(gameObject);
+                return;
+            case (SingletonTypes.Drill):
+                int amountOfDrills = FindObjectsOfType<DrillHealth>().Length;
+                if (amountOfDrills > 1)
                     Destroy(gameObject);
                 else
                     DontDestroyOnLoad(gameObject);

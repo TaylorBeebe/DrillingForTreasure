@@ -30,6 +30,13 @@ public class Timer : MonoBehaviour {
             timerCanRun = false;
             fc.LoadScene(SceneManager.GetActiveScene().name);
         }
+        if (timer <= 0 && timerCanRun)
+        {
+            timerCanRun = false;
+        } else if (!timerCanRun)
+        {
+            timer = 0;
+        }
         timer -= Time.deltaTime;
         minutes = Mathf.Floor((timer % 3600) / 60);
         seconds = Mathf.Floor(timer % 60);
@@ -40,5 +47,10 @@ public class Timer : MonoBehaviour {
             milliseconds = 100;
 
         if(timerCanRun) timerText.text = minutes.ToString("00") + ":" + seconds.ToString("00") + ":" + milliseconds.ToString("00");
+    }
+
+    public void SetTimer(float seconds)
+    {
+        timer = seconds;
     }
 }
