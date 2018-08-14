@@ -8,6 +8,8 @@ TagManager:
   - Bullet
   - Scrap
   - Sticker
+  - Enemy
+  - Spit
   layers:
   - Default
   - TransparentFX
@@ -45,6 +47,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: Actors
+  - name: particles
     uniqueID: 2227193999
     locked: 0
