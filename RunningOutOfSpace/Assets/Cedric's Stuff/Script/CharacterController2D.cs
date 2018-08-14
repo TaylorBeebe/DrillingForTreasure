@@ -60,6 +60,7 @@ public class CharacterController2D : MonoBehaviour
 
     void Start()
     {
+        floor = GameObject.Find("FloorText").GetComponent<Text>();
         levelCurrentlyOn = PlayerPrefs.GetInt("FloorPers");
 
         ValueCheck();
