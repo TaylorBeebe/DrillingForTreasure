@@ -60,7 +60,7 @@ public class CharacterController2D : MonoBehaviour
 
     void Start()
     {
-        levelCurrentlyOn = PlayerPrefs.GetInt("FloorPers");
+        levelCurrentlyOn = 1;
 
         ValueCheck();
         maxCharge = charge;
@@ -77,7 +77,7 @@ public class CharacterController2D : MonoBehaviour
     void Update()
     {
         health = hav.health;
-        levelCurrentlyOn = PlayerPrefs.GetInt("FloorPers");
+        levelCurrentlyOn = 1;
 
         PlayerShoot();
         SetAnimation();

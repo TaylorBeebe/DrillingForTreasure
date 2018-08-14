@@ -19,7 +19,8 @@ public class PlayerSettings : MonoBehaviour {
     public void ready()
     {
         //SceneManager.LoadScene("Level");
-
+        PlayerPrefs.SetInt("FloatPers", 1);
+        PlayerPrefs.SetInt("FloatPers", 1);
         var canv = GameObject.Find("Canvas").GetComponent<CharacterChange>();
         playerName = canv.returnName();
         characterSpriteID = canv.returnSpriteID();
