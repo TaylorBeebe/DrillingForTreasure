@@ -326,7 +326,7 @@ public class EnemySpawner : MonoBehaviour
      */
     void Update()
     {
-
+        levelNumber = gameObject.GetComponent<CharacterController2D>().GetLevelCurrentlyOn();
         if (state == SpawnState.COUNTING)
         {
             waveCountdown -= Time.deltaTime;
